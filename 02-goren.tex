@@ -51,8 +51,8 @@ $i^\ast:\bar k[G] \to \bar k[G]$, $e^\ast:\bar k[G] \to \bar k$. These give
 $\bar k[G]$ the structure of a Hopf algebra. 
 
 A \emph{homomorphism} $f:G\to H$ of algebraic is a morphism of varieties that 
-respects the group structures. It corresponds to a morphism 
-$f^\ast:\bar k[H] \to \bar k[G]$ of the corresponding Hopf algebras. 
+respects the group structures. It corresponds to a ring 
+$f^\ast:\bar k[H] \to \bar k[G]$ that respects the comultiplication.
 
 A \emph{character} of $G$ is a homomorphism 
 $f:G\to \generallinear_1 = \dG_\multiplicative$. This corresponds to a 
@@ -110,18 +110,19 @@ definitions shows that this is a cocycle. In fact, we have
 \begin{theo}
 There is a natural isomorphism of pointed sets 
 \[
-  \{\text{$k$-forms of $G$}\}/\sim \iso \h^1(G,\automorphism_{\bar k} G) .
+  \{\text{$k$-forms of $G$}\}/\sim \iso \h^1(\Gamma,\automorphism_{\bar k} G) .
 \]
 \end{theo}
 
 If $H$ corresponds to $\zeta:G\to M$, then $H(k)=G(\bar k)^\Gamma$, where 
 $\Gamma$ now acts by $\tau \cdot g = \zeta(\tau)(\tau(g))$. 
 
-\begin{enonce}[remark]{Example}[compact forms of $\generallinear_N(\dC)$]
-Let $\Gamma=\galois(\dC/\dR)=\langle c\rangle$. The cocycle $\zeta$ given 
-by $\zeta(c)=\{g\mapsto \transpose g^{-1}$ corresponds to the real form 
+\begin{enonce}[remark]{Example}[compact forms]
+Let $\Gamma=\galois(\dC/\dR)=\langle c\rangle$. Let 
+$\theta(g) = \transpose{\bar g}^{-1}$ be the \emph{Cartan involution}. The 
+cocycle $\zeta$ given by $\zeta(c)=\theta$ corresponds to the real form 
 $\unitary_N$ of $\generallinear_N(\dC)$. It is defined by 
-$\unitary_N(\dR) = \{g\in \generallinear_N(\dC):g=\transpose{\bar g}^{-1}\}$. 
+$\unitary_N(\dR) = \{g\in \generallinear_N(\dC):\theta g=g\}$. 
 \end{enonce}
 
 \begin{theo}
@@ -141,25 +142,28 @@ $T(\dR)=\{z\in \dC^\times:z \bar z=1\}$. We have
 via $\begin{pmatrix} a & b\\ -b & a \end{pmatrix} \mapsto a+b i$. 
 \end{enonce}
 
+If $M$ is a $\Gamma$-module, we often put $\h^i(k,M) = \h^i(\Gamma,M)$. 
+Also, if $G$ is an algebraic group defined over $k$, we put 
+$\h^i(k,G) = \h^i(\Gamma,G(\bar k))$. 
+
 \begin{enonce}[remark]{Example}
 Start with the exact sequence 
 $1 \to \dG_\multiplicative \to \generallinear_N \to \projectivegenerallinear_N \to 1$. 
 The long exact sequence in cohomology is 
 \[
-  1 \to k^\times \to \generallinear_N(k) \to \projectivegenerallinear_N(\bar k)^\Gamma \to \h^1(\Gamma,\bar k^\times) \to \h^1(\Gamma,\generallinear_N(\bar k)) \to \h^2(\Gamma,\bar k^\times) .
+  1 \to k^\times \to \generallinear_N(k) \to \projectivegenerallinear_N(\bar k)^\Gamma \to \h^1(k,\dG_\multiplicative) \to \h^1(k,\generallinear_N) \to \h^2(k,\dG_\multiplicative) .
 \]
 The famous \emph{Hilbert Theorem 90} tells us that 
-$\h^1(\Gamma, \bar k^\times) = \h^1(\Gamma,\generallinear_N(\bar k)) = 1$, so 
-we get 
+$\h^1(k,\generallinear_N) = 1$ for all $N\geqslant 1$, so we get 
 \[
   \projectivegenerallinear_N(\bar k)^\Gamma = \projectivegenerallinear_N(k) = \generallinear_N(k)/\dG_\multiplicative(k) .
 \]
-Moreover, $\h^1(\Gamma,\projectivegenerallinear_N(\bar k))\hookrightarrow \h^2(\Gamma,\bar k^\times)$. We call 
-$\brauer(k)=\h^2(\Gamma,\bar k^\times)$ the \emph{Brauer group} of $k$. 
-Since $\projectivegenerallinear_N(\bar k)  = \automorphism_{\bar k\text{-}\mathsf{Alg}}(M_N(\bar k))$, we see that 
-$\h^1(\Gamma,\projectivegenerallinear_N(\bar k))$ classifies forms of 
-$M_N(\bar k)$, i.e.~central simple algebras over $K$ of rank 
-$N^2$. 
+Moreover, $\h^1(k,\projectivegenerallinear_N)\hookrightarrow \h^2(k,\dG_\multiplicative)$. We call 
+$\brauer(k)=\h^2(k,\dG_\multiplicative)$ the \emph{Brauer group} of $k$. 
+Since 
+$\projectivegenerallinear_N(\bar k) = \automorphism_{\bar k\text{-}\mathsf{Alg}}(M_N(\bar k))$, 
+we see that $\h^1(k,\projectivegenerallinear_N)$ classifies $k$-forms of 
+$M_N(\bar k)$, i.e.~central simple algebras over $K$ of rank $N^2$. 
 \end{enonce}
 
 
@@ -169,8 +173,9 @@ $N^2$.
 \subsection{Jordan decomposition}
 
 Any $g\in \generallinear_N(\bar k)$ has a unique decomposition 
-$g=g_\simple g_\unipotent$, where $g_\simple$ is diagonalizable, $g_\unipotent$ 
-is unipotent, and $g_\simple g_\unipotent = g_\unipotent g_\simple$. One has 
+$g=g_\simple g_\unipotent$, where $g_\simple$ is simple (i.e.~diagonalizable), 
+$g_\unipotent$ is unipotent, and 
+$g_\simple g_\unipotent = g_\unipotent g_\simple$. One has 
 $(g_\unipotent - 1)^N=0$. For example, in the two-dimensional case, a matrix 
 $\begin{pmatrix} t_1 & u \\ & t_2\end{pmatrix}$ is already diagonalizable if 
 $t_1\ne t_2$, or $u=0$. If neither of those occur, we write it as 

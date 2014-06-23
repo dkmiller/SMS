@@ -7,5 +7,227 @@
 
 
 
-d
+Essentially, this lecture will try to cover two semester-long courses 
+(algebraic number theory and class field theory) in an hour. Hopefully, we'll 
+focus on the theory of Hilbert class fields, and later on complex 
+multiplication. 
+
+
+
+
+
+\subsection{Number fields}
+
+A \emph{number field} $K$ is a finite field extension of $\dQ$. An important 
+invariant of $K$ is its \emph{class group}, $\class_K=I_K/P_K$, where 
+$I_K$ is the group of all fractional ideals in $K$ and $P_K$ is the group of 
+principal fractional ideals. 
+
+\begin{theo}
+The group $\class_K$ is finite. 
+\end{theo}
+
+So we can define the \emph{class number} $h_K$ of $K$ to be the cardinality 
+of $\class_K$. The class number $h_K=1$ if and only if $\cO_K$ is a principal 
+ideal domain. The famous \emph{Dirichlet unit theorem} says that $\cO_K^\times$ 
+is a finitely-generated abelian group, and gives a formula for 
+$\rank\cO_K^\times$ in terms of the number of real and complex places of $K$. 
+
+We would like to relate $h_K$ with quadratic forms. Consider towers of 
+fields 
+\[\xymatrix@=0.5cm{
+  & L \\
+  F \ar@{-}[ur] & & K \ar@{-}[ul] \\
+  & \dQ \ar@{-}[ul]^-2 \ar@{-}[ur]_-3 \ar@{-}[uu]^-{S_3} 
+}\]
+where $L/F$ is an unramified (cubic) extension. Then counting the number of 
+cubic fields $K$ that are nowhere ramified with $|\discriminant K|<X$ is 
+equivalent to summing $\# h_3(F)$ for $|\discriminant F|<X$. The average of 
+$h_3(F)$ is $\frac 4 3$ for $F$ real quadratic, and $2$ for $F$ imaginary 
+quadratic. By the ``average'' we mean, for example, 
+\[
+  \sum_{0<|\discriminant F|<X} h_3(F) \sim \frac 4 3 X 
+\]
+in the case of real quadratic $F$. The point here is that averaging class 
+numbers is equivalent to counting certain types of fields. 
+
+
+
+
+
+\subsection{Starting point of class field theory}
+
+Class field theory is, in general, the study of abelian extensions of a field 
+$k$. Let $K$ be a number field, and let $H/K$ be the maximal unramified 
+abelian extension of $K$. One calls $H$ the \emph{Hilbert class field} of 
+$K$. It is known that $H$ is a number field. Moreover, the \emph{Artin map} 
+$I_K \to \galois(H/K)$ determined by $\fp\mapsto \frobenius_\fp = (\fp,H/K)$ 
+induces an isomorphism $\class_K\iso \galois(H/K)$. Recall that the 
+\emph{Frobenius element} $\frobenius_\fp\in \galois(H/K)$ is characterized by 
+$\frobenius_\fp(x)\equiv x^{N_{K/\dQ}(\fp)}\pmod\fP$ for all $\fP\mid \fp$ in 
+$H$. 
+
+It is easy to show that $\fp$ splits compltely in $H$ if and only if $\fp$ is 
+principal. Somewhat harder is the principal ideal theorem: 
+
+\begin{theo}
+Every ideal of $K$ becomes principal in $H$. 
+\end{theo}
+\begin{proof}
+Let $G=\galois(K^\mathrm{ur}/K)$, and let $G_1\subset G$ correspond to the 
+extension $H/K$. We have a commutative diagram: 
+\[\xymatrix{
+  \class_H \ar[r]^-{\artin} 
+    & G_1^\abelian \\
+  \class_K \ar[u] \ar[r]^-{\artin}
+    & G^\abelian \ar[u]_-V 
+}\]
+where $V$ is the \emph{transfer map}. Since $G_1$ corresponds to $H$, 
+$V=0$, whence $\class_K\to \class_H$ is the trivial map. The result 
+follows. 
+\end{proof}
+
+If $K=\dQ$, then $H=\dQ$. 
+
+Assume from now on that $K=\dQ(\sqrt d)$ is an imaginary quadratic field 
+($d<0$). There are nine possible values of $d<0$ for which 
+$h_{\dQ(\sqrt d)}=1$, namely 
+\[
+  -1,-2,-3,-7,-11,19,-43,-67,-163 .
+\]
+It is known that $h_K\to \infty$ as $d\to -\infty$. 
+
+\begin{enonce}[remark]{Example}
+Let $K=\dQ(\sqrt{-23})$. Then $H/K$ is cyclic of degree $3$. It is known 
+that $H=K(\alpha)$, where $\alpha^3-\alpha+1=0$. 
+\end{enonce}
+
+
+
+
+
+\subsection{Complex multiplication}
+
+One might ask if for any number field $K$, there is an explicit way of 
+finding $\alpha\in \overline\dQ$ such that $H=K(\alpha)$. The theory of complex 
+multiplication describes how to do this explicitely whenever $K$ is 
+imaginary quadratic. The main theorem is the following: 
+
+\begin{theo}
+Let $E$ be an elliptic curve with CM by $\cO_K$. Then 
+$H=K(j(E))$. 
+\end{theo}
+
+Recall that $E$ has \emph{complex multiplication} by $\cO_K$ if 
+$\End E \simeq \cO_K$. If $E+y^2=4 x^3-g_2 X-g_3$, then its 
+\emph{$j$-invariant} is given by 
+\[
+  j(E) = 1728 \frac{g_2^3}{g_2^3 - g_3^2} .
+\]
+Alternatively, if $E=\dC/\langle 1,\tau\rangle$, then 
+$j(E) = \frac 1 q + 744 + 196884 q^2 + \cdots$, where $q=e^{2\pi i \tau}$. 
+
+The rest of this lecture will be a sketch of a proof of this theorem. 
+
+
+
+
+
+\subsection{Elliptic curves from fractional ideals}
+
+Let $\cE_\dC(K)$ be the set of isomorphism classes of elliptic curves over 
+$\dC$ with complex multiplication by $\cO_K$. There is a bijection 
+$\class_K \iso \cE_\dC(K)$. Given $\fa\subset \cO_K$, we have a canonical 
+embedding $\fa\hookrightarrow \dC$. Send $[\fa]$ to the elliptic curve 
+$\dC/\fa$. This gives us a simply transitive action of $\cO_K$ on 
+$\cE_\dC(K)$ via $[\fa]\cdot (\dC/\fb) = \dC/(\fa^{-1} \fb)$. 
+
+
+
+
+
+\subsection{Fields of definition}
+
+It is known that CM elliptic curves have rational models. In other words, 
+the natural map $\cE_{\overline\dQ}(K) \to \cE_\dC(K)$ induced by an 
+embedding $\overline\dQ\hookrightarrow\dC$ is a bijection. We know this 
+because $E$ is \emph{always} defined over $\dQ(j(E))$. But when $E$ is CM, 
+$j(E)\in \overline\dQ$, so $E$ is defined over $\overline\dQ$. Indeed, if 
+$\sigma\in \automorphism\dC$, then $j(E^\sigma)$ also has CM by $K$. So the 
+orbit of $E$ under $\automorphism(\dC)$ lies in $\cE_\dC(K)$, a finite set. 
+This tells us that $\cE_{\overline\dQ}(K) \twoheadrightarrow \cE_\dC(K)$. We 
+leave injectivity as an exercise. 
+
+Because of this, we will write $\cE(K)$ instead of $\cE_{\overline\dQ}(K)$ or 
+$\cE_\dC(K)$. 
+
+
+
+
+
+\subsection{Towards \texorpdfstring{$H$}{H}}
+
+Fix $E\in \cE(K)$. For each $\sigma\in \galois(\overline\dQ/K)$, there is a 
+unique $[\fa]\in \class_K$ such that $E^\sigma = [\fa]\cdot E$. We define a map 
+$F:\galois(\overline\dQ/K) \to \class_K$ by $F(\sigma) = [\fa]$. 
+
+\begin{prop}
+1. $F$ does not depend on the choice of $E$. 
+
+2. $F$ is a homomorphism. 
+\end{prop}
+\begin{proof}
+1. This is subtle. 
+
+2. Let $\sigma,\tau\in \galois(\overline\dQ/K)$. Then 
+\begin{align*}
+  F(\sigma\tau) E 
+    &\simeq E^{\sigma\tau} \\
+    &= (E^\sigma)^\tau && \text{part 1}\\
+    &= (F(\sigma) E)^\tau \\
+    &= F(\tau)(F(\sigma) E) \\
+    &= (F(\sigma)F(\tau)) E && \text{$\class_K$ is abelian}
+\end{align*}
+\end{proof}
+
+Let $L$ be the fixed field of $\ker(F)$. We claim that 
+$L=K(j(E))$. Indeed, 
+\begin{align*}
+  \galois(\overline\dQ/L)
+    &=\{\sigma\in \galois(\overline\dQ/K):E^\sigma \simeq F(\sigma) E \simeq E\} \\
+    &= \{\sigma:j(E)^\sigma = j(E)\} .
+\end{align*}
+
+Note that $F$ is an injection $\galois(L/K)\hookrightarrow \class_K$. So 
+$L/K$ is abelian. We will show that it is unramified of the right degree. 
+
+Let $\fm$ be the conductor of $L/K$. It is the greatest common divisor of all 
+$\fm\subset \cO_K$ such that $K_{\fm,1}\subset \ker(\artin_{L/K})$, where 
+$K_{\fm,1} = \langle (\alpha):\alpha\simeq 1\pmod\fm\rangle$. One checks that 
+the composite 
+\[\xymatrix{
+  I_K^\fm \ar[r]^-{\artin} 
+    & \galois(L/K) \ar[r]^-F 
+    & \class_K 
+}\]
+is the ``identity map'' $\fa\mapsto [\fa]$. It follows that $F$ is surjective. 
+So $F:\galois(L/K)\iso \class_K$, and $L=K(j(E))$. 
+
+If $F(((\alpha),L/K)) = 1$ then $(\alpha)\in I_K^\fm$ is principal. Indeed, it 
+suffices to show $((\alpha),L/K)=1$, and this follows from the injectivity of $F$. 
+Since $\alpha$ was arbitrary, $\fm=1$, so $L/K$ is unramified. The rest is a 
+simple dimension argument. 
+
+\begin{theo}
+If $E$ is CM, then $j(E)$ is an algebraic integer. 
+\end{theo}
+
+As a corollary, one has the surprizing fact that $e^{\pi\sqrt{163}}$ is 
+very close to an integer. The main theorem of complex multiplication has an 
+analogue for ray class fields. One gets 
+$\operatorname{RCF}(\fm) = K(j(E),h(E[\fm]))$, where $\fm\subset \cO_K$ and $h$ 
+is the Weber function. 
+
+
+
 
