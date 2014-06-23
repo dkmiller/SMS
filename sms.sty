@@ -1,0 +1,12 @@
+\DeclareMathOperator{\h}{H}
+
+% Tate-Shafarevich groups
+  \DeclareFontFamily{U}{wncy}{}
+  \DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
+  \DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
+  \DeclareMathSymbol{\sha}{\mathord}{mcy}{"58}  
+  
+% footnote without number
+  \makeatletter
+  \def\thanksauthor{\gdef\@thefnmark{}\@footnotetext}
+  \makeatother
