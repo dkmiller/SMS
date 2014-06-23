@@ -7,5 +7,260 @@
 
 
 
-d
+This lecture will consist mostly of a review of the basic terminology, as 
+well as a little bit of Galois cohomology. 
+
+
+
+
+
+\subsection{Algebraic groups}
+
+For us, a \emph{linear algebraic group} is a Zariski-closed subgroup of 
+$\generallinear_N(\bar k)$ for some integer $N\geqslant 1$, where $k$ is a 
+fixed field of characteristic zero, and $\bar k$ is the algebraic closure of 
+$k$. A good reference for linear algebraic groups is the eponymous book 
+\cite{b91}. 
+
+\begin{enonce}[remark]{Example}
+The main example of a linear algebraic group is $G=\generallinear_N$. It 
+contains several standard subgroups:
+\begin{align*}
+  B &= \begin{pmatrix} \ast & \cdots & \ast \\ & \ddots & \vdots \\ & & \ast \end{pmatrix} && \text{``standard Borel''} \\
+  U &= \begin{pmatrix} 1 & \cdots & \ast \\ & \ddots & \vdots \\ & & 1\end{pmatrix} && \text{``unipotent radical of $B$''} \\
+  T &= \begin{pmatrix} \ast \\ & \ddots \\ & & \ast \end{pmatrix} && \text{``maximal torus''}
+\end{align*}
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Let $q$ be a symmetric bilinear form corresponding to the matrix 
+$(q_{i j})_{1\leqslant i,j\leqslant N}$. Let 
+\[
+  \specialorthogonal(q) = \{g\in \generallinear_N: g q \transpose g = q\text{ and }\det g=1\} .
+\]
+If $q$ is the form 
+$q(x_1,\dots,x_{2n+1}) = \frac 1 2 (x_1 x_{2n+1} + x_2 x_{2n} + \cdots + x_{n+1}^2$, 
+then a maximal torus consists ``anti-triangular'' matrices with 
+$(t_1,\dots,t_n,1,t_n^{-1},\dots,t_1^{-1})$. 
+\end{enonce}
+
+An affine group $G$ is determined by its coordinate ring $\bar k[G]$. The 
+group operations $m:G\times G\to G$, $i:G\to G$, $e:1\to G$ correspond via 
+the Yoneda lemma to $m^\ast:\bar k[G]\to \bar k[G]\otimes \bar k[G]$, 
+$i^\ast:\bar k[G] \to \bar k[G]$, $e^\ast:\bar k[G] \to \bar k$. These give 
+$\bar k[G]$ the structure of a Hopf algebra. 
+
+A \emph{homomorphism} $f:G\to H$ of algebraic is a morphism of varieties that 
+respects the group structures. It corresponds to a morphism 
+$f^\ast:\bar k[H] \to \bar k[G]$ of the corresponding Hopf algebras. 
+
+A \emph{character} of $G$ is a homomorphism 
+$f:G\to \generallinear_1 = \dG_\multiplicative$. This corresponds to a 
+Hopf-algebra homomorphism $\phi:\bar k[t^{\pm 1}] \to \bar k[G]$. If we let $f$ 
+be the image of $t$ under this map, then the fact that $\phi$ respects 
+comultiplication tells us that $m^\ast(f) = f\otimes f$. We call such 
+elements \emph{grouplike}. Let $\character^\ast(G)$ be the group of characters 
+of $G$; we have seen that $\character^\ast(G)$ is in bijection with the set 
+of grouplike elements of $\bar k[G]$. 
+
+If $g\in G$, put $\inner g:G\to G$ for the action of $g$ by inner 
+automorphisms, i.e.\ $\inner g(x) = g x g^{-1}$. So we have a homomorphism 
+$\inner:G\to \automorphism G$. 
+
+
+
+
+
+\subsection{Non-abelian cohomology}
+
+Let $G$ be a topological group acting continuously on a discrete group $M$. 
+Define 
+\begin{align*}
+  \h^0(G,M) &= M^G = \{m\in M:g m=m\text{ for all }g\in G\} \\
+  \h^1(G,M) &= \{\zeta:G\to M\text{ such that }\zeta(a b) = \zeta(a)\cdot a \zeta(b)\} / \sim 
+\end{align*}
+where $\zeta\sim \xi$ if there exists $m\in M$ such that 
+$\zeta(a) = m^{-1} \xi(a) \cdot a m$ for all $a\in G$. The set $\h^0(G,M)$ is 
+naturally a group, but $\h^1(G,M)$ is only a pointed set. If 
+$0 \to A \to B \to C \to 0$ is an exact sequence of $G$-groups, we get a long 
+exact sequence 
+\[
+  0 \to A^G \to B^G \to C^G \xrightarrow\delta \h^1(G,A) \to \h^1(G,B) \to \h^1(G,C) \to \h^2(G,A) \to \cdots 
+\]
+with the last map only existing if $A$ is central in $B$. A good source for all 
+of this is \cite{s79}. 
+
+We define $\delta$ directly. Given $c\in C^G$, lift $c$ to $b\in B$, and let 
+$\zeta=\delta(c)$ be $\zeta(g)=b^{-1} \cdot g b$. One can check that the class 
+of $\zeta$ in $\h^1(G,A)$ is well-defined. 
+
+
+
+
+
+\subsection{Forms}
+
+Suppose $G$ is defined over $k$. A \emph{$k$-form} of $G$ is an algebraic group 
+$H$ over $k$ together with an isomorphism $f:G_{\bar k} \iso H_{\bar k}$. Let 
+$\Gamma=\galois(\bar k/k)$. For all $\sigma\in G$, we have 
+$\sigma f:G_{\bar k}\iso H_{\bar k}$. Then 
+$f^{-1}\circ \sigma f\in \automorphism_{\bar k}(G)$. An easy exercise in the 
+definitions shows that this is a cocycle. In fact, we have 
+
+\begin{theo}
+There is a natural isomorphism of pointed sets 
+\[
+  \{\text{$k$-forms of $G$}\}/\sim \iso \h^1(G,\automorphism_{\bar k} G) .
+\]
+\end{theo}
+
+If $H$ corresponds to $\zeta:G\to M$, then $H(k)=G(\bar k)^\Gamma$, where 
+$\Gamma$ now acts by $\tau \cdot g = \zeta(\tau)(\tau(g))$. 
+
+\begin{enonce}[remark]{Example}[compact forms of $\generallinear_N(\dC)$]
+Let $\Gamma=\galois(\dC/\dR)=\langle c\rangle$. The cocycle $\zeta$ given 
+by $\zeta(c)=\{g\mapsto \transpose g^{-1}$ corresponds to the real form 
+$\unitary_N$ of $\generallinear_N(\dC)$. It is defined by 
+$\unitary_N(\dR) = \{g\in \generallinear_N(\dC):g=\transpose{\bar g}^{-1}\}$. 
+\end{enonce}
+
+\begin{theo}
+Any (connected) reductive algebraic group $G$ over $\dR$ has a unique compact 
+form. 
+\end{theo}
+
+All of the groups $\generallinear_n$, $\speciallinear_n$, $\specialorthogonal_n$, 
+$\symplectic_{2 n}$,\ldots are reductive. 
+
+\begin{enonce}[remark]{Example}
+If $G=\dG_\multiplicative$, the compact form is 
+$T(\dR)=\{z\in \dC^\times:z \bar z=1\}$. We have 
+\[
+  T\simeq \specialorthogonal(2) = \left\{\begin{pmatrix} a & b \\ -b & a \end{pmatrix} : a^2+b^2=1\right\} ,
+\]
+via $\begin{pmatrix} a & b\\ -b & a \end{pmatrix} \mapsto a+b i$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Start with the exact sequence 
+$1 \to \dG_\multiplicative \to \generallinear_N \to \projectivegenerallinear_N \to 1$. 
+The long exact sequence in cohomology is 
+\[
+  1 \to k^\times \to \generallinear_N(k) \to \projectivegenerallinear_N(\bar k)^\Gamma \to \h^1(\Gamma,\bar k^\times) \to \h^1(\Gamma,\generallinear_N(\bar k)) \to \h^2(\Gamma,\bar k^\times) .
+\]
+The famous \emph{Hilbert Theorem 90} tells us that 
+$\h^1(\Gamma, \bar k^\times) = \h^1(\Gamma,\generallinear_N(\bar k)) = 1$, so 
+we get 
+\[
+  \projectivegenerallinear_N(\bar k)^\Gamma = \projectivegenerallinear_N(k) = \generallinear_N(k)/\dG_\multiplicative(k) .
+\]
+Moreover, $\h^1(\Gamma,\projectivegenerallinear_N(\bar k))\hookrightarrow \h^2(\Gamma,\bar k^\times)$. We call 
+$\brauer(k)=\h^2(\Gamma,\bar k^\times)$ the \emph{Brauer group} of $k$. 
+Since $\projectivegenerallinear_N(\bar k)  = \automorphism_{\bar k\text{-}\mathsf{Alg}}(M_N(\bar k))$, we see that 
+$\h^1(\Gamma,\projectivegenerallinear_N(\bar k))$ classifies forms of 
+$M_N(\bar k)$, i.e.~central simple algebras over $K$ of rank 
+$N^2$. 
+\end{enonce}
+
+
+
+
+
+\subsection{Jordan decomposition}
+
+Any $g\in \generallinear_N(\bar k)$ has a unique decomposition 
+$g=g_\simple g_\unipotent$, where $g_\simple$ is diagonalizable, $g_\unipotent$ 
+is unipotent, and $g_\simple g_\unipotent = g_\unipotent g_\simple$. One has 
+$(g_\unipotent - 1)^N=0$. For example, in the two-dimensional case, a matrix 
+$\begin{pmatrix} t_1 & u \\ & t_2\end{pmatrix}$ is already diagonalizable if 
+$t_1\ne t_2$, or $u=0$. If neither of those occur, we write it as 
+\[
+  \begin{pmatrix} t & u \\ & t \end{pmatrix} = \begin{pmatrix} t \\ & t\end{pmatrix} \begin{pmatrix} 1 & u/t \\ & 1 \end{pmatrix} .
+\]
+The Jordan decomposition enjoys very strong rigidity properties. Namely, 
+if $g\in G\subset \generallinear_N$, then also $g_\simple\in G$ and 
+$g_\unipotent \in G$. If $f:G\to H$ is a homomorpism of algebraic groups, then 
+we have $f(g_\simple) = f(g)_\simple$ and $f(g_\unipotent) = f(g)_\unipotent$. 
+
+
+
+
+
+\subsection{Tori}
+
+A \emph{torus} $T$ is a form of $\dG_\multiplicative^N$ for some $N$. Tori of 
+rank $N$ over $k$ are classified by 
+$\h^1(\Gamma,\automorphism_{\bar k}(\dG_\multiplicative^N)) = \hom(\Gamma,\generallinear_N(\dZ))/\text{conj}$. 
+
+If $T$ is a orus, then its group of characters 
+$\character^\ast(T_{\bar k}) \simeq \character^\ast(\dG_\multiplicative^N) = \hom(\dG_\multiplicative^N,\dG_\multiplicative) = \dZ^N$ 
+has a continuous action of $\Gamma$, via 
+$\sigma \chi(g) = \sigma(\chi(\sigma^{-1}(g)))$. Tori are completely classified 
+by this action. 
+
+\begin{theo}
+The functor $\character^\ast$ induces an anti-equivalence of categories 
+\[
+  \{\text{tori over }k\} \iso \{\text{finite free $\dZ$-modules with continuous $\Gamma$-action}\} .
+\]
+\end{theo}
+
+A linear action of a torus $T$, namely $f:T\to \generallinear_N$, is 
+simultaneously diagonalizable (every element of $T$ is semi-simple). This 
+follows from rigidity properties of the Jordan Decomposition. 
+
+All maximal tori in a linear algebraic group $G$ are conjugate. The common 
+dimension of these tori is called the \emph{rank} of $G$, and written 
+$\rank_{\bar k}(G)$. 
+
+\begin{enonce}[remark]{Example}
+The standard torus of diagonal matrices $T\subset\generallinear_N$ is 
+maximal, so $\rank(\generallinear_N) = N$. 
+\end{enonce}
+
+
+
+
+
+\subsection{Solvable groups}
+
+An algebraic group $G$ is called \emph{solvable} if it is solvable ``in the 
+usual sense.'' In other words, there exists a filtration 
+$1=G_0\subset G_1\subset \cdots \subset G_l = G$ such that each 
+$G_i$ a normal algebraic subgroup of $G_{i+1}$, and each 
+$G_{i+1}/G_i$ is abelian. The standard Borel $B\subset \generallinear_N$ is 
+solvable. In fact, $B$ is a maximal solvable subgroup. 
+
+\begin{theo}[Kolchin-Lie]
+If $G\subset \generallinear_N$ is solvable, then $G$ can be conjugated 
+into the standard Borel $B\subset \generallinear_N$. 
+\end{theo}
+\begin{proof}
+One uses the fact that if $G$ acts on a projective space, then it has a fixed 
+point. The standard representation $G\to \generallinear_N$ gives an action of 
+$G$ on $\dP^{N-1}$, and a fixed point for $G$ in $\dP^{N-1}$ gives a line fixed 
+by the action of $G$. 
+\end{proof}
+
+\begin{theo}[Borel]
+If a solvable group $G$ acts on a proper variety, then $G$ has a fixed point. 
+\end{theo}
+
+For a group $G$, let $\rad(G)$ be the maximal connected normal solvable 
+subgroup of $G$, and let $\rad_\unipotent(G)$ be the maximal connected normal 
+unipotent subgroup of $G$. We say that $G$ is \emph{semisimple} if 
+$\rad(G)=1$, and \emph{reductive} if $\rad_\unipotent(G)=1$. Clearly 
+semisimple groups are reductive. The groups 
+$\speciallinear_n$, $\specialorthogonal_n$, $\symplectic_n$ are semisimple 
+and $\generallinear_n$, $\generalsymplectic_{2 n}$, $\generalspin_n$ are 
+reductive. 
+
+For any $G$, the quotient $G/\rad_\unipotent(G)$ is reductive, and 
+$G/\rad(G)$ is semisimple. If $G$ is reductive, then $G/Z(G)$ is 
+semisimple. A \emph{Levi subgroup} of a group $G$ is a subgroup $H$ such 
+that $G=H\ltimes \rad_\unipotent (G)$. Such an $H$ will be a maximal 
+reductive subgroup of $G$. 
+
+
+
 
