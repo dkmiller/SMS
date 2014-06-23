@@ -7,4 +7,177 @@
 
 
 
-d
+\subsection{Motivation}
+
+The main question we are interested in is: given a class $\cC$ of objects ``of 
+arithmetic interest,'' how many objects are there in $\cC$, up to isomorphism, 
+having bounded invariants? 
+
+\begin{enonce}[remark]{Example}
+The following are the main examples we're interested in: 
+\begin{center}
+\begin{tabular}{c|c}
+$\cC$ & invariant \\ \hline
+number fields of given degree & discriminant \\
+class group elements of number fields of given degree & '' \\
+rational points on curves & height \\
+elliptic curves weighted by rank & '' \\
+$n$-Selmer elements of Jacobians of curves & '' 
+\end{tabular}
+\end{center}
+All of these will be defined precisely later on. 
+\end{enonce}
+
+Given such a class of objects of arithmetic interest, how they are distributed 
+(asymptotically) with respect to their basic invariants? Beyond the cases of 
+degree $2$ number fields and genus $0$ curves, little was known at the 
+beginning of the 20th century. 
+
+
+
+
+
+\subsection{Strategy}
+
+Direct methods of counting arithmetic objects generally fail except in the 
+``easy'' cases of degree $2$ number fields and genus $0$ curves. The modern 
+approach uses representation theory. We try to find a map 
+\[
+  (\cC/\sim) \hookrightarrow G(\dZ)\backslash V(\dZ) ,
+\]
+where $G$ is an algebraic group and $V$ is a representation of $G$, both 
+defined over $\dZ$. More precisely, one finds such a map that sends the 
+invariants of objects in $\cC$ to the ring of fundamental polynomial 
+invariants of the action of $G$ on $V$. Good choices of such maps often come 
+from algebraic geometry, but we have to work out the theory over $\dZ$. 
+
+\begin{enonce}[remark]{Example}[Gauss]
+In his \emph{Disquisitiones}, Gauss constructs a map 
+\[
+  \left\{\begin{array}{c}\text{ideal classes of (orders } \\ \text{in) quadratic fields with} \\ \text{non-square discriminant}\end{array}\right\}\bigr/\simeq 
+  \iso 
+  \speciallinear_2(\dZ)\bigl\backslash \left\{\begin{array}{c}\text{integer binary quadratic} \\ \text{forms }a x^2+b x y+c y^2\end{array} \right\} 
+\]
+The map sends the discriminant of such an ideal class to $b^2-4 a c$ (the 
+discriminant of the quadratic form, which is the unique polynomial invariant 
+of quadratic forms). If $I=\langle \alpha,\beta\rangle$, then 
+the corresponding quadratic form is $\norm(\alpha x+\beta x)/\norm(I)$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}[Levi, Delone-Faddeev] % 20s, 40s [Granville talk]
+Recall that a \emph{cubic ring} is a (commutative, unital) ring structure 
+on $\dZ^3$. They constructed a map 
+\[
+  \{\text{cubic rings}\}/\sim \iso \generallinear_2(\dZ)\bigl\backslash\left\{\begin{array}{c}\text{integer binary cubic forms} \\ ax^3+b x^2 y+c x y^2+d y^3\end{array}\right\} ,
+\]
+which ``preserves discriminant.'' The discriminant of a binary cubic form is 
+$b c^2-4 a c^3 - 4 b^3 d - 27 a^2 d^2 + 18 a b c d$. If 
+$R=\langle 1,\alpha,\beta\rangle$ is a cubic ring, the associated binary cubic 
+form is 
+$\sqrt{\discriminant(\alpha x+\beta y)/\discriminant(R)} = [R:\dZ[\alpha x+\beta y]]$. 
+See [Bhargava thesis, Wood thesis]. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example} % [Wood II]
+There are similar maps 
+\[
+  \{\text{quartic (resp.~quintic) fields}\}/\sim \to \{\text{representations\ldots}\} .
+\]
+These are also discriminant-preserving (in all these cases, the discriminant on 
+the right is the unique polynomial invariant). 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}[Birch, Swinnerton-Dyer] % Shankar
+There is a map 
+\[
+  \left\{\begin{array}{c}\sigma\in E(\dQ)/2:E\text{ of the } \\ \text{form }y^2=x^3+A x+B\end{array}\right\} \hookrightarrow\generallinear_2(\dQ)\backslash \left\{\begin{array}{c}\text{integer binary} \\ \text{quartic forms}\end{array}\right\} .
+\]
+The program \texttt{mwrank} created by Cremona uses this. In fact, this map 
+factors through the $2$-Selmer group $\selmer_2(E)$. Write $E_{A,B}$ for the 
+elliptic curve $y^2=x^3+A x+B$. This map sends $E_{A,B}$ to the fundamental 
+invariants $I,J$ (of degree $2$, $3$ respectively) of binary quartics. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}[Cremona-Fisher-Stoll]
+For $n\in \{3,4,5\}$, there is a map 
+\[
+  \{\sigma \in E(\dQ)/n:E\text{ of the form }E_{A,B}\} \hookrightarrow G(\dZ)\backslash V(\dZ) ,
+\]
+where $A,B$ are send to the fundamental invariants $I,J$ on the right-hand 
+side. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example} % [Gross I, Poonen IV]
+There is a non-injective, but still useful map 
+\[
+  \left\{\begin{array}{c}\text{rational points on odd hyperelliptic} \\ \text{curves }y^2=x^{2 g+1} + a_1 x^{2 g} + \cdots + a_{2g+1} \end{array} \right\} \to \specialorthogonal_{2 g+1}(\dZ) \backslash \symmetric^2(\dZ^{2 g+1}) .
+\]
+This sends the $a_i$ to the invariants on the right-hand side. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example} % [Gross II, Ho] -- also see Jack Thorne, [Wood III]
+There is a (non-injective) map 
+\[
+  \left\{\begin{array}{c}\text{rational points on even hyperelliptic} \\ \text{curves } z^2=a_0 x^{2 g+2} + \cdots + a_{2 g+2} y^{2 g+2} \end{array} \right\} \to \text{product of SL's} \backslash\cdots ,
+\]
+sending the $a_i$ to invariants. 
+\end{enonce}
+
+Once we've found our map from arithmetic objects to orbits, the question 
+becomes: how many orbits of $G(\dZ)$ on $V(\dZ)$ are there having bounded 
+invariants? Gauss worked this out for binary quadratic forms. Let $h(D)$ be 
+the number of $\speciallinear_2(\dZ)$-orbits of integer binary quadratic forms of 
+discriminant $D$. 
+
+\begin{theo}[Gauss, Lipschitz, Mertens]
+\[
+  \sum_{0<-D<X} h(D) \sim \frac{\pi}{18} X^{3/2} .
+\]
+\end{theo}
+\begin{proof}
+Gauss shows that every integer binary quadratic form $a x^2+b x y+c y^2$ 
+with $D=b^2-4 a c<0$ has a unique $\speciallinear_2(\dZ)$-equivalent form 
+satisfying $|b|<a\leqslant c$ or $0<b=a\leqslant c$. 
+
+We apply geometry of numbers to the counting problem 
+\[
+  \sum_{0<-D<X} h(D) \sim \# \{(a,b,c):0<4 a c-b^2<X\text{ and }|b|<a\leqslant c\} .
+\]
+Gauss's conjecture tells us that the number of points on the right is 
+asymptotically the volume of the region. Proving this is tricky! In fact, the 
+conjecture is false in general. If we consider the region 
+$R=\{(a,b,c):0\leqslant 4 a c-b^2<X\text{ and }|b|\leqslant a \leqslant c\}$, 
+then $R\cap \dZ^3$ contains infinitely points. 
+\end{proof}
+
+One can attack the lattice-point counting problem explicitly by writing the 
+count as a triple sum $\sum_{a,b,c}$, approximating the sum by a triple 
+integral, and keeping track of error terms. This is how Lipschitz and Mertens 
+proved the result. Working through this is a good exercise. Davenport developed 
+some general principles for bounded regions. He used the principle to reprove 
+Gauss' count of binary quadratics, and extended the argument to a count of 
+binary cubic forms. This requires knowing explicit inequalities for the region. 
+
+A third approach uses zeta functions (or more generally $L$-functions). 
+% [Granville, Taniguchi, Thorne]
+Siegel first applied this to binary quaratic forms. Goldfeld-Hoffstein, 
+Shintani, and Datskovsky extended these methods. 
+
+% [Shankar]
+There is a hybrid method: average over a compact continuum of fundamental 
+domains. It doesn't need explicit inequalities, but still uses elementary 
+geometry of numbers. The method does adapt to situations where there are more 
+than one invariant. For examples, it works on all the above examples. In 
+particular, it gives a count of quartic and quintic fields, boundedness of 
+average rank of elliptic curves, and produces lots of hyperelliptic curves with 
+few rational points. 
+
+What if we replace $\dQ$ with another base field, like a number field or 
+function field? Over a function field, one can use algebro-geometric and 
+topological methods. Boundedness of average rank was proved by de Jong. 
+Ellenberg has proved many other results of this type. Also, the ``hybrid 
+method'' works over an arbitrary global field. % [Wang]
+
+
+
+
