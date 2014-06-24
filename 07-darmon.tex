@@ -7,5 +7,307 @@
 
 
 
-d
+Let $X$ be a curve over a number field $k$. The main diophantine questions we 
+are interested in are: 
+\begin{itemize}
+  \item What is $X(k)$?
+  \item Is $X(k)$ finite?
+  \item What is $\# X(k)$ for ``typical'' $X$?
+\end{itemize}
+We would like to phrase questions in a way that allow for us to talk about 
+integral points on a curve -- e.g.~equations like the Pell equation 
+$x^2-d y^2=1$. If $X$ is projective, then $X(\dZ)=X(\dQ)$, so there is no 
+limitation in studying rational points. More generally, if $X/k$ is 
+projective, then $X(\cO_k)=X(k)$. If $X$ is affine, we can choose an 
+embedding $X\hookrightarrow \dA^n$ and put $X(\dZ)=X(\dQ)\cap \dA^n(\dZ)$. 
+With this definition $X(\dZ)$ depepnds on the chosen equations for $X$, but 
+hopefully the ``main features'' of $X(\dZ)$ do not depend on this embedding. 
+
+So our question is: if $k$ is a number field, $S$ is a finite set of places of 
+$S$ and $X/\cO_{k,S}$ is a curve, what is $X(\cO_{k,S})$? 
+
+To $X$ we can attach some numerical invariants. The curve $X$ will be of the 
+form $\widetilde X\smallsetminus \{x_1,\dots,x_s\}$ where $\widetilde X$ is 
+proper. For $g$ the genus of $\widetilde X$, we define the 
+\emph{Euler characteristic} of $X$ by 
+\[
+  \chi(X) = 2 - 2 g - s\in \dZ .
+\]
+A lot of the diophantine behavior of $X$ is governed by $\chi(X)$. The 
+fundamental trichotomy comes from whether $\chi>0$, $\chi<0$, or 
+$\chi=0$. 
+
+
+
+
+
+\subsection{Positive Euler characteristic}
+
+\begin{theo}
+If $\chi(X)>0$, then $X(\cO_{k,S})$ is either empty or infinite. 
+\end{theo}
+\begin{proof}
+If $X$ is affine, then $g=0$ and $s=1$, so $X=\dA^1$, whence 
+$X(\cO_{k,S}) = \cO_{k,S}$. If $X$ is projective, then $g=s=0$. Then $X$ 
+either has a rational point, in which case it is $\dP^1$, or $X$ is a conic 
+with $X(k)=\varnothing$. 
+\end{proof}
+
+\begin{theo}[Hasse-Minkowski]
+Let $X$ be a curve over $\dQ$ of genus zero. Then $X(\dQ)\ne\varnothing$ if and 
+only if $X(\dQ_p)\ne\varnothing$ for all $p$ and $X(\dR)\ne \varnothing$. 
+\end{theo}
+
+
+
+
+
+\subsection{Negative Euler characteristic}
+
+\begin{theo}[Siegel,Faltings]
+If $\chi(X)<0$, then $\# X(\cO_{k,S})<\infty$. 
+\end{theo}
+
+The affine case was proven by Siegel in 1932. The prototypical examples are: 
+\begin{center}
+\begin{tabular}{cc|c}
+$g$ & $s$ & $X$ \\ \hline
+0 & 3 & $\dP^1\smallsetminus \{0,1,\infty\}$ \\
+1 & 1 & $E\smallsetminus \{\infty\}$ 
+\end{tabular}
+\end{center}
+The coordinate ring of $\cO_{\dP^1\smallsetminus \{0,1,\infty\}}$ is 
+$\dZ[x,\frac 1 x,\frac{1}{1-x}]$, and 
+\[
+  (\dP^1\smallsetminus \{0,1,\infty\})(\cO_{k,S}) = \{v\in \cO_{k,S}^\times:v-1\in \cO_{k,S}^\times\} .
+\]
+This is an \emph{$S$-unit equation}, and Siegel proved that such equations have 
+only finitely many solutions. 
+
+If $g=1$, $s=1$, then the result amounts to showing that elliptic curves have 
+only finitely many integral points. Since integral points are torsion, this 
+follows from the Mordell-Weil Theorem. 
+
+In the projective case, $g>1$, and the finiteness result is Faltings' Theorem, 
+originally known as the Mordell Conjecture. 
+
+
+
+
+
+\subsection{Zero Euler characteristic}
+
+This is the most interesting case. 
+
+\begin{theo}[Dirichlet,Mordell-Weil]
+If $X(\cO_{k,S})$ is non-empty, then it is naturally an abelian group, and as 
+such is finitely-generated. 
+\end{theo}
+
+In the affine case $g=0,s=2$, if $X(k)\ne\varnothing$, then (for the sake of 
+illustration) $X = \dP^1\smallsetminus \{0,\infty\} = \dG_\multiplicative$, so 
+$X(\cO_{k,S}) = \cO_{k,S}^\times$. The famous \emph{Dirichlet Unit Theorem} 
+tells us this group is finitely generated. 
+
+In the projective case $g=1,s=0$, $X$ is an elliiptic curve which we will 
+denote by $E$. The Mordell-Weil Theorem says that $E(k)$ is finitely 
+generated. 
+
+
+
+
+
+\subsection{Ranks}
+
+In the affine case, the rank of $\cO_{k,S}^\times$ is easily determined. 
+Dirichlet's theorem says that 
+\[
+  \rank_\dZ(\cO_{k,S}^\times) = r+s-1+\# S ,
+\]
+where $r$ is the number of real places and $s$ is the number of complex 
+places of $k$. 
+
+In the projective case, the rank is much more subtle. If 
+$X=\dP^1\smallsetminus \{p,p'\}$ for $p,p'$ conjugates in a quadratic 
+extension $\dQ(\sqrt D)$, at least if $k=\dQ$. We are led to the equation 
+$x^2-D y^2=1$. This has rank $0$ if $D<0$, and rank $1$ if $D>0$. 
+
+For elliptic curves over $\dQ$, little is known. 
+
+\begin{enonce}{Conjecture}
+For $E$ ranging over elliptic curves defined over $\dQ$, 
+is $\rank E=\rank_\dZ E(\dQ)$ bounded?
+\end{enonce}
+
+\begin{enonce}{Conjecture}
+As $E$ ranges over elliptic curves defined over $\dQ$, 
+$\rank E$ is $0$ and $1$ with probability $\frac 1 2$ each. 
+\end{enonce}
+
+Bhargava and Shankar have proved that there is a positive density set of 
+elliptic curves having rank $0$ and $1$. 
+
+
+
+
+
+\subsection{Proof of Mordell-Weil}
+
+The proof has two main ingredients. The first is a height function 
+$h:E(\dQ) \to \dR$ satisfying the property that for each $X$, the set 
+$\{x\in E(\dQ):h(x)<X\}$ is finite. Moreover, 
+$h(n\cdot x) = n^2 h(x)$ and $h(x+y)+h(x-y)=2 h(x) + 2 h(y)$. The second 
+ingredient is the \emph{weak Mordell-Weil theorem}: 
+
+\begin{theo}
+For some $n>1$, the group $E(\dQ)/n$ is finite. 
+\end{theo}
+
+Proving Mordell-Weil from these two ingredients is a very old idea, going back 
+to Fermat at least. Let $\{p_1,\dots,p_r\}$ be a set of representatives for 
+$E(\dQ)/n$. Choose $X\gg h(p_j)$, and let 
+$S=\{p_1,\dots,p_r\}\cup \{p:h(p)<X\}$. We claim that $S$ generates $E(\dQ)$. 
+Let $p$ be a point not in $\langle S\rangle$ with minimal height with respect 
+to this property. There exists some $j$ such that $p-p_j=n\cdot q$. One sees 
+that $h(q)<h(p)$, so $q\in \langle S\rangle$. This implies 
+$p\in \langle S\rangle$, a contradiction. 
+
+
+
+
+
+\subsection{Proof of weak Mordell-Weil}
+
+We do this for $n=2$. Assume $E[2]$ is defined over $\dQ$, i.e.~$E$ is of the 
+form $y^2=(x-a)(x-b)(x-c)$. Given $P\in E(\dQ)$, choose some 
+$\widetilde P\in E(\overline\dQ)$ such that $2\widetilde P=P$. Define a 
+function $\delta(P):G_\dQ \to E[2]$ by 
+$\delta(P)(\sigma) = \sigma(\widetilde P)-\widetilde P$. 
+
+The function $\delta(P)$ is actually a continuous homomorphism 
+$G_\dQ \to E[2]$. Moreover, $\delta(P_1)=\delta(P_2)$ if and only if 
+$P_1-P_2\in 2 E(\dQ)$. So $\delta$ is an injection 
+$E(\dQ)/2 \hookrightarrow \hom(G_\dQ,E[2])$. This doesn't solve our problem 
+because $\hom(G_\dQ,E[2])$ is infinite. The necessary property of $\delta$ is 
+the following. Let $L=\dQ(\sqrt\ell:\ell\mid 2(a-b)(b-c)(a-c))$. Then 
+$\delta(P)$ factors through $\galois(L/\dQ)$. Indeed, if 
+$P=(x,y)$, then $\widetilde P$ is defined over 
+$\dQ(\sqrt{x-a},\sqrt{x-b},\sqrt{x-c})$. It is easy to check that if 
+$P\in E[2]$, then $y=0$, and this implies $\widetilde P$ is defined over 
+$L$. 
+
+To conclude, $\delta$ is an injection 
+$E(\dQ)/2\hookrightarrow \hom(\galois(L/\dQ),E[2])$, the latter being a finite 
+set. Thus $E(\dQ)/2$ is finite. 
+
+Let's give a more ``highbrow'' proof using Galois cohomology. Let $n>1$ be an 
+integer. We have an exact sequence 
+\[
+  0 \to E[n] \to E(\overline\dQ) \xrightarrow n E(\overline\dQ) \to 0 .
+\]
+Take $G_\dQ$-invariants and we get an exact sequence 
+\[
+  0 \to E(\dQ)/n \xrightarrow\delta \h^1(G_\dQ,E[n]) \to \h^1(G_\dQ,E)[n] \to 0 .
+\]
+The middle set is still infinite. Repeat the process for each place  of $\dQ$:
+\[\xymatrix{
+  0 \ar[r] 
+    & E(\dQ)/n \ar[r]^-\delta \ar[d] 
+    & \h^1(G_\dQ,E[n]) \ar[r] \ar[d] 
+    & \h^1(G_\dQ,E)[n] \ar[r] \ar[d] 
+    & 0 \\
+  0 \ar[r] 
+    & E(\dQ_\ell)/n \ar[r] 
+    & \h^1(G_{\dQ_\ell},E[n]) \ar[r] 
+    & \h^1(G_{\dQ_\ell},E)[n] \ar[r] 
+    & 0 
+}\]
+Define the \emph{$n$-Selmer group} and \emph{Tate-Shafarevich group} of $E$ by 
+\begin{align*}
+  \selmer_n(E) 
+    &= \ker\left(\h^1(G_\dQ,E[n]) \to \bigoplus_v \h^1(G_{\dQ_v},E)\right) \\
+  \sha(E) 
+    &= \ker\left(\h^1(G_\dQ,E) \to \bigoplus_v \h^1(G_{\dQ_v},E)\right) .
+\end{align*}
+There is a canonical exact sequence 
+\[
+  0 \to E(\dQ)/n \to \selmer_n(E) \to \sha(E)[n] \to 0 .
+\]
+An elementary argument using the Hermite-Minkowski theorem shows that 
+$\selmer_n(E)$ is finite. Since $E(\dQ)/n\hookrightarrow \selmer_n(E)$, we're 
+done. 
+
+
+
+
+
+\subsection{Geometric interpretation of \texorpdfstring{$\selmer_n(E)$}{SelnE}}
+
+In general, we know that $\h^1(G_\dQ,\automorphism X)$ classifies 
+$\dQ$-forms of $X$. We would like to find an object whose automorphism group is 
+$E[n]$. Consider the isogeny $E\xrightarrow n E$. The automorphisms of this 
+cover of $E$ are exactly elements of $E[n]$. 
+
+\begin{defi}
+An \emph{$n$-cover} of $E$ is a curve $C$ of genus $1$, equipped with a 
+$\dQ$-rational map $\widetilde n:C\to E$ and a $\overline\dQ$-isomorphism 
+$\varphi:C\iso E$ such that the following diagram commutes: 
+\[\xymatrix{
+  C \ar[r]^-\varphi \ar[d]^-{\widetilde n} 
+    & E \ar[d]^-n \\
+  E \ar@{=}[r] 
+    & E
+}\]
+\end{defi}
+
+Similarly, $\h^1(\dQ,E)$ can be identified with the set of isomorphism classes 
+of curves of genus one such that $\jacobian C\simeq E$ over $\dQ$. The map 
+$\h^1(\dQ,E[n]) \to \h^1(\dQ,E)$ comes from ``forgetting $\widetilde n$.'' 
+It follows that $\selmer_n(E)$ can be identified with the set of isomorphism 
+classes of $n$-covers $\widetilde n:C\to E$ such that 
+$C(\dQ_\ell)\ne \varnothing$ for all $\ell$ and $C(\dR)\ne\varnothing$. 
+Similarly $\sha(E)$ consists of isomorphism classes of genus-one curves $C$ 
+such that $\jacobian C\simeq E$, and such that $C(\dQ_v)\ne\varnothing$ for all 
+places $v$. 
+
+\begin{theo}[Swinnerton-Dyer]
+If $\widetilde 2:C\to E$ is an element of $\selmer_2(E)$, then $C$ has a 
+$\dQ$-rational positive divisor of degree $2$. 
+\end{theo}
+\begin{proof}
+Degree $2$ divisors of $C$ correspond to rational points on 
+$\symmetric^2(C)$. Define a rational morphism 
+$\varphi:\symmetric^2(C) \to E$ by $(P,Q)\mapsto P+Q = \widetilde 2(P)-(Q-P)$. 
+(Recallhere that $E=\jacobian C$.) Then $X=\varphi^{-1}(0)$ is a curve. Over 
+$\overline\dQ$, the map $\phi$ can be identified with the addition map 
+$\symmetric^2(E) \to E$. So $X_{\overline\dQ}=\{(P,-P):P\in E(\dQ)\}$. In fact, 
+$X_{\overline\dQ}=(E/-1)_{\overline\dQ}=\dP^1_{\overline\dQ}$. The same 
+reasoning, replacing $\overline\dQ$ by $\dQ_\ell$ and using the fact that 
+$C\simeq E$ over each $\dQ_v$, tels us that $X$ has a rational point in each 
+$\dQ_v$. By Hasse-Minkowski, $X\simeq \dP^1$, whence the result. 
+\end{proof}
+
+\begin{coro}
+If $\widetilde 2:C\to E$ is an element of $\selmer_2(E)$, then $C$ has an 
+equation of the form $y^2=f(x)$, where $\deg f=4$. 
+\end{coro}
+
+This gives us the dictionary between elements of a $2$-Selmer group and 
+binary quartic forms over $\dQ$. Bhargava and Shankar show that there is a 
+positive proportion of $E$ with $\selmer_n E=0$, and also a positive proportion 
+of $E$ with $\selmer_n E=dZ/n$. Both of these only hold for $n\in \{2,3,4,5\}$. 
+
+\begin{theo}
+1. If $\selmer_n E=0$, then $\rank E=0$. 
+
+2. If $\selmer_n E=\dZ/n$, then $\rank E=1$. 
+\end{theo}
+
+Part 1 is trivial. Part 2 is incredibly deep. It uses in a crucial way the 
+connection between elliptic curves and $L$-functions. This is a special case of 
+the Birch and Swinnerton-Dyer conjecture. A big ingredient is the theory of 
+complex multiplication discussed in lecture \ref{sec:3}.
+
+
+
 
