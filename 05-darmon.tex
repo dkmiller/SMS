@@ -7,5 +7,232 @@
 
 
 
-d
+\subsection{Motivation}
+
+Throughout, $k$ is a field. For simplicity we assume $k$ has characteristic 
+zero. 
+
+\begin{defi}
+A \emph{curve} over a field $k$ is a smooth geometrically connected variety of 
+dimension one over $k$. 
+\end{defi}
+
+Concretely, we think of equations like 
+\begin{align*}
+  x^2 - D y^2 = 1 \\
+  y^2 = x^3 + a x+b \\
+  x^n + y^n = z^n .
+\end{align*}
+The difference between the general definition and these concrete 
+examples should be seen as analogous to the difference between the notion of 
+an ``abstract vector space'' and concrete examples $\dR^n$. 
+
+The key tool for passing from an abstract curve to a concrete representation is 
+the \emph{Riemann-Roch Theorem}. Let $X$ be a proper curve. Zariski-open 
+subsets of $X$ are of the form $U=X\smallsetminus \{p_1,\dots,p_s\}$, where 
+the $p_i\in X(\bar k)$ and $\{p_1,\dots,p_s\}$ is stable under the action of 
+$G_k=\galois(\bar k/k)$. We have a sheaf $\sO=\sO_X$ of ``regular functions'' 
+on $X$. For $U\subset X$, the ring $\sO(U)$ consists of all regular functions 
+$U\to \dA^1$. 
+
+Our goal is to understand $\sO(U)$ as a ring. Ideally, we would like to 
+write $\sO(U)=k[f_1,\dots,f_n]/(p_1,\dots,p_m)$. In other words, we want 
+sections $f_1,\dots,f_n\in \sO(U)$ such that $(f_1,\dots,f_n)$ induces an 
+embedding $U\hookrightarrow \dA^n$. We certainly can't do this with $U=X$, 
+because $\sO(X)=k$. If $k=\dC$, this fact is known as Liouville's theorem, but 
+it holds for arbitrary $k$. 
+
+
+
+
+
+\subsection{Crude form of Riemann-Roch}
+
+We assume there is a point $\infty\in X(k)$. Put 
+$U=X\smallsetminus \{\infty\}$. Define $\sO(U;n\infty)$ to be the set of 
+functions $f\in \sO(U)$ such that $v_\infty(f)\geqslant -n$. This gives us a 
+filtration $\sO(X)\subset \sO(U;\infty)\subset \sO(U;2\infty)\subset \cdots$ 
+and $\bigcup \sO(U,n\infty) = \sO(U)$. Moreover, 
+each successive quotient is at most one-dimensional, so 
+$\dim \sO(U,n\infty) \leqslant n+1$. The Riemann-Roch Theorem gives a lower 
+bound for $\dim \sO(U,n\infty)$. 
+
+\begin{theo}[Riemann-Roch; crude form]
+Let $X$ be a proper curve over $k$ and $\infty\in X(k)$. Then there is an 
+integer $g\geqslant 0$, depending only on $X$, such that 
+\[
+  \dim \sO(U;n\infty) \geqslant n+1-g 
+\]
+with equality if $n\gg 0$. 
+\end{theo}
+\begin{proof}[Idea of proof]
+Choose a local parameter $t$ at $\infty$. Define the \emph{principal part} 
+$\principalpart_\infty:\sO(U;n\infty) \to t^{-n} k[t] / k[t]$ in the obvious 
+way. What are the obstructions to producing $f$ with given principal part at 
+$\infty$? The only obstruction comes from the Residue Theorem stated below. As 
+a corollary, if $\omega\in \Omega^1(X)$ is a global regular differential, and 
+if $f\in \sO(U)$, then $\residue_\infty(f\omega) = 0$. So global regular 
+differentials provide obstructions to constructing $f$. Define 
+$\residue_\infty:t^{-n} k[t]/k[t] \to \Omega^1(X)^\vee$ by 
+$\residue_\infty(f)(\omega) = \residue_\infty(f\omega)$. We have a 5-term 
+sequence 
+\begin{equation*}
+  0 \to k \to \sO(U;n\infty) \xrightarrow{\principalpart_\infty} t^{-n} k[t]/t \xrightarrow{\residue_\infty} \Omega^1(X)^\vee \to \Omega^1(X;-n\infty)^\vee \to 0.
+\end{equation*}
+The last term needs explanation. Define $\Omega^1(X;-n\infty)$ to be the set of 
+$\omega\in \Omega^1(X)$ such that $v_\infty(\omega) \geqslant n$. The inclusion 
+$\Omega^1(X;-n\infty)\hookrightarrow \Omega^1(X)$ induces the surjection in the 
+sequence. 
+
+One can check that the sequence is exact. For $n\gg 0$, 
+$\Omega^1(X;-n\infty)=0$. We have in fact proved the ``more precise form'' 
+below. 
+\end{proof}
+
+\begin{theo}[residue theorem]
+If $\omega$ is a meromorphic differential on $X$, then 
+$\sum_{x\in X} \residue_x(\omega) = 0$. 
+\end{theo}
+
+Let's recall what this means At each $x\in X(\bar k)$, choose a 
+uniformizing parameter $t$ at $x$. One can write locally 
+$\omega = (a_{-m} t^{-m} + \cdots) dt$; put $\residue_x(\omega) = a_{-1}$. 
+Surprizingly, this does not depend on our choice of $t$. 
+
+\begin{theo}[Riemann-Roch; more precise form]
+Let $g=\dim \Omega^1(X)$. Then 
+$\dim \sO(U;n\infty) - \dim\Omega^1(X;-n\infty) = n+1 - g$. 
+\end{theo}
+
+We call the integer $g$ the \emph{genus} of $X$. 
+
+
+
+
+
+\subsection{Some vocabulary}
+
+A \emph{divisor} of $X$ is a formal finite linear combination of points in 
+$X(\bar k)$ with integer coefficients. So a typical divisor looks like 
+\[
+  D = \sum_{x\in X(\bar k)} n_x\cdot x ,
+\]
+where each $n_x\in \dZ$ and $n_x=0$ for all but finitely many $x$. Write 
+$\divisors(X_{\bar k})$ for the (abelian group) of divisors on $X$, and 
+write $\divisors(X)=\divisors(X_{\bar k})^{G_k}$. 
+
+Recall the field of \emph{rational functions} on $X$ is 
+$k(X)=\varinjlim_U \sO(U)$. Define $\divisor:k(X)^\times \to \divisors(X)$ 
+by 
+\[
+  \divisor(f) = \sum_{x\in X(\bar k)} v_x(f)\cdot x .
+\]
+Divisors of the form $\divisor(f)$ are called \emph{principal divisors}. 
+If $D_1,D_2$ are divisors, write $D_1\geqslant D_2$ if 
+$n_x(D_1)\geqslant n_x(D_2)$ for all $x\in X(\bar k)$. For an arbitrary 
+divisor $D$, define 
+\[
+  \sL(D) = \{f\in k(X):\divisor(f)\geqslant - D\} .
+\]
+Our space $\sO(U;n\infty)$ earlier is just $\sL(n\infty)$. Define the space of 
+\emph{meromorphic divisors} by 
+$\Omega_\meromorphic^1(X)=\varinjlim_U \Omega^1(U)$; this is a one-dimensional 
+$k(X)$-vector space. Choose nonzero $\omega\in \Omega_\meromorphic^1(X)$. We 
+call $K=\divisor(\omega)$ the \emph{canonical divisor}. It does not depend on 
+the choice of $\omega$. 
+
+It turns out that $\Omega^1(X)$ can be identified with $\sL(K)$. Indeed, 
+we have a natural isomorphism $\sL(K) \iso \Omega^1(X)$ defined by 
+$f\mapsto f\omega$. 
+
+Finally, if $D$ is a divisor, one often writes $\ell(D)$ for 
+$\dim \sL(D)$. We can now state the final form of the Riemann-Roch Theorem. 
+
+\begin{theo}[Riemann-Roch]
+For all divisors $D\in \divisors(X)$, we have 
+$\ell(D)-\ell(K-D) = \deg D + 1-g$. 
+\end{theo}
+
+
+
+
+
+\subsection{Consequences of Riemann-Roch}
+
+We could set $D=0$. Then the theorem specializes to 
+$1-\ell(K)=1-g$, so $\ell(K)=g$. Since $\ell(K)=\dim \Omega^1(X)$, this 
+recovers our definition of the genus of $X$. 
+
+We could set $D=K$. Then the theorem tells us that 
+$\ell(K)-1 = \deg K+1-g$. We already know $\ell(K)=g$, so 
+$g-1=\deg K+1-g$, so $\deg K=2g - 2$. In other words, the number of zeros of 
+a non-zero $\omega\in \Omega^1(X)$ is $2 g-2$. 
+
+\begin{enonce}[remark]{Example}[$g=0$]
+If $X(k)\ne \varnothing$, choose a point $\infty\in X(k)$. Then Riemann-Roch 
+says $\ell(n\infty) = n+1$. In particular, $\sL(\infty) = k\oplus k t$, 
+$\sL(2\infty) = k\oplus k t\oplus k t^2$, and in egneral 
+$\sL(n\infty) = k\oplus \cdots \oplus k t^n$. So 
+$\sO(U)=k[t]$, whence $U\simeq \dA^1$ and $X\simeq \dP^1$. 
+Even if $X(k)=\varnothing$, $X$ has a rational divisor of degree $2$, namely 
+$-K$. It must of be of the form $-K=p+p'$ for $p,p'$ conjugates in a quadratic 
+extension of $k(X)$. We know that $\sL(-K)=k\oplus k u\oplus k v$, and that 
+$\sL(-2 K)$ is spanned by $\{1,u,v,u v,v^2,u^2\}$. But 
+$\ell(-2 K)=5$, so we must have a linear relation 
+$a+b u+c v+d u v+e v^2 + f u^2 + 0$. In particular, all curves of genus zero 
+are conics. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}[elliptic curves]
+A curve of genus $1$ with chosen $\infty\in X(k)$ is called an \emph{elliptic 
+curve}. Since $\dim \Omega^1(X)=1$, there is (up to homothety) a unique 
+non-vanishing regular divisor $\omega\in \Omega^1(X)$. This gives an 
+isomorphism $\sO_X\iso \Omega_X^1$. Apply Riemann-Roch to the spaces 
+$\sL(n\cdot \infty)$. We get 
+\begin{center}
+\begin{tabular}{c|cl}
+$n$ & $\ell(n\cdot \infty)$ & generators of $\sL(n\cdot\infty)$ \\ \hline
+1 & 1 & $\{1\}$ \\
+2 & 2 & $\{1,x\}$ \\
+3 & 3 & $\{1,x,y\}$ \\
+4 & 4 & $\{1,x,y,x^2\}$ \\
+5 & 5 & $\{1,x,y,x^2,x y\}$ \\
+6 & 6 & $\{1,x,y,x^2,x y,y^2, x^3\}$
+\end{tabular}
+\end{center}
+Since $\ell(6\cdot \infty)=6$, we must have $y^2-x^3\in \sL(5\infty)$, 
+so we get a relation 
+\[
+  y^2 + a_1 x y + a_3 y = x^3 + a_2 x^2 + a_4 x + a_6 .
+\]
+Now elementary algebra gets rid of $a_1$ if $2$ is invertible, and reduces 
+further to an equation 
+\[
+  y^2 = x^3 + a x+b 
+\]
+if $3$ is also invertible. 
+\end{enonce}
+
+If $X$ is a curve of genus one with $X(k)=\varnothing$, the simplest case is 
+when $X$ has a rational divisor of degree $2$. This is true for elements of 
+$\selmer_2(E)$. We have 
+
+\begin{theo}
+$X$ has an equation of the form 
+\[
+  y^2 = a x^4 + b x^3 + c x^2 + d x+e .
+\]
+\end{theo}
+\begin{proof}
+Our rational divisor of degree $2$ is of the form $p+p'$. We have 
+\begin{align*}
+  \sL(p+p') &= k\oplus k x \\
+  \sL(2 p+2 p') &= k\oplus k x\oplus k x^2\oplus k y \\
+  \sL(4 p+4 p') &= \ldots 
+\end{align*}
+The rest is easy. 
+\end{proof}
+
+
+
 
