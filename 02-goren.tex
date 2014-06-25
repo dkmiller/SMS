@@ -8,7 +8,9 @@
 
 
 This lecture will consist mostly of a review of the basic terminology, as 
-well as a little bit of Galois cohomology. 
+well as a little bit of Galois cohomology. An ``official version'' of the 
+notes can be found online at 
+\url{http://www.math.mcgill.ca/goren/AlgberaicGroups.SMS2014.pdf}. 
 
 
 
@@ -265,6 +267,48 @@ $G/\rad(G)$ is semisimple. If $G$ is reductive, then $G/Z(G)$ is
 semisimple. A \emph{Levi subgroup} of a group $G$ is a subgroup $H$ such 
 that $G=H\ltimes \rad_\unipotent (G)$. Such an $H$ will be a maximal 
 reductive subgroup of $G$. 
+
+A maximal connected solvable subgroup of $G$ is called a \emph{Borel subgroup}. 
+The group $B$ of upper-triangular matrices is a borel subgroup of 
+$\generallinear(n)$. Every torus is contained in a Borel subgroup, and if $G$ 
+is a reductive group, then all Borel subgroups of $G$ are conjugate. 
+
+A group $G$ over $\dC$ is reductive if and only if every representation 
+$\rho:G\to \generallinear_N$ is semi-simple (a direct sum of irreducible 
+representations). Alternatively, the ring $\dC[\rho(G)]$ should be semi-simple. 
+
+\begin{enonce}[remark]{Example}
+The group $\simeq U_1 = \begin{pmatrix} 1 & \ast \\ & 1 \end{pmatrix}$ 
+is not reductive. 
+\end{enonce}
+
+
+
+
+
+\subsection{Parabolic subgroups}
+
+A subgroup $P$ of a connected algebraic group $G$ is called \emph{parabolic} if 
+the quotient $G/P$ is projective. The basic theorem is that $P$ is parabolic if 
+and only if $P$ contains a Borel subgroup $B$. So in $\generallinear_N$, a 
+subgroup is parabolic if it contains a conjugate of the subgroup of 
+upper-triangular matrices. 
+
+\begin{enonce}[remark]{Example}
+Let $k$ be an algebraically closed field. Recall that a \emph{flag} in 
+$k^n$ is a collection of subspaces 
+$F=(0\subsetneq F_1\subsetneq \cdots \subsetneq F_a=k^n)$. The \emph{type} of 
+$F$ is $\boldsymbol d=(\dim F_i)_i$. The space of type $\boldsymbol d$ is a 
+projective variety $\flag_{\boldsymbol d}$ on which $\generallinear_n$ acts 
+transitively. Let $P$ be a stabilizer of a flag. Then 
+$G/P\simeq \flag_{\boldsymbol d}$ and $P$ is parabolic. For example, if 
+$F_i$ is the span of $\{e_1,\dots,e_{d_i}\}$, then 
+\[
+  P = \begin{pmatrix} 1_{h_1} \end{pmatrix} [finish]
+\]
+\end{enonce}
+
+[finish]
 
 
 

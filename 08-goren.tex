@@ -7,5 +7,243 @@
 
 
 
-d
+The notes for this lecture can be found online at 
+\url{http://www.math.mcgill.ca/goren/AlgberaicGroups.SMS2014.pdf}. 
+
+
+
+
+
+\subsection{Lie algebra}
+
+Let $G$ be a reductive group over an algebraically closed field $k$ of 
+characteristic zero. The \emph{Lie algebra} of $G$ is 
+$\lie(G)=T_1 G$, the tangent space at the identity of $1$. We can identify 
+$\lie G$ with the space of left-invariant derivations of $G$. This 
+identification gives $\lie(G)$ the structure of a Lie algebra via 
+$[X,Y]=X\circ Y-Y\circ X$. The operation $G\mapsto \lie(G)$ is a 
+functor. In particular, the operation of $G$ on itself by inner 
+automorphisms induces $\adjoint:G\to \generallinear(\frakg)$. 
+
+The fundamental example is $G=\generallinear_N$, 
+$\frakg=\mathfrak{gl}_n$, where $\adjoint(g)(X)=g X g^{-1}$. For 
+$H\subset G$, $\fh=\lie H$ is found by ``1st-order approximations to the 
+equations defining $H$.'' If $q$ is the Euclidean bilinear form on 
+$k^n$, then $\orthogonal(q) = \{x:x \transpose x=1\}$. If we write 
+$x=1+x '$, then 
+\[
+  (1+x') \transpose(1+x') = 1+x' + \transpose{x'} + x' \transpose{x'} = 1
+\]
+so infinitesimally, 
+\[
+  \mathfrak o = \mathfrak{so}(q) = \{X\in \mathfrak{gl}_n:X+\transpose X=0\} .
+\]
+Similarly, $\speciallinear_N=\{g\in \generallinear_N:\det g=1\}$. One easily 
+computes $\mathfrak{sl}_n = \{X\in \mathfrak{gl}_n:\trace X=0\}$. 
+
+
+
+
+
+\subsection{Root systems}
+
+Let $T\subset G$ be a maximal torus and $\fh=\lie T$. Since $T$ is 
+``universally semisimple,'' we have 
+\[
+  \frakg = \fh\oplus \bigoplus_{\alpha\in \Phi} \frakg_\alpha,
+\]
+where $\frakg_\alpha=\{X\in \frakg:\adjoint(t) X = \alpha(t) X\}$ and 
+$\Phi=\Phi(G,T)=\{\alpha\in \character^\ast(T)\smallsetminus 0:\frakg_\alpha\ne 0\}$. 
+The space $\character^\ast(T)_\dR$ is equipped with a canonical inner product 
+coming from the Killing form on $\frakg$. The pair 
+$(\character^\ast(T),\Phi)$ is a \emph{root system}, i.e.~$\Phi=-\Phi$, 
+$s_\alpha(\Phi)=\Phi$ for all $\alpha\in \Phi$. Here 
+$s_\alpha(v) = v-2\frac{\langle \alpha,v\rangle}{\langle \alpha,\alpha} \alpha$ 
+is the reflection induced by $\alpha$. 
+
+A \emph{Weyl chamber} $W$ is a connected component of 
+$\character^\ast(T)_\dR\smallsetminus \bigcup_{\alpha\in \Phi} \alpha^\bot$. 
+It determines an ordering of the roots: 
+\[
+  \alpha>0\text{ if }\langle \alpha,v\rangle>0\text{ for all }r\in W.
+\]
+A positive root is called \emph{simple} if it is not a non-trivial sum of 
+other positive roots. Let $\Delta\subset \Phi$ be the set of simple roots. 
+Any root can be written as $\sum_{\delta\in \Delta} a_\delta \delta$, where the 
+$a_\delta$ are either all positive or all negative. 
+
+The choice of a borel $B\supset T$ is equivalent to the choice of a Weyl chamber 
+$W$. Given $B$, we put $\fb=\lie B=\sum_{\alpha\geqslant 0} \frakg_\alpha$. The 
+subalgebra $\fu=\sum_{\alpha>0} \frakg_\alpha$ is the Lie algebra of the unipotent 
+radical of $B$. We have $B=T\cdot U$ with $\lie U=\fu$. 
+
+Given a subset $\Theta\subset \Delta$, set 
+$S_\Theta=\left(\bigcap_{\alpha\in \Theta}\ker(\alpha)\right)^\circ$; this 
+is a torus of rank $\rank G-\#\Theta$. Define 
+$P_\Theta = Z(S_\Theta)\cdot U$; this is a \emph{standard parabolic subgroup} 
+of $G$. 
+
+\begin{theo}
+There is a bijection between parabolic subgroups of $G$ (up to conjugation) 
+and standard parabolics. There are exactly $2^{\# \Delta}$ such standard 
+parabolics. 
+\end{theo}
+
+\begin{enonce}[remark]{Example}
+If $G=\generallinear_N$ and $T$ is the diagonal torus, define  
+$\lambda_i\in \character^\ast(T)$ by $\lambda_i(t_{j j}) = t_{i i}$. Then 
+$\character^\ast(T)=\bigoplus \dZ\cdot \lambda_i$. The Lie algebra 
+$\frakg=\lie G$ is just $\mathfrak{gl}_n=M_n$ with basis 
+$\{E_{i j}\}_{i,j}$ of matrices with a single $1$ in the $(i,j)$ entry 
+and zeros elsewhere. One can check that $t\in T$ acts as 
+\[
+  t E_{i j} t^{-1} = \frac{t_{ii}}{t_{jj}} E_{i j} = (\lambda_i-\lambda_j)(t) E_{i j} .
+\]
+So $\Phi=\{\lambda_i-\lambda_j:i\ne j\}$. The standard Borel of upper-triangular 
+matrices induces the ordering $\lambda_i\geqslant \lambda_j$ if and only if 
+$i\leqslant j$. Thus $\Phi^+=\{\lambda_i-\lambda_j:i<j\}$. The corresponding set 
+of simple roots is 
+$\Delta=\{\lambda_1-\lambda_2,\lambda_2-\lambda_3,\dots,\lambda_{n-1}-\lambda_n\}$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}[$n=2$]
+[do this]
+\end{enonce}
+
+\begin{enonce}[remark]{Example}[$n=3$]
+[do this]
+\end{enonce}
+
+
+
+
+
+\subsection{Weights}
+
+Let $G$ be a semisimple group, and fix $T\subset B$ a maximal torus contained 
+in a Borel subgroup. Let $\rho:G\to \generallinear(V)$ be a representation of 
+$G$. Then $V=\bigoplus_{\alpha\in \character^\ast(T)} V_\alpha$, where 
+\[
+  V_\alpha = \{v\in V:\rho(t)(v) = \alpha(t)\cdot v\text{ for all }t\in T\} ,
+\]
+is the \emph{weight space} of $\alpha$. The weights of $\rho$ are 
+$\{\alpha:V_\alpha\ne 0\}$. 
+
+The \emph{weight lattice} $\Lambda_\weight$ is the smallest subgroup of 
+$\character^\ast(T)$ containing all weights of linear representations of $G$. 
+The \emph{root lattice} of $G$, $\Lambda_\mathrm{r}$, is the $\dZ$-span of 
+$\Phi$. It is known that $[\Lambda_\weight:\Lambda_\mathrm{r}]<\infty$. 
+
+If $V$ is an irreducible representation of $G$, then there is a unique maximal 
+weight $\alpha$ in the weights of $V$. This ``highest weight'' determines the 
+representation. The set of possible $\alpha$ as highest weight vectors is 
+$\Lambda_\weight\cap W$. For each such weight $\alpha$, let $U_\alpha$ be the 
+unique irreducible representation of $G$ with highest weight $\alpha$. 
+
+Given any representation $V$ of $G$, one can decompose $V$ into irreducible 
+representations ``by hand.'' Find a maximal weight $\alpha$ of $V$. Then 
+$V=U_\alpha\oplus V'$ for some $V'$. Continue the process. 
+
+
+
+
+
+\subsection{Hilbert's invariants theorem}
+
+As before, let $G$ be a reductive group and $\rho:G\to \generallinear(V)$ a 
+linear representation. Let $\symmetric(V^\vee)$ be the ring of polynomial 
+function on $V$. Indeed, if $\{e_1,\dots,e_n\}$ is a basis for $V$ and 
+$\{x_1,\dots,x_n\}$ the dual basis, then 
+$\symmetric(V^\vee) = k[x_1,\dots,x_n]$. Put $R=\symmetric(V^\vee)$. Then $G$ 
+acts on $R$ by substitutions: $(g\cdot f)(r) = f(g^{-1} r)$. The fundamental 
+problem of invariant theory is to give a presentation for the 
+$k$-algebra $R^G$ consisting of $G$-invariant polynomial functions on $V$. 
+
+\begin{theo}[Hilbert]
+If $V$ is a representation of a reductive group $G$, then 
+$\symmetric(V^\vee)^G$ is a finitely generated $k$-algebra. 
+\end{theo}
+
+\begin{enonce}[remark]{Example}
+Consider $G=\speciallinear_2(k)$ acting on symmetric bilinear forms 
+$q=\begin{pmatrix} a & b \\ b & d\end{pmatrix}$ by 
+$g\cdot q = g q \transpose g$. Then $\det q=a d-b^2=\discriminant(q)$ is an 
+invariant. Is it the only one? Are the invariants sufficient to classify 
+(separate) the orbits? What is the nature of the map 
+$\spectrum R \to \spectrum(R^G)$ corresponding to 
+$V\to V/\!\!\! / G$? These questions, when $V$ is replaced by an arbitrary 
+variety is the subject of \emph{Geometric invariant theory}. 
+\end{enonce}
+
+Write $\symmetric(V^\vee) = \bigoplus_{d\geqslant 0} \symmetric^d(V^\vee)$. 
+The group $G$ acts on each $\symmetric^d(V^\vee)$, which is a finite-dimensional 
+$k$-vector space. Decompose each of these into highest-weight representations. 
+We get $R=\bigoplus_\alpha R_\alpha$, where $R_\alpha$ is the isotypical component 
+of type $\alpha$. Any $f\in R$ can be written as a sum 
+$f=\sum f_\alpha$ of isotypical components. Each $f_\alpha$ is a sum of 
+homogeneous polynomials, all in $R_\alpha$. 
+
+The \emph{Reynolds operator} $f\mapsto f^\natural$ sends $f$ to its ``trivial 
+isotypical component.'' Then $(-)^\natural:R\to R^G$ is a projection. This map is 
+$k$-linear and satisfies $(\varphi f)^\natural = \varphi f^\natural$ for 
+$\varphi\in R^G$. Indeed, it is enough to show this for $f\in R[d]_\alpha$. 
+Then 
+$\varphi\cdot R[d]_\alpha \iso k\varphi\otimes_k R[d]_\alpha$ via 
+$\varphi\otimes f\mapsto \varphi\cdot f$ is an isoorphism of 
+$G$-modules, and the right-hand side is clearly of type $\alpha$. In fact, 
+$(-)^\natural:R\to R^G$ is a homomorphism of $R^G$-algebras. 
+
+Let $R_+^G=\bigoplus_{d>0} R[d]^G$. Consider the ideal 
+$R\cdot R_+^G$ of $R$. By Hilbert's basis theorem there exist 
+$f_1,\dots,f_N\in R_+^G$ such that 
+$R\cdot R_+^G = \langle f_1,\dots,f_N\rangle$. Without loss of generality 
+each $f_i$ is homogeneous of positive degree. We claim that 
+$R^G=k[f_1,\dots,f_N]$. Let $\varphi\in R^G$. To show that 
+$\varphi\in k[f_1,\dots,f_N]$ we may assume $\varphi$ is homogeneous. We 
+argue by induction on $\deg\varphi$, the trivial case $\deg=0$ being 
+obvious. Write $\varphi=\sum a_i f_i$, where without loss of generality 
+$a_i\in R$ homogeneous with $\deg(a_i f_i) = \deg(\varphi)$. 
+Then 
+$\varphi=\varphi^\natural = \sum a_i^\natural f_i^\natural = \sum a_i^\natural f_i$. 
+Without loss of generality the $a_i^\natural$ are homogeneous with 
+$\deg(a_i^\natural f_i) = \det(\varphi)$. As 
+$\deg(a_i^\natural)<\deg\varphi$, each $a_i^\natural\in k[f_1,\dots,f_N]$, 
+whence the result. 
+
+\begin{enonce}[remark]{Example}
+As before, $\speciallinear_2$ acts on symmetric bilinear forms 
+$q=\begin{pmatrix} a & b \\ b & d \end{pmatrix}$ by 
+$g\cdot q= g q \transpose g$. The orbits are represented by 
+$\begin{pmatrix} \ast \\ & 1 \end{pmatrix}$, 
+$\begin{pmatrix} \\ & 1 \end{pmatrix}$, and $0$. The function 
+$\det(q)$ is the only invariant. In other words, 
+\[
+  R^G=k[\det(q)]\simeq k[x] .
+\]
+So $k^3/ \! \! \! / \speciallinear_2\simeq \dA^1$, but the orbits are not in 
+bijection with points of $\dA^1$. So there are ``not enough'' invariant 
+functions to separate orbits. 
+\end{enonce}
+
+A similar phenomenon occurs for the action of $\speciallinear_N$ on 
+symmetric bilinear forms in $N$ variables. There is only one invariant (the 
+discriminant) but many orbits. 
+
+\begin{theo}[Chevalley-Iwahori-Nagata]
+The set of orbits always surjects onto $V^G$ (for any action of a reductive 
+group on an affine algebraic variety). t is bijective if and only if each orbit 
+is Zariski-closed. 
+\end{theo}
+
+In our example above, we have
+\[
+  \speciallinear(2)\cdot \begin{pmatrix} \\ & 1\end{pmatrix} = \left\{\begin{pmatrix} a & b \\ b & d \end{pmatrix} : a d-b^2\ne 0\right\} 
+\]
+which is not Zariski-closed. 
+
+[Borel, Serre, Humphreys, Fulton-Harris, Mumford GIT, 
+Dieudonn\'e-Carrell, Goodman-Wallach]
+
+
+
 
