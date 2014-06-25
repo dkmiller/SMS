@@ -7,5 +7,117 @@
 
 
 
-d
+Recall that the goal of this conference is ``counting arithmetic 
+objects.'' The first sort of objects we might try to count are number fields. 
+To do this, we would like a parameterization of all number fields of a given 
+degree. For degree $2$, this is easy. All quadratic fields are of the form 
+$\dQ(\sqrt D)$, where $D$ is a square-free integer. 
+In general, a degree $n$ number field is of the form $\dQ(\theta)$. Let $f$ 
+be the minimal polynomial of $\theta$; it will be of the form 
+$f(x)=x^n+a_{n-1} x^{n-1} + \cdots + a_0\in \dZ[x]$. The problem is: determining 
+whether two monic irreducible polynomials yield the same field is quite 
+difficult. 
+
+Rather than counting number fields, we will try to count their maximal orders 
+instead. 
+
+
+
+
+
+\subsection{Some definitions}
+
+\begin{defi}
+A \emph{rank-$n$ ring} is a (commutative, unital) ring $R$ such that 
+$R\simeq \dZ^n$ as a $\dZ$-module. 
+\end{defi}
+
+For $n=2,3,4,5$, we call these rings quadratic, cubic, quartic, and quintic. 
+Typical cubic rings are maximal orders $R=\cO_K$ in cubic number fields $K$. 
+But non-maximal orders in cubic number fields are also cubic rings. For 
+example, $\dZ[3\sqrt[3] 2]\subset \dQ(2^{1/3})$ is a perfectly good cubic 
+ring, with $\dZ$-basis $\{1,3\sqrt[3] 2,9\sqrt[3] 4\}$. A still more 
+pathological example is $\dZ[X]/X^3$, which has $\dZ$-basis $\{1,X,X^2\}$. If 
+$R$ is any quadratic ring, then $\dZ\times R$ is another ``pathological'' cubic 
+ring. 
+
+In the end, we'll count number fields by counting their maximal orders, which 
+we will count by including them into a larger class of rank-$n$ rings. 
+
+\begin{defi}
+Let $R$ be a rank-$n$ ring. The \emph{trace map} $\trace:R\to\dZ$ is 
+defined by $\trace(r) = \trace(\cdot r:R\to R)$. 
+\end{defi}
+
+If $\alpha_1,\dots,\alpha_n$ is a $\dZ$-basis of $R$, then the 
+\emph{discriminant} of $R$ is 
+$\discriminant(R) = \det(\trace(\alpha_i \alpha_j)_{i,j})$. 
+
+
+
+
+
+\subsection{Quadratic rings}
+
+We know that quadratic rings (up to isomorphism) are in bijection with 
+$\{D\in \dZ:d\equiv 0,1\pmod 4\}$. Given a quadratic ring $R$, the 
+corresponding integer is $D=\discriminant(R)$. (It is an old theorem that 
+$\discriminant(R)$ is a square modulo $4$.) Given such an integer $D$, 
+the corresponding ring is 
+\[
+  \dZ[\tau]/\left(\tau^2 - D\tau + \frac{D^2-D}{4}\right)
+\]
+If, for example $D=0$, the corresponding ring is $\dZ[\tau]/\tau^2$. 
+
+From our parameterization of quadratic rings, it is easy to count them! 
+
+
+
+
+
+\subsection{Cubic rings}
+
+Let $R$ be a cubic ring with $\dZ$-basis $\{1,W,T\}$. A key invariant is 
+$W T = q+r W + s T$ for some $q,r,s\in \dZ$. Choose a new 
+$\dZ$-basis $\{1,\omega,\theta\}$ with $\omega=W-s$ and $\theta=T-r$. In our 
+new basis, $\omega\theta = n$ for some $n\in \dZ$. We call such a basis 
+\emph{normalized}. Every basis of $R/\dZ$ has a unique normalized lift to 
+$R$. 
+
+We also write $\omega^2=m-b \omega + a\theta$ and 
+$\theta^2 = \ell-d\omega+c\theta$. The fact that multiplication on $R$ is 
+associative forces some conditions on $\{m,b,a,\ell,d,c\}$. The 
+associativity relations are exactly: 
+\begin{align*}
+  n &= - a d \\
+  \ell &= - b c \\
+  m &= - a c .
+\end{align*}
+This induces a bijection between isomorphism classes of cubic rings with 
+choice basis of $R/\dZ$ and quadruples $(a,b,c,d)\in \dZ^4$. Clearly 
+$\generallinear_2(\dZ)$ acts on cubic rings with basis of $R/\dZ$; orbits of 
+this action are isomorphism classes of cubic rings. The only thing here that 
+is mysterious is the $\generallinear_2(\dZ)$-action on $\dZ^4$. 
+
+If we write $f(x,y) = a x^3 + b x^2 y + c xy^2 + d y^3$ and 
+$g\in \generallinear_2(\dZ)$, then 
+\[
+  (g f)(x,y) = \frac{1}{\det(g)} f\left(\begin{pmatrix} x & y \end{pmatrix} \cdot g\right) .
+\]
+In other words, if we identify $\dZ^4$ with the space of cubic forms in 
+two variables, then the action of $\generallinear_2(\dZ)$ is the natural one 
+(with a twist by $\det^{-1}$). 
+This parameterization of cubic rings goes back to \cite{df64}. It was also 
+used in \cite{dh69}, and saw its first modern formulation in 
+\cite{ggs02}. 
+
+\begin{enonce}[remark]{Example}
+The cubic ring corresponding to $(a,b,c,d)=(0,0,0,0)$ is pretty pathological -- 
+namely $\dZ[\omega,\theta]/(\omega,\theta)^2$. 
+\end{enonce}
+
+[\ldots wasn't able to take notes to the end\ldots]
+
+
+
 
