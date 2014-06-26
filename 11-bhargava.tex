@@ -7,5 +7,151 @@
 
 
 
-d
+In this lecture, we'll use the parameterization of cubic rings discussed in 
+\autoref{sec:wood-i} to count cubic rings. Recall that there is a bijection 
+\[
+  \{\text{cubic rings}/\sim\} \iso \{\text{int.~bin.~cubic forms}\} /\generallinear_2(\dZ) 
+\]
+which preserves discriminant. So counting cubic rings by discriminant is 
+equivalent to counting cubic forms by discriminant. The corresponding problem 
+for binary quadratic forms was solved by Gauss and Lipschitz (and first done 
+rigorously by Mertens and Siegel). 
+
+
+
+
+
+\subsection{Lipschitz principle and generalizations}
+
+Lipschitz's principle is that if $R$ is some region in the Euclidean plane with 
+area $T$, then the number of lattice points in $R$ is approximately $T$. 
+Better, 
+\[
+  \# \{\text{lattice points in }R\} = T + O(T^{1/2}) .
+\]
+The implied constant in $O(T^{1/2})$ will depend on $R$. Here we assume the 
+region $R$ is ``homogeneously expanding'' via homothety. This principle, though 
+completely elementary, was sufficient to count binary quadratic forms. 
+
+Davenport realized that in order to attack binary cubic forms, one needs a 
+version of the Lipschitz principle where the region $R$ is fixed (not 
+necessarily expanding homogeneously). 
+
+\begin{theo}[Davenport] 
+Let $R$ be a bounded semi-algebraic region in $\dR^n$ defined by at most $k$ 
+inequalities each of degree at most $\ell$. Then the number of lattice points 
+in $R$ is $\volume(R)+O_{k,\ell}(\max\{\volume(\overline R),1\})$, where 
+$\volume(\overline R)$ denotes the greatest $d$-dimensional volume of a 
+projection of $R$ onto a $d$-dimensional coordinate hyperplane, 
+$1\leqslant d\leqslant n-1$. 
+\end{theo}
+\begin{proof}
+See the papers \cite{d51,d64}. 
+\end{proof}
+
+The following is Davenport's cubic version of Gauss' formula for the number of 
+binary quadratic forms. 
+
+\begin{theo}[Davenport]
+Let $H(D)$ be the number of irreducible integer binary cubic forms, up to 
+$\generallinear_2(\dZ)$-equivalence, having discriminant $D$. Then 
+\begin{align*}
+  \sum_{0<D<X} H(D) &= \frac{\pi^2}{72} X + O(X^{15/16}) \\
+  \sum_{0<-D<X} H(D) &= \frac{\pi^2}{24} X + O(X^{15/16}) .
+\end{align*}
+\end{theo}
+
+The proof uses Davenport's refined Lipschitz principle, along with analysis of 
+the cusps using explicit inequalities. 
+
+Attempts to mimic Davenport's methods to count quartic forms fail because the 
+inequalities involved are far too complicated to be analyzed explicitly. We 
+will reprove Davenport's theorem using Davenport's principle, but without 
+having to write down explicit inequalities. 
+
+
+
+
+
+\subsection{Proof of Davenport's theorem}
+
+Let $V$ be the space of binary cubic forms, $G=\generallinear(2)$. So 
+$V(\dR)$ is the real vector space of binary cubic forms, and $V(\dZ)$ is the 
+lattice of integer binary cubic forms. Similarly for $G(\dR)$ and $G(\dZ)$. 
+We have a representation $G\to \generallinear(V)$ defined over 
+$\spectrum(\dZ)$. 
+
+Let $E$ be a fundamental domain for the action of $G(\dZ)$ on $V(\dR)$. We can 
+write 
+\begin{align*}
+  \sum_{0<D<X} H(D) 
+    &= \# \{x\in E\cap V(\dZ)^\irreducible:0<|\discriminant(x)| < X\} \\
+    &= \# \{x\in E\cap V^+(\dZ)^\irreducible:|\discriminant(x)|<X\} .
+\end{align*}
+We start by constructing any fundamental domains $E$. Fix $v\in V^+(\dR)$, and 
+let $\cF$ be a fundamental domain for the left action of $G(\dZ)$ on $G(\dR)$. 
+Then the multiset $\cF v=\{x=g v:g\in \cF\}$ is the union of six fundamental 
+domains for the action of $G(\dZ)$ on $V(\dR)$. Indeed, 
+\[
+  \left(G(\dZ)\backslash G(\dR)\right) \cdot \left(G(\dR) \backslash V^+(\dR)\right) = G(\dZ)\backslash V^+(\dR) .
+\]
+A brief consideration of stabilizers yields the number of fundamental domains. 
+
+A nice $\cF$ to take was defined by Gauss: 
+\[
+  \cF = \{g\in \generallinear_2(\dR):g\cdot i \in \Omega\},
+\]
+where $\generallinear_2(\dR)$ acts on the upper half-plane 
+$\fH=\{z\in \dC:\Im z>0\}$ as usual, and 
+\[
+  \Omega=\left\{z\in \fH:-\frac 1 2 \leqslant \Re z\leqslant \frac 1 2\text{ and }|z|\geqslant 1\right\} .
+\]
+Davenport's fundamental domain for $G(\dZ)$ on $V(\dR)$ occurs when 
+$v=x^2 y - x y^2$. Now we apply the Taski-Seidenberg theorem to conclude that 
+$\cF v$ is semi-algebraic. This was generalized by Borel and Harish-Chandra in 
+\cite{bh62} to arbitrary reductive groups over number fields. Note that 
+$\cF = N' A' K \Lambda$, where 
+\begin{align*}
+  N' &= \left\{\begin{pmatrix} 1 \\ n & 1 \end{pmatrix} : |n|\leqslant \frac 1 2\right\} \\
+  A' &= \left\{\begin{pmatrix} t \\ & t^{-1}\end{pmatrix} : t\geqslant \frac{\sqrt[4] 3}{\sqrt 2}\right\} \\
+  K &= \left\{\begin{pmatrix}\cos \theta & \sin \theta \\ -\sin \theta & \cos \theta\end{pmatrix} : 0\leqslant \theta < 2\pi\right\} \\
+  \Lambda &= \{\lambda\in \dR^\times:\lambda>0\} .
+\end{align*}
+Let $B$ be a compact set in $V^+(\dR)$ that is the closure of a non-empty open 
+set, on which $\discriminant\geqslant 1$. We will allow $v$ to vary in $B$. 
+
+Next, we need estimates on reducibility. 
+
+\begin{lemm}
+Let $R_X(v)=\cF v\cap \{|\discriminant |<X\}$. Then the number of reducible 
+integral forms $a x^3 + \cdots + d y^3$ in $R_X(v)$ with $a\ne 0$ is 
+$O(X^{3/4+\epsilon})$. 
+\end{lemm}
+\begin{proof}
+In $R_X(v)$, we have $a=O(X^{1/4})$, $b=O(X^{1/4})$, $a b c=O(X^{3/4})$, 
+$a b d=O(X^{3/4})$, \ldots. If $d=0$, at most $O(X^{3/4+\epsilon})$ such 
+forms in $R_X(v)$. If $d\ne 0$, then $r x+s y\mid f(x,y)=a x^3+\cdots + d y^3$, 
+which implies $r\mid a,s\mid d$. Fixing $a,b,d$ (for which there are 
+$O(X^{3/4+\epsilon})$ choices) there are $O(X^\epsilon)$ choices for $r$ and 
+$s$. The fact that $f(-s,r)=0$ determines $c$. The result follows. 
+\end{proof}
+
+Finally we average. Recall that $|\discriminant(v)|^{-1}\, dv$ is the unique 
+(up to scalar) $G(\dR)$-invariant measure on $V(\dR)$. This lets us compute  
+\begin{align*}
+  N^+(X) 
+    &= \sum_{0<D<X} H(D) \\
+    &= \frac{\displaystyle\int_B \#\{x\in \cF v\cap V(\dZ)^\irreducible:|\discriminant(x)|<X\}\cdot |\discriminant(v)|^{-1}\, dv}{6\displaystyle\int_B|\discriminant(v)|^{-1}\, dv} \\
+    &= \frac{1}{M} \int_\cF\#\{x\in g B\cap V(\dZ)^\irreducible:|\discriminant(x)|<X\}\, dg \\
+    &= \frac 1 6 \volume(R_X(v)) + O(X^{5/6}) ,
+\end{align*}
+the last equality coming from a uniform application of Davenport's inequality. 
+Note that we have proved a stronger version of Davenport's result, namely one 
+with an error term of $O(X^{5/6})$ instead of $O(X^{15/16})$. In \cite{bst13}, 
+a more careful version of this proof shows that there is a second term of the 
+form $c X^{5/6}+O(X^{3/4+\epsilon})$. So the error term is in many ways as good 
+as possible. 
+
+
+
 
