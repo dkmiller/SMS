@@ -7,5 +7,371 @@
 
 
 
-d
+\subsection{Introduction}
+
+The first main example is the space of binary cubics. Let $G=\generallinear_2$, 
+and let $V$ be the space of binary cubics. We consider the standard twisted 
+action of $G$ on $V$: 
+\[
+  (g\cdot x)(u,v) = \frac{1}{\det g} x\left(\begin{pmatrix} u & v \end{pmatrix} \cdot g\right) .
+\]
+We know that $\discriminant(g\cdot x) = (\det g)^2 \discriminant(x)$. 
+
+\begin{defi}[Shintani]
+Define the function $\xi^\pm:\{\Im z>1\} \to \dC$ by 
+\[
+  \xi^\pm(s) 
+    = \sum_{\substack{x\in G(\dZ)\backslash V(\dZ) \\ \pm \discriminant(x)>0}} \frac{\# \stabilizer(x)^{-1}}{\# \discriminant(x)^s} = \sum_{\substack{R\text{ cubic ring} \\ \pm \discriminant(R)>0}} \frac{\# \automorphism(R)^{-1}}{\discriminant(R)^s} .
+\]
+\end{defi}
+
+\begin{theo}
+1. The function $\xi^\pm$ has an analytic continuation to $\dC$. The % [analytic continuation]
+function $(s-1)^2 (s-\frac 5 6)(s-\frac 7 6)\xi^\pm(s)$ is entire. 
+
+2. Indeed, $\xi^\pm(s)$ is holomorphic except for simple poles % [principal part]
+at $s=1,\frac 5 6$, with explicit residue formulas. 
+
+3. There is a functional equation between $\xi^\pm(1-s)$ and % [functional equation]
+$\widehat\xi^\pm(s)$. 
+\end{theo}
+\begin{proof}
+1,3. These follow from the general theory of prehomogeneous vector spaces. 
+
+2. This needs some careful analysis. 
+\end{proof}
+
+As an application [see Frank's talk] if we write 
+\[
+  \xi^\pm(s) = \sum_{n\geqslant 1} \frac{a_{\pm n}}{n^s},
+\]
+then 
+\[
+  \sum_{0<n<X} a_{\pm n} = r_1^\pm X + r_{5/6}^\pm \frac{X^{5/6}}{5/6} + O(X^{3/5+\epsilon}) .
+\]
+In \cite{s75}, Shintani separated the contributions of irreducible and reducible 
+representations. 
+
+
+
+
+
+\subsection{A proof of analytic continuation and functional equation for \texorpdfstring{$\zeta$}{zeta}}
+
+Let $f\in \cS(\dR)$ be a smooth function that decays rapidly. The \emph{Fourier 
+transform} of $f$ is 
+\[
+  \widehat f(y) = \int_\dR f(x) e^{2\pi i x y}\, dx .
+\]
+One proof of the analytic continuation of the Riemann $\zeta$ function uses the 
+Poisson summation formula: 
+\[
+  \sum_{x\in \dZ} f(x) = \sum_{y\in \dZ} \widehat f(y) .
+\]
+A simple variation is that for $t\in \dR^\times$, we have 
+\[
+  \sum_{x\in \dZ} f(t x) = |t|^{-1} \sum_{y\in \dZ} \widehat f(t^{-1} y) .
+\]
+Simply let $f_t(x) =f (t x)$, and show using a change of variables that 
+$\widehat{f_t}(y) = |t|^{-1} \widehat f(t^{-1} y)$. Applying Poisson summation 
+to $f_t$ yields the formula. 
+
+\begin{defi}[local zeta]
+Define 
+\[
+  \Phi(f,s) = \int_\dR |x|^{s-1} f(x)\, dx ,
+\]
+where $f$ ranges over $\cS(\dR)$ and $s\in \dC$. 
+\end{defi}
+
+For $\Re s>0$, the map $\Phi(-,s)$ is a functional on $\cS(\dR)$. 
+
+\begin{prop}
+1. $\Phi(f,s)$ has a meromorphic continuation to $\dC$. Moreover, 
+$\Gamma(s)^{-1} \Phi(f,s)$ is entire. 
+
+2. $\Phi(\widehat f,s) = c(s) \Phi(f,1-s)$, where 
+$c(s) = (2\pi)^{-s} \Gamma(s) (e^{i\pi s/2} + e^{-i\pi s/2})$. 
+\end{prop}
+
+Let's use this proposition to prove the functional equation for $\zeta$. 
+We have 
+\begin{align*}
+  \zeta(s) \Phi(f,s) 
+    &= \sum_{n\geqslant 1} \frac{1}{n^s} \int_\dR |x|s f(x) \frac{dx}{|x|} \\
+    &= \sum_{n\geqslant 1} \int_\dR \left|\frac x n\right|^s f(x) \frac{dx}{|x|} \\
+    &= \int_\dR |x|^s \sum_{n\geqslant 1} f(n x) \, \frac{dx}{|x|} \\
+    &= \int_0^\infty |x|^s \sum_{n\in \dZ\smallsetminus 0} f(n x)\, \frac{dx}{x} .
+\end{align*}
+Recall that $d^\times t = \frac{dt}{t}$ is an invariant measure on 
+$\dR^\times_+$. Define 
+\begin{align*}
+  Z(f,s) &= \int_0^\infty t^s \sum_{x\in \dZ\smallsetminus 0} f(t x)\, d^\times t \\
+  Z_+(f,s) &= \int_1^\infty t^s \sum_{x\in \dZ\smallsetminus 0} f(t x) \, d^\times t .
+\end{align*}
+
+\begin{lemm}
+The function $Z_+(f,s)$ is entire. 
+\end{lemm}
+\begin{proof}
+Since $t\geqslant 1$, the convergence is better when $\Re s$ is smaller. 
+\end{proof}
+
+We compute: 
+\begin{align*}
+  Z(f,s) - Z_+(f,s) 
+    &= \int_0^1 t^s \sum_{x\in \dZ\smallsetminus 0} f(t x)\, d^\times t \\
+    &= \int_0^1 t^s \left(t^{-1} \sum_{y\in \dZ\smallsetminus 0} \widehat f(t^{-1} y) + t^{-1} \widehat f(0) - f(0)\right)\, d^\times t \\
+    &= \int_0^1 t^{s-1} \sum_{y\in \dZ\smallsetminus 0} f(t^{-1} x)\, d^\times t + \widehat f(0) \int_0^1 t^{s-1} \, d^\times t - f(0) \int_0^1 t^s \, d^\times t \\
+    &= Z_+(\widehat f,1-s) + \frac{\widehat f(0)}{s-1} + \frac{f(0)}{s} .
+\end{align*}
+We have shown that 
+\begin{align*}
+  Z(f,s) 
+    &= Z_+(\widehat f,1-s) + \frac{\widehat f(0)}{s-1} + \frac{f(0)}{s} \\
+    &= Z(\widehat f,1-s) .
+\end{align*}
+The functional equation follows: 
+\begin{align*}
+  \zeta(1-s) \Phi(f,1-s) 
+    &= Z(f,1-s) \\
+    &= Z(\widehat f,s) \\
+    &= \zeta(s) \Phi(\widehat f,s) \\
+    &= \zeta(s) c(s)\Phi(f,1-s) ,
+\end{align*}
+the last equality following from the previous proposition. Canceling the 
+$\Phi(f,1-s)$ yields the functional equation we're looking for. 
+
+We can also derive the residue of $\zeta$: 
+\[
+  \residue_{s=1} Z(f,s) 
+    = \widehat f(0) 
+    = \int_\dR f(x)\, dx .
+\]
+But $Z(f,s) = \zeta(s) \Phi(f,s)$, and 
+\[
+  \Phi(f,1) = \int_\dR |x|^{1-1} f(x)\, dx = \int_\dR f(x)\, dx .
+\]
+It follows that $\residue_{s=1} \zeta(s) = $. 
+
+
+
+
+
+\subsection{Outline of proof properties of \texorpdfstring{$\xi^\pm$}{xi}}
+
+Define 
+\[
+  \Phi_1(f,s) = \int_0^\infty x^{s-1} f(x)\, dx .
+\]
+Our ``main tool'' is integration by parts, using 
+$x^{s-1} = \left(\frac{x^s}{s}\right)'$. We compute: 
+\begin{align*}
+  \frac{1}{\Gamma(s)} \Phi_1(f,s) 
+    &= \frac{1}{s \Gamma(s)} \int_0^\infty (x^s)' f(x)\, dx \\
+    &= \frac{1}{\Gamma(s+1)} \left(\left. x^s f(x)\right|_0^\infty - \int_0^\infty x^s f'(x)\, dx \right) \\
+    &= \frac{-1}{\Gamma(s+1)} \Phi_1(f',s+1) .
+\end{align*}
+Repeat this $n$ times, obtaining 
+\[
+  \frac{1}{\Gamma(s)} \Phi_1(f,s) = \frac{(-1)^n}{\Gamma(s+n)} \Phi_1(f^{(n)},s+n) ,
+\]
+where the right-hand side is holomorphic for $\Re s>-n$. This proves part 1 of 
+our main proposition. 
+
+For part 2 of the main proposition, compute 
+\begin{align*}
+  \Phi(f_t,s) 
+    &= \int_\dR |x|^s f(t x)\, dx \\
+    &= |t|^{-s} \Phi(f,s) .
+\end{align*}
+It follows that  
+\[
+  \Phi(\widehat{f_t},s) = |t|^{-1} \Phi(\widehat{f_{t^{-1}}},s) = |t|^{s-1} \Phi(\widehat f,s) .
+\]
+The distributions $f\mapsto \Phi(\widehat f,s)$ and $f\mapsto \Phi(f,1-s)$ 
+satisfy the same transformation properties. There is a general theorem of 
+uniqueness of relatively invariant distributions on homogeneous spaces. It 
+implies that the two distributions coincide up to a constant $c=c(s)$. 
+The theory of prehomogeneous vector spaces provides a way to generalize this. 
+
+There is a simpler proof of the functional equation that comes from a clever 
+choice of $f$. Pick $f_0\in C_c^\infty(\dR\smallsetminus 0)$ and put 
+$f=\frac{d}{dx} f_0 = f_0'$. By an elementary argument, we can prove 
+\[
+  \widehat f(y) = \widehat{f_0}(y) = y \widehat{f_0}(y) .
+\]
+This implies $f(0) = \widehat f(0) = 0$. From the Poisson summation formula, 
+we get 
+\[
+  \sum_{x\in \dZ\smallsetminus 0} f(x) = \sum_{y\in \dZ\smallsetminus 0} \widehat f(y) .
+\]
+This implies $Z(f,s) = Z_+(f,s) + Z_+(\widehat f,1-s)$, which is entire. 
+Similarly 
+\[
+  Z(f,s) = \zeta(s) \Phi(f,s) = \zeta(s) (s-1) \Phi(f_0,s-1) .
+\]
+For all $s$, there exists $f_0$ such that $\Phi(f_0,s-1)\ne 0$, hence 
+$\zeta(s)(s-1)$ is entire. 
+
+
+
+
+
+\subsection{Generalizing the result}
+
+\begin{defi}[Sato] % M. Sato
+Let $G$ be an algebraic group over a field $k$. A finite-dimensional 
+representation $V$ of $G$ is a \emph{prehomogeneous vector space} if 
+there exists $x\in V_{\bar k}$ such that the orbit 
+$G_{\bar k}\cdot x\subset Z_{\bar k}$ is Zariski-open. 
+\end{defi}
+
+We say that a non-constant $P\in k[V]$ is a \emph{relative invariant 
+polynomial} if there exists $\chi\in \character^\ast(G)$ such that 
+$P(g\cdot x) = \chi(g) P(x)$ for all $g\in G$, $x\in V$. 
+
+Let $(G,V)$ be a prehomogeneous vector space defined over $\dR$. Sato proved 
+that if $P\in \dR[V]$ is a relative invariant, then 
+\[
+  \Phi^{(i)}(f,s) = \int_{V_\dR^{(i)}} |P(x)|^s f(x)\, dx
+\]
+has analytic continuation and satisfies a functional equation. In \cite{ss74}, 
+Sato and Shintani proved that there is a zeta-function associated to $(G,V)$. 
+
+The following are basic examples of prehomogeneous vector spaces: 
+
+\begin{enonce}[remark]{Example}
+Let $G=\generallinear_1$, $V=\dA^1$. Then the natural action of $G$ on $V$ 
+has Zariski-open orbits. The function $P(x)=x$ leads to the standard Riemann 
+zeta function $\zeta(s)$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+If $(G,V)$ is $\generallinear_2$ acting in binary cubics and 
+$P(x)=\discriminant(x)$, then the associated zeta function is 
+$\xi^\pm(s)$. 
+\end{enonce}
+
+
+
+
+
+\subsection{Shintani zeta function}
+
+Recall that for $G=\generallinear_2$ and $V$ the space of binary cubics, 
+the associated relative invariant polynomial is $P(x)=\discriminant(x)$. Let 
+\[
+  V' = \{x\in V:P(x)\ne 0\} ;
+\]
+this consists of $x\in V$ having no multiple roots in $\dP^1$. Let 
+$S=\{x\in V:P(x)=0\} = V\smallsetminus V'$. Then $V_\dC'$ is a single 
+$G_\dC$-orbit in $V_\dC$. Over the real numbers, $V_\dR'$ breaks up into two 
+orbits $V_\dR^+\cup V_\dR^-$ corresponding to $P(x)>0$ and $P(x)<0$. 
+
+Define a local zeta function by 
+\[
+  \Phi^\pm(f,s) = \int_{V_\dR^\pm} |P(x)|^{s-1} f(x)\, dx ;
+\]
+this converges when $\Re s>1$. For $x,y\in V_\dR$, define 
+\[
+  \langle x,y\rangle = x_1 y_4 - \frac 1 3 x_2 y_3 + \frac 1 3 x_3 t_2 - x_4 y_1 .
+\]
+This bilinear form is invariant in the sense that 
+$\langle g x,g^\ast y\rangle = \langle x,y\rangle$, where 
+$g^\ast = (\det g)^{-1} g$. We can use this form to identify $V_\dR$ with its 
+dual, and define a Fourier transform 
+\[
+  \widehat f(y) = \int_{V_\dR} f(x) e^{2\pi i \langle x,y\rangle} \, dx .
+\]
+
+\begin{prop}
+1. The function 
+\[
+  \frac{1}{\Gamma(s)^2 \Gamma(s-\frac 1 6) \Gamma(s+\frac 1 6)} \Phi^\pm(f,s) 
+\]
+is entire. 
+
+2. There exists $M(s)$ such that the following functional equations hold:
+\begin{align*}
+  \Phi^+(\widehat f,s) &= M(s) \Phi^+(f,1-s) \\
+  \Phi^-(\widehat f,s) &= M(s) \Phi^-(f,1-s) .
+\end{align*}
+\end{prop}
+\begin{proof}
+There exists a differential operator $Q(\frac{\partial}{\partial x})$ such that 
+\begin{align*}
+  Q\left(\frac{\partial}{\partial x}\right) e^{\langle x,y\rangle} &= P(y) e^{\langle x,y\rangle} \\
+  Q\left(\frac{\partial}{\partial x}\right) P(x)^s &= b(s) P(x)^{s-1} ,
+\end{align*}
+where $b(s) = s^2 (s-\frac 1 6)(s+\frac 1 6)$. The rest is routine. 
+\end{proof}
+
+
+
+
+
+\subsection{Proof of analytic continuation and functional equation for \texorpdfstring{$\xi^\pm(s)$}{xi}}
+
+We define a ``extended zeta function'' by 
+\begin{align*}
+  Z(f,s) 
+    &= \int_{G(\dR)/G(\dZ)} |\det g|^{2 s} \sum_{\substack{x\in V(\dZ) \\ P(x)\ne 0}} \Phi(g x)\, dg \\
+    &= \sum_{\substack{x\in G(\dZ)\backslash V(\dZ) \\ P(x)\ne 0}} \int_{G(\dR)} |P(g x)|^s f(g x)\, d g .
+\end{align*}
+Because of the invariance of the measure $d g$, the integrand on the second 
+line depends only on the $G(\dR)$-orbit of $x$. But there are only two such 
+orbits! 
+
+In general, if $\varphi$ is a function on $V(\dR)$, we have a formula 
+\[
+  \int_{G(\dR)} \varphi(g y)\, dy = \frac{m_\pm}{2\pi} \int_{G(\dR)\cdot x} \varphi(y)\, \frac{dy}{|P(y)|} ,
+\]
+where $m_\pm\in \{2,6\}$ is the degree of the covering $G_\dR \to V_\dR^\pm$ 
+defined by $g\mapsto g x$. Returning to our definition of $Z(f,s)$, we see that 
+\begin{align*}
+  \int_{G(\dR)} |P(g x)|^s f(g x)\, dg 
+    &= \frac{m_\pm}{2\pi} \int_{G(\dR)\cdot x} |P(y)|^s f(y)\, \frac{dy}{|P(y)|} \\
+    &= \frac{m_\pm}{2\pi} \Phi^\pm(f,s) .
+\end{align*}
+Thus we have 
+\[
+  Z(f,s) = \begin{pmatrix}\xi^+(s) & \xi^-(s)\end{pmatrix} \begin{pmatrix} \frac{3}{\pi} \Phi^+(f,s) \\ \frac{1}{\pi} \Phi^-(f,s) \end{pmatrix} . 
+\]
+Now choose $f_0\in C_c^\infty(V_\dR')$ and set 
+$f=Q(\frac{\partial}{\partial x}) f_0$. We get 
+$\widehat f(y) = P(y) \widehat{f_0}(y)$, which implies 
+$f|_{S_\dR} = \widehat f|_{S_\dR} = 0$, where $S$ is the singular set. It 
+follows that 
+\[
+  Z(f,s) = Z_+(f,s) + Z_+(\widehat f,1-s) = Z(\widehat f,1-s) ,
+\]
+an entire function. From an earlier proposition, we get the functional 
+equation. By a similar argument, $\xi^\pm(s) b(s-1)$ is an entire function. 
+Since $b(s-1) = (s-1)^2 (s-\frac 5 6)(s-\frac 7 6)$, this recovers our main 
+proposition on $\xi^\pm$. 
+
+The hard part is to analyze the integral 
+\begin{align*}
+  X(f,s) &- Z_+(f,s) - Z_+(\widehat f,1-s) \\
+    &= \int_{\substack{G(\dR)/G(\dZ) \\ |\det|\leqslant 1}} |\det g|^{2 s} \left(|\det g|^{-2} \sum_{y\in V_\dZ^\ast\cap S} \widehat f(g^\ast y) - \sum_{x\in V_\dZ\cap S} f(g x)\right)\, dg .
+\end{align*}
+There are three types of singular points. Namely, 
+\[
+  S=\{0\} \cup \{\text{triple root}\}\cup \{\text{distinct double root and single root}\} .
+\]
+We can compute 
+\begin{align*}
+  X(f,s) &- Z_+(f,s) - Z_+(\widehat f,1-s) \\
+    &= \left(\frac{\widehat f(0)}{2 s-2} - \frac{f(0)}{2 s}\right) \volume(G_\dR^1/G_\dZ) + \int \cdots \left(\sum_{y\ne 0} \cdots - \sum_{x\ne 0} \cdots\right)\, dg .
+\end{align*}
+In the cubic case, this computation is carried out in \cite{s72}, and the 
+quartic case is done in \cite{y92}. The general case remains open. We can 
+impose congruence conditions, obtaining:  
+\[
+  \sum_{x\in x_0+N V_\dZ} f(x) = \frac{1}{N^4}\sum_{y\in \frac 1 N V_\dZ^\ast} e^{2\pi i\langle x_0,y\rangle} \widehat f(y) .
+\]
+
+
+
 
