@@ -7,5 +7,203 @@
 
 
 
-d
+All rings in this lecture are commutative with unit. Fix an integer 
+$n\geqslant 0$. The main question is: is there a scheme $\cA_n$ such that 
+$\cA_n(\dZ)$ is in bijection with the set of isomorphism classes of 
+rings $A$ such that $A\simeq \dZ^n$ as $\dZ$-modules. Of course there is such 
+a scheme! The set of rank-$n$ rings is countable, and there are lots of 
+schemes with $\aleph_0$ points defined over $\dZ$. 
+
+A good source for what follows is the paper \cite{p08}. 
+
+
+
+
+
+\subsection{Fine moduli space}
+
+A better question would be to ask for the existence of a scheme $\cA_n$ such 
+that for all rings $k$, the set $\cA_n(k)$ is naturally in bijection with the 
+set of isomorphism classes of $k$-algebras $A$ such that $A\simeq k^n$ as a 
+$k$-module. What do we mean by ``natural''? For every ring homomorphism 
+$k\to L$, we require the following diagram to commute:
+\[\xymatrix{
+  \cA_n(k) \ar[r] \ar[d] 
+    & \{\text{rank-$n$ $k$-algebras}\}/\sim \ar[d]^-{-\otimes_k L} \\
+  \cA_n(L) \ar[r] 
+    & \{\text{rank-$n$ $L$-algebras}\} /\sim
+}\]
+If such a $\cA_n$ exists, it follows from Yoneda's lemma that $\cA_n$ is 
+unique up to unique isomorphism. For, the functor 
+\[
+  k\mapsto \{\text{isomorphism cases of rank-$n$ $k$-algebras}\} 
+\]
+would be representable, and the standard argument shows that the representing 
+object is unique. 
+
+Unfortunately, for $n\geqslant 2$ no such scheme exists. We'll show why in the 
+case $n=2$. The map $\cA_2(\dR) \to \cA_2(\dC)$ must be injective. That is, the 
+map ``extension of scalars'' from rank-$2$ $\dR$-algebras to rank-$2$ 
+$\dC$-algebras should be injective on isomorphism classes. The rings 
+$\dR[x]/(x^2-1)\simeq \dR\times \dR$ and $\dR[x]/(x^2+1)\simeq \dC$ are 
+certainly not isomorphic over $\dR$, but they are both isomorphic to 
+$\dC\times \dC$ when tensored with $\dC$. 
+
+Essentially, what is going on here is that twists of an $\dR$-algebra 
+$A$ are in bijection with $\h^1(\dR,\automorphism A_\dC)$. Since $A_\dC$ can 
+have nontrivial automorphisms (for example when $A=\dR[x]/(x^2+1)$, there is 
+no way that $\cA_2(\dR)\to \cA_2(\dC)$ can be injective. This fits into the 
+slogan that ``objects with nontrivial automorphisms have no coarse moduli 
+scheme.'' The canonical example is that 
+elliptic curves have isomorphisms, preventing the existence of a fine moduli 
+scheme for all elliptic curves. Just as with elliptic curves, the way to remedy 
+the situation is to add structure. 
+
+
+
+
+
+\subsection{Moduli space of based algebras}
+
+Unlike elliptic curves, it is very easy to prove that the moduli space of 
+``based algebras'' exists. 
+
+\begin{theo}
+There exists a scheme $\cB_n$ representing the functor 
+\[
+  k\mapsto \{(A,\boldsymbol e)\}/\sim ,
+\]
+where $A$ ranges over $k$-algebras (abstractly) isomorphic to $k^n$ and 
+$\boldsymbol=(e_1,\dots,e_n)$ is a $k$-basis for $A$. 
+\end{theo}
+\begin{proof}
+A $k$-algebra $A$ with basis $\boldsymbol e=(e_1,\dots,e_n)$ is just a 
+$k$-module $\bigoplus_i k e_i$ with multiplication table 
+\[
+  e_i e_j = \sum_l c_{i j}^l e_l .
+\]
+together with $1=\sum d_i e_i$. The $n^3+n$ elements 
+$\{c_{i j}^l,d_i\}$ determine $A$, but commutativity, associativity, and unit 
+force certain conditions on the $c$'s and $d$'s. These impose polynomial 
+conditions. So 
+\[
+  \cB_n = \spectrum\left(\dZ[c_{i j}^l,d_m:1\leqslant i,j,l,m\leqslant n] / \text{relations}\right) .
+\]
+That is, $\cB_n$ is the subscheme of $\dA^{n^3+n}$ cut out by the polynomial 
+relations encoding associativity, commutativity, and existence of unit. 
+\end{proof}
+
+The rest of this lecture will be concerned with understanding the geometry of 
+$\cB_n$. 
+
+
+
+
+
+\subsection{\texorpdfstring{$\generallinear(n)$}{GL(n)}-basis}
+
+Reinterpret our scheme $\cB$ as representing the functor that assigns to a ring 
+$k$ the set of isomorphism classes of pairs $(A,\phi)$, where $A$ is a 
+$k$-algebra and $\phi:A\iso k^n$ is an isomorphism of $k$-modules. The group 
+$\generallinear_n(k)$ on $\cB_n(k)$ by 
+\[
+  g\cdot (A,\phi) = (A,g\circ \phi) .
+\]
+This action is nicely functorial, so it gives an action of the group scheme 
+$\generallinear(n)$ on the scheme $\cB_n$. 
+
+\begin{prop}
+For $(A,\phi)$ and $(A',\phi')$ in $\cB_n(k)$, we have 
+\[
+  \operatorname{Isom}_{k\text{-}\mathsf{Alg}}(A,A') = \{g\in \generallinear_n(k)\text{ mapping }(A,\phi)\text{ to }(A',\phi')\} .
+\]
+\end{prop}
+\begin{proof}
+An isomorphism $\alpha:A\iso A'$ corresponds to $g\in \generallinear_n(k)$ if  
+$g\circ\phi = \phi'\circ \alpha$. 
+\end{proof}
+
+\begin{coro}
+For each $k$, there is a natural isomorphism 
+\[
+  \{\text{algebras of rank $n$ over $k$}\}/\sim = \generallinear_n(k)\backslash \cB_n(k) . 
+\]
+\end{coro}
+
+\begin{coro}
+For any $(A,\phi)\in \cB_n(k)$, there is a natural isomorphism 
+$\automorphism_{k\textnormal{-}\mathsf{Alg}}(A)\simeq \stabilizer_{\generallinear_n(k)}(A,\phi)$. 
+\end{coro}
+
+So the problem of classifying rank-$n$ algebras comes down to understanding the 
+scheme $\cB_n$ together with its $\generallinear(n)$-action. 
+
+
+
+
+
+\subsection{Example: \texorpdfstring{$\cB_3$}{B3} over \texorpdfstring{$\dC$}{C}}
+
+Let's classify rank $3$ algebras $A$ over $\dC$. If $A$ is a finite-dimensional 
+$\dC$-algebra, it will be artinian. As such, it will be a finite product of 
+local artinian rings. Any finite-dimensional local artinian $\dC$-algebra $A$ 
+has (by definition) a unique maximal ideal $\fm$, which is nilpotent. If 
+$x_1,\dots,x_d\in A$ map to a basis of $\fm/\fm^2$, then we will have a 
+surjection $\dC[x_1,\dots,x_d]/(x_1,\dots,x_d)^r\twoheadrightarrow A$ for some 
+$r\gg 0$. 
+\begin{center}
+\begin{tabular}{l|l|l|l|l}
+dim.~of factors & algebra  & $\automorphism$ & $\dim(\automorphism)$ & $\dim(\generallinear_3\text{-orbit})$ \\ \hline
+1,1,1 & $\dC\times \dC\times \dC$ & $S_3$ & 0 & 9\\
+2,1 & $\dC[x]/x^2\times \dC$ & $x\mapsto a x$ & 1 & 8\\
+3 & $\dC[x]/x^3$ & $x\mapsto a x+b x^2$ & 2 & 7\\
+& $\dC[x,y]/(x,y)^2$ & $\generallinear(2)$ & 4 & 5\\
+\end{tabular}
+\end{center}
+So $\cB_3$ is $9$-dimensional, and contains an open dense orbit isomorphic to 
+$\generallinear(3)/S_3$. Each orbit is in the closure of a higher-dimensional 
+orbit. We can see this by watching families of algebras degenerate. Consider 
+$\dC[x]/(x(x-t)(x-1))$. When $t\notin \{0,1\}$, this algebra is \'etale over 
+$\dC$, namely $\dC\times\dC\times\dC$. When $t=0$, this algebra lies in the 
+eight-dimensional orbit. Similar arguments yield the rest. 
+
+
+
+
+
+\subsection{\texorpdfstring{$\cB_n(\dC)$}{BnC} for all \texorpdfstring{$n$}{n}}
+
+Consider the following table: 
+\begin{center}
+\begin{tabular}{c|c}
+$n$ & $\dim \cB_n$ \\ \hline
+1 & 1 \\
+2 & 4 \\ 
+3 & 9 \\
+\vdots \\
+11 & $\geqslant 129$ \\
+\vdots \\
+$n$ & $\sim \frac{2}{27} n^3$
+\end{tabular}
+\end{center}
+What's going on here? For small $n$, there is a large open orbit isomorphic to 
+$\generallinear(n)/S_n$. Once $n$ gets sufficiently large, there are 
+high-dimensional components outside the \'etale locus. 
+
+The scheme $\cB_n$ is smooth if and only if $n\leqslant 3$. The set 
+$\generallinear_n(\dC)\backslash \cB_n(\dC)$ is finite if and only if 
+$n\leqslant 6$, as was proved in \cite{c54,d66,s56}. % [Charles 1954, Dyment 1966, Suprunenko 1956]
+The scheme $\cB_n$ is irreducible if and only if $n\leqslant 7$; this is 
+shown in \cite{cdvv09}. %[Cartwright, Ernan, Velasso, Viray, 2009]
+The fact that $\dim(\cB_n)\sim \frac{2}{27} n^3$ is due to \cite{n87,p08}. 
+
+These schemes can be used to construct lots of finite rings. Start with 
+\[
+  \dZ_2[x_1,\dots,x_d]/(2,x_2,\dots,x_d)^3
+\]
+and then quotient out by a vector space. It is conjectured that asymptotically, 
+all finite rings are of this form, and have ``characteristic $8$.'' 
+
+
+
 
