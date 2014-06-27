@@ -4,8 +4,181 @@
 \thanksauthor{Andrew Granville}
 
 An official Beamer version of these notes can be found online at 
-\url{http://www.crm.umontreal.ca/sms/2014/pdf/AlgTalkSlides.pdf}. 
+\url{http://www.crm.umontreal.ca/sms/2014/pdf/AlgTalkSlides.pdf}. These notes 
+are essentially a transcription of the official version. 
 
 
+
+
+
+\subsection{Sums of two squares}
+
+We start with a very old theorem, but proving it using some basic geometry of 
+numbers. 
+
+\begin{theo}
+Any prime $p\equiv 1\pmod 4$ can be written as the sum of two squares. 
+\end{theo}
+\begin{proof}
+Since $p\equiv 1\pmod 4$, there is $i\in \dZ$ such that $i^2\equiv -1\pmod p$. 
+Consider the set of integers 
+\[
+  \{m+n i:0\leqslant m,n\leqslant \lfloor \sqrt p\rfloor\} .
+\]
+This set has cardinality $(\lfloor\sqrt p\rfloor+1)^2>p$, so by the pigeonhole 
+principle, two are congruent modulo $p$; say 
+\[
+  m+n i\equiv M+N i\pmod p
+\]
+where $0\leqslant m,n,M,N\leqslant \lfloor\sqrt p\rfloor$ and 
+$(m,n)\ne (M,N)$. Let $r=m-M$ and $s=N-n$ so that 
+\[
+  r\equiv i s\pmod p 
+\]
+where $|r|,|s|\leqslant \lfloor \sqrt p\rfloor < \sqrt p$, and $r$ and $s$ are 
+both nonzero. Now 
+\[
+  r^2+s^2 \equiv (i s)^2 +s^2 = s^2(i^2+1) \equiv 0\pmod p
+\]
+and $0<r^2+s^2 < \sqrt p^2+\sqrt p^2=2 p$. The only multiple of $p$ between 
+$0$ and $2 p$ is $p$, hence $r^2+s^2=p$. 
+\end{proof}
+
+It is also well-known that a product of sums of squares is a sum of squares, 
+via the identity 
+\[
+  (a^2+b^2)(c^2+e^2) = (a c+ b e)^2 + (a e-b c)^2 .
+\]
+This has the easy generalization 
+\[
+  (a^2+d b^2)(c^2+ d e^2) = (a c+d b e)^2 + d(a e- b c)^2 .
+\]
+Gauss's perspective on this was as follows. A \emph{binary quadratic form} is 
+a polynomial of the form $f(x,y) = a x^2 + b x y + c y^2$. If we choose 
+$f(x,y) = x^2+ d y^2$, then 
+\[
+  f(a,b)f(c,e) = f(a c+d b e,a e-b c) .
+\]
+The latter values in $f$, namely $a c+d b e$ and $a e-b c$, are bilinear 
+forms in $a,b,c,e$. Does this generalize to other ``multiplications''? 
+
+
+
+
+
+
+\subsection{Pell's equation}
+
+Pell asked whether there are integer solutions $x,y$ to 
+\[
+  x^2 - d y^2 = 1 .
+\]
+Solutions always exist, and can be found using the continued fraction expansion 
+of $\sqrt d$. This was certainly known by Brahmagupta in 628 A.D.~and probably 
+by Archimedes much earlier. To solve his ``Cattle Problem,'' one needs to find 
+a solution to 
+\[
+  x^2 - 4729494 y^2 = 1.
+\]
+The smallest solution has about $2\cdot 10^6$ digits! 
+
+
+\begin{theo}
+Let $d\geqslant 2$ be a non-square integer. Then there exist 
+$x,y\in \dZ$ such that $y\ne 0$ and 
+\[
+  x^2 - d y^2 = 1. 
+\]
+If $(x,y)$ is the smallest positive solution, then all others are given by 
+\[
+  x_n + y_n \sqrt d = (x+y\sqrt d)^n .
+\]
+\end{theo}
+
+A more interesting problem is to look for solutions to 
+$x^2-d y^2 = \pm 4$. Especially with a ``$-$,'' this is very difficult, though 
+there has great recent progress by Fouvry and Kluners. 
+
+\begin{theo}
+Any quadratic irrational real number has an eventually periodic continued 
+fraction. 
+\end{theo}
+
+Here are some examples:
+\begin{center}
+\begin{tabular}{l|l}
+$d$ & expansion of $\sqrt d$ \\ \hline
+2 & $[1,\overline 2]$ \\
+3 & $[1,\overline{1,2}]$ \\
+5 & $[2,\overline 4]$ \\
+6 & $[2,\overline{2,4}]$ \\
+7 & $[2,\overline{1,1,1,4}]$ \\
+8 & $[2,\overline{1,4}]$ \\
+10 & $[3,\overline 6]$ \\
+11 & $[3,\overline{3,6}]$ \\
+12 & $[3,\overline{2,6}]$ \\
+13 & $[3,\overline{1,1,1,1,6}]$ 
+\end{tabular}
+\end{center}
+If $p_k/q_k$ are the convergents for $\sqrt d$, then 
+$p_{n-1}^2 - d q_{n-1}^2 = (-1)^n$. Here are some examples of how for out one 
+has to go to obtain a solution to Pell's equation:
+\begin{center}
+\begin{tabular}{c|ll}
+$d$ & expansion of $\sqrt d$ & Pell's equation \\ \hline 
+$2$ & $[1,\overline 2]$ & $1^2 - 2\cdot 1^2 = -1$ \\
+$3$ & $[1,\overline{1,2}]$ & $2^2 - 3\cdot 1^2 = 1$ \\
+$6$ & $[2,\overline{2,4}]$ & $5^2 - 6\cdot 2^2 = 1$ \\
+$7$ & $[2,\overline{1,1,1,4}]$ & $8^2 - 7\cdot 3^2 = 1$ \\
+$13$ & $[3,\overline{1,1,1,1,6}]$ & $18^2 - 13\cdot 5^2 = -1$ \\
+$19$ & $[4,\overline{2,1,3,1,2,8}]$ & $170^2 - 19\cdot 39^2 = 1$ \\
+$22$ & $[4,\overline{1,2,4,2,1,8}]$ & $197^2 - 22\cdot 42^2 = 1$ \\
+$31$ & $[5,\overline{1,1,3,5,3,1,1,10}]$ & $1520^2 - 31\cdot 273^2 = 1$ \\
+$43$ & $[6,\overline{1,1,3,1,5,1,3,1,1,12}]$ & $3482^2 - 43\cdot 531^2 = 1$ \\
+$46$ & $[6,\overline{1,3,1,1,2,6,2,1,1,3,1,12}]$ & $24335^2 - 46\cdot 3588^2 = 1$ \\
+$76$ & $[8,\overline{1,2,1,1,5,4,5,1,1,2,1,16}]$ & $57799^2 - 76\cdot 6630^2 = 1$
+\end{tabular}
+\end{center}
+It is clear that the period of the continued fraction expansion grows quite 
+quickly. Here is a table of the first few largest periods:
+\begin{center}
+\begin{tabular}{c|l}
+$n$ & equation \\ \hline
+16 & $2143295^2 - 94\cdot 221064^2 = 1$ \\
+16 & $4620799^2 - 124\cdot 414960 2 = 1$ \\
+16 & $2588599^2 - 133\cdot 224460 2 = 1$ \\
+18 & $77563250^2 - 139\cdot 6578829 2 = 1$ \\
+20 & $1728148040^2 - 151\cdot 140634693^2 = 1$ \\
+22 & $1700902565^2 - 166\cdot 132015642^2 = 1$ \\
+26 & $278354373650^2 - 211\cdot 19162705353^2 = 1$ \\
+26 & $695359189925^2 - 214\cdot 47533775646^2 = 1$ \\
+26 & $5883392537695^2 - 301\cdot 339113108232^2 = 1$ \\
+34 & $2785589801443970^2 - 331\cdot 153109862634573^2 = 1$ \\
+37 & $44042445696821418^2 - 421\cdot 2146497463530785^2 = -1$ \\
+40 & $84056091546952933775^2 - 526\cdot 3665019757324295532^2 = 1$ \\
+42 & $181124355061630786130^2 - 571\cdot 7579818350628982587^2 = 1$
+\end{tabular}
+\end{center}
+The length of the continued fractions here are around $2\sqrt d$, and the 
+size of the fundamental solutions is around $10^{\sqrt d}$. It is believed that 
+the smallest solution is of size $C^{\sqrt d}$ for some $C$, but very little 
+has been proved. Understanding the distribution of sizes of the smallest 
+solutions to Pell's equation is an outstanding open question in number theory. 
+
+
+
+
+
+\subsection{Binary quadratic forms}
+
+d
+
+\subsection{Structure of ideals}
+
+\subsection{Composition}
+
+\subsection{Prehomogeneous vector spaces}
+
+\subsection{Invariants of number fields}
 
 
