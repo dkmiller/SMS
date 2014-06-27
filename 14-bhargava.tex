@@ -1,11 +1,178 @@
 % !TEX root = sms.tex
 
-\section{How to count rings and fields II}\label{sec:bhargava-ii}
+\section{How to count rings and fields II}\label{sec:bhargava-iii}
 \thanksauthor{Manjul Bhargava}
 
 
 
 
 
-d
+In \autoref{sec:bhargava-ii}, we proved that 
+$N^+(X) = \frac 1 6 \volume(\cF v\cap \{|\discriminant|<X\}) + O(X^{5/6})$. 
+Recall that $N^+(X)$ is the number of irreducible positive binary cubic forms 
+with $0<\discriminant<X$ up to $\generallinear_2(\dZ)$-equivalence. 
+
+
+
+
+
+
+\subsection{The general theorem}
+
+Recall that we defined $R_X(v) = \cF v\cap \{|\discriminant|<X\}$. 
+
+\begin{prop}
+Let $f\in C^0(V^+(\dR))$, and $v_0\in V^+(\dR)$. Then 
+\[
+  \int_\cF f(g v_0)\, \mathrm{d}g = \frac{1}{2\pi} \int_{\cF v_0} f(x)|\discriminant(x)|^{-1} \, \mathrm{d}x . 
+\]
+\end{prop}
+\begin{proof}
+Because of uniqueness of invariant measures, this comes down to a simple 
+Jacobian calculation. 
+\end{proof}
+
+Now let $f=|\discriminant|$ when $|\discriminant|<X$, and $0$ elsewhere. Then 
+\begin{align*}
+  \frac 1 6 \volume(R_X(v)) 
+    &= \frac{2\pi}{6} \int_1^{X^{1/4}} \lambda^4\, \mathrm{d}^\times \lambda \int_{\generallinear_2(\dZ)\backslash \generallinear_2^\pm(\dR)} \mathrm{d} g \\
+    &= \frac{2\pi}{6} \frac{X}{4} \cdot \frac{\zeta(2)}{\pi} \\
+    &= \frac{\pi^2}{72} X.
+\end{align*}
+This explains the coefficient of $X$ in our formula for $N^+(X)$. If we wanted 
+to compute $N^-(X)$, then everything would be the same except that the 
+$\frac 1 6$ would be replaced by $\frac 1 3$, so the coefficient of $X$ would 
+be $\frac{\pi^2}{24}$. 
+
+More generally, we've proved the following theorem: 
+
+\begin{theo}
+Let $S\subset V(\dZ)$ be a $G(\dZ)$-invariant subset defined by congruence 
+conditions modulo finitely many prime powers. If we let $N^+(S;X)$ be the 
+number of positive-discriminant irreducible integer binary cubic forms in $S$ 
+with $|\discriminant|<X$, up to $\generallinear_2(\dZ)$-equivalence, then 
+\[
+  N^+(S;X) = \frac{\pi^2}{72} \prod_p\mu_p(S) \cdot X + O(X^{5/6}) .
+\]
+where $\mu_p(S)$ is the $p$-adic density of $S$ in $V(\dZ)$. 
+\end{theo}
+
+The implied constant in $O(X^{5/6})$ will depend on the set $S$. See 
+\cite{bst13} for details. What if $S$ is defined by infinitely many congruence 
+conditions? For example,if we want to count cubic fields via their maximal 
+orders, maximality is determined by congruence conditions modulo $p^2$ for 
+every $p$. So we need to know how the constant in $O(X^{5/6})$ changes as we 
+vary $S$. 
+
+Let $W_p$ be the set of integer binary cubic forms $f$ such that $R_f$ is 
+\emph{not} maximal at $p$, i.e.~$R_f\otimes\dZ_p$ is not a maximal order in 
+$R_f\otimes \dQ_p$. 
+
+\begin{prop}
+With notation as above, 
+\[
+  N(W_p,X) = O(X/p^2) ,
+\]
+with the implied constant is independent of $p$. 
+\end{prop}
+\begin{proof}
+If $f\in W_p$ is a multiple of $p$, then $f/p$ has discriminant 
+$\discriminant(f)/p^4$. The number of such $f$ is $O(X/p^4)$. If $f\in W_p$ is 
+not a multiple of $p$, we use the following lemma to replace $f$ with an 
+equivalent form satisfying $p\mid c$ and $p^2\mid d$. Let 
+$f'=(a p,b,c/p,d/p)$; this is $\generallinear_2(\dQ)$-equivalent to $f$ via the 
+matrix $\begin{pmatrix} 1 \\ & p^{-1} \end{pmatrix}$. Moreover, 
+$\discriminant(f') = \discriminant(f)/p^2$. This gives at most $O(X/p^2)$ 
+such $f$, because $[f]\mapsto [f']$ is at most 3-to-1 when 
+$f'\not\equiv 0\pmod p$. 
+\end{proof}
+
+\begin{lemm}
+Let $f\in W_p$ not be a multiple of $p$. Then there exists a binary cubic 
+form $a x^3 + \cdots + d y^3$ that is $\generallinear_2(\dZ)$-equivalent to $f$ 
+such that $p\mid c$ and $p^2\mid d$. 
+\end{lemm}
+\begin{proof}
+Let $\cO$ be an order strictly containing $R_f$. Then there exist bases 
+$1,\omega,\theta$ and $1,\omega',\theta'$ of $R_f$ and $\cO$ respectively, such 
+that $\omega = p^i\omega'$ and $\theta = p^j \theta'$ and $i,j\geqslant 0$ are 
+distinct. If we write down the multiplication table for $R_f$, we get 
+$p\mid b$ and $p^2\mid a$, or $p\mid c$ and $p^2\mid d$ depending on which of 
+$i$ and $j$ are bigger. 
+\end{proof}
+
+\begin{theo}[Davenport-Heilbronn]
+The number of cubic fields of positive discriminant $<X$ is 
+$\frac{1}{12\zeta(3)} X + o(X)$. The number of cubic fields with negative 
+discriminant $<X$ is $\frac{1}{4\zeta(3)} X + o(X)$. 
+\end{theo}
+\begin{proof}
+Let $U\subset V(\dZ)$ (resp.~$U_p\subset V(\dZ_p)$) be the set of binary cubic 
+forms $f$ such that $R_f$ is maximal (resp.~maximal at $p$). Then 
+$U=\bigcap_p U_p$. We know that 
+\[
+  N^+\left(\bigcap_{p<Y} U_p;X\right) = \frac{\pi^2}{72} \cdot \prod_{p<Y} \mu_p(U_p) \cdot X + o(X) .
+\]
+An elementary lemma gives $\mu_p(U_p) = \frac{(p^2-1)(p^3-1)}{p^5}$, so we 
+have 
+\begin{align*}
+  \limsup_{X\to \infty} \frac{N^+(U;X)}{X} 
+    &\leqslant \lim_{X\to \infty} \frac 1 X N^+\left(\bigcap_{p<Y} U_p; X\right)\\
+    &= \frac{\pi^2}{72} \prod_{p<Y} \frac{(p^2-1)(p^3-1)}{p^5} \\
+    &= \frac{1}{12\zeta(3)} .
+\end{align*}
+The latter bit coming from $Y\to \infty$. Now we want to show the $\liminf$ is 
+sufficiently large. Since 
+$U \subset \bigcap_{p<Y} U_p\subset U\cup \bigcup_{p\geqslant Y} W_p$, 
+\[
+  \liminf_{X\to \infty} \frac{N^+(U;X)}{X} \geqslant \lim_{X\to \infty} \frac 1 X N^+\left(\bigcap_{p<Y} U_p;X\right) - \sum_{p\geqslant Y} O(1/p^2) 
+\]
+Let $Y\to \infty$ and the sum tends to zero. Since the limit approaches 
+$1/12\zeta(3)$, we get the lower bound. 
+\end{proof}
+
+What if we wanted to sieve to square-free discriminants, rather than just 
+maximal orders? If a cubic ring has squarefree discriminant, it is maximal. But 
+the converse does not hold. If any prime $p$ totally ramifies in a cubic 
+extension $K/\dQ$, then $p^2\mid\discriminant(K)$. This is the only way 
+$\discriminant(K)$ can be divisible by a square. So counting square-free 
+discriminant forms is equivalent to counting cubic fields in which no prime 
+totally ramifies. On the side of forms, if $R_f$ is maximal, the only way 
+$\discriminant(f)$ is not squarefree is if $f$ is a constant times a cube 
+of some linear form modulo $p$ for some $p$. If $R_f$ is not maximal, then 
+$\discriminant(R_f)$ is automatically divisible by a square. This is a 
+condition modulo $p^2$, whereas $\discriminant(R_f)$ being non-squarefree is 
+a modulo $p$ condition. 
+
+
+
+
+
+\subsection{The geometric sieve}
+
+This is also known as the \emph{closed point sieve}, or the \emph{Ekedahl 
+sieve}. 
+
+\begin{theo}
+Let $B$ be a bounded region in $\dR^n$ with finite volume. Let $Y$ be a 
+subscheme of $\dA_\dZ^n$ of codimension $k$. Let $r,M>0$. Then 
+\[
+  \#\{a\in r B\cap V(\dZ):a\in Y(\dF_p)\text{ for some }p>M\} = O\left(\frac{r^n}{M^{k-1} \log M} + r^{n-k+1}\right) .
+\]
+\end{theo}
+\begin{proof}[Sketch of proof]
+We treat the case $k=2$. Suppose $Y$ is defined by integer polynomials 
+$f(x_1,\dots,x_n)$ and $g(x_1,\dots,x_n)$. We can assume that $f$ does not 
+involve $x_n$ (for example, by using elimination theory). Then the number of 
+lattice points $(a_1,\dots,a_n)\in r B$ where $f=0$ or $g=0$ is 
+$O(r^{n-1})$. Suppose $f$ and $g$ are nonzero on $a$. Let's count all bad pairs 
+$(a,p)$. For $p\leqslant r$, this easy: the number of such $(a,p)$ is 
+$O(r^n/p2)$. Fix $a_1,\dots,a_{n-1}$. If $p>r$, then $f(a_1,\dots,a_n)$ has at 
+most $O(1)$ of prime factors $p>r$. For each such prime $p$, there are 
+$O(1)$ values of $a_n$ such that $g(a_1,\dots,a_n)\equiv 0\pmod p$. So 
+there are $O(r^{n-1})$ such $a=(a_1,\dots,a_n)$. 
+\end{proof}
+
+
+
 
