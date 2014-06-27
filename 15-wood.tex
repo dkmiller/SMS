@@ -7,5 +7,144 @@
 
 
 
-d
+We'll discuss three things: local ($p$-adic) densities, applications to curves 
+over finite fields, and heuristics for counting number fields. 
+The motivating question is: how many number fields are there? 
+
+
+
+
+
+\subsection{Local densities}
+
+What proportion of degree $n$ number fields (ordered by $|\discriminant|$) have 
+$7$ split completely? Of course, a similar question can be asked for any prime 
+$p$. Note that we are fixing the prime and letting number fields vary, as 
+opposed to the other way around. If we fix a number field and let primes 
+vary, the splitting is controlled by the \v Cebotarev Density Theorem. 
+
+To be more precise, we are interested in 
+\[
+  \lim_{X\to \infty} \frac{\#\{[K:\dQ]=n,|\discriminant K|<X:7\text{ splits completely}\}/\sim}{\#\{[K:\dQ]=n:|\discriminant K|<X\}/\sim} .
+\]
+It is not clear that this limit exists, and it is not known if $n>5$. It 
+matters that we order by discriminant -- if we ordered by some other invariant, 
+the limit would change. 
+
+Let $K/\dQ$ be a degree $n$ number field. Write $K_7=K\otimes \dQ_7$; if 
+$K=\dQ[\theta]/f$ this is $\dQ_7[\theta]/f$. If 
+$(7)=\fp_1^{e_1}\cdots \fp_r^{e_r}$ in $\cO_K$ and each $\fp_i$ has inertia 
+degree $f_i$, then $K_7=K_{\fp_1}\times \cdots \times K_{\fp_r}$, where each 
+$K_{\fp_i}/\dQ_7$ is a field extension of degree $e_i f_i$. In the ring of 
+integers of $K_{\fp_i}$, $(7)=\fp_i^{e_i}$. So $K_7$ carries all the splitting 
+data $(e_i,f_i)$ as well as more information about how $7$ ramifies. 
+
+\begin{enonce}[remark]{Example}
+The field $\dQ_2$ has a unique unramified extension of degree $2$ (in which 
+$e=1$, $f=2$). It has six different ramified extensions of degree $2$ (in 
+which $e=2$, $f=1$). So there are six different ways a quadratic extension 
+$K/\dQ$ can ramify at $2$. 
+\end{enonce}
+
+\begin{defi}
+An \emph{\'etale $\dQ_p$-algebra} is a finite direct product of finite field 
+extensions of $\dQ_p$. The \emph{degree} of an \'etale $\dQ_p$-algebra is its 
+dimension as a $\dQ_p$-vector space. If $L$ is an \'etale $\dQ_p$-algebra, 
+define $\cO_L$ as usual. The \emph{discriminant} of $L$ is 
+$\discriminant_{\dZ_p}(\cO_L) = \langle \det(\trace(\alpha_i \alpha_j))\rangle$.
+Put $|\discriminant_{\dZ_p}(\cO_L)| = \#(\dZ_p/\discriminant(\cO_L))$.  
+\end{defi}
+
+Let's look at all degree $n$ \'etale $\dQ_p$-algebras. There are only finitely 
+many of these (for fixed $n$ and $p$). In fact, if $p>n$, they are 
+well-understood (and have an easy classification). We can ask: how often does 
+each \'etale $\dQ_p$-algebra occur as $K_p=K\otimes\dQ_p$ for a random degree 
+$n$ number field $K$? The most naive guess would be a uniform distribution. 
+
+\begin{enonce}[remark]{Example}
+Consider $p=5,n=2$. There are four \'etale $\dQ_5$-algebras of degree $2$. 
+These are $\dQ_5\times \dQ_5$, the unique unramified extension of degree $2$, 
+and two ramified extensions. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Consider $p=5,n=3$. Here there are six \'etale algebras of this type: 
+$\dQ_5\times \dQ_5\times \dQ_5$, $\dQ_5\times($any quadratic extension$)$, and one 
+ramified and one unramified extension of degree $3$.
+\end{enonce}
+
+Our naive ``equidistribution'' guess is wrong. First, ramified algebras are 
+rare, because lots of ramification corresponds to a large discriminant. Also, 
+objects occur ``in nature'' inversely proportionally to cardinality of their 
+automorphism groups. For example, if our objects are isomorphism classes of 
+cubic fields and ``nature'' is $\overline\dQ$, then a Galois cubic field
+occurs once in $\overline\dQ$, whereas non-Galois cubic fields occur three 
+times, in keeping with the respective orders of automorphism groups. This 
+principle is the basis for the Cohen-Lenstra Heuristics. 
+
+We will construct a measure on the set of \'etale $\dQ_p$-algebras of degree 
+$n$. Namely, 
+\[
+  \mu_p(\{L\}) = \frac{1}{\# \automorphism(L)|\discriminant L|} .
+\]
+This is \emph{not} a probability measure. Let $\widetilde \mu_p$ be the 
+normalized version of $\mu_p$ so that $\widetilde\mu_p$ is a probability 
+measure on the set of \'etale $\dQ_p$-algebras of degree $n$. 
+
+\begin{enonce}{Heuristic}
+A $\dQ_p$-algebra $L$ of degree $n$ occurs as $K_p$ for a random degree $n$ 
+number field $K$ with probability $\widetilde \mu_p$. 
+\end{enonce}
+
+References for this are \cite{b07,m02,m04}. It is known to hold when 
+$n=2,3,5$. For $n=2,3$, this follows from results of Davenport-Heilbront. 
+For $n=5$, this was done by Bhargava via his count of quintic extensions. For 
+$n=4$, the heuristic fails. About $16\%$ of quartic fields have Galois closure 
+with group $D_4$, and about $83\%$ have Galois closure with group $S_4$. We can 
+recover the heuristic for $n=4$ by restricting to $S_4$-quartic extensions. 
+
+
+
+
+
+\subsection{Points on curves over finite fields}
+
+There is a well-known analogy between number fields (e.g.~$\dQ\supset\dZ$) and 
+function fields over finite fields (e.g.~$\dF_q(X)\supset \dF_q[X]$). For 
+example, we should think of a quadratic field $\dQ(\sqrt D)$ as being analogous 
+to an extension $\dF_q(X)(\sqrt{X^3+1})/\dF_q(X)$. We can talk about things 
+like splitting of primes\ldots in both cases. 
+
+The heuristic above corresponds to a conjecture for the proportion of curves 
+over $\dF_q$ with a degree $n$ map to $\dP^1$ that have $k$ points for each 
+$k$. 
+
+\begin{theo}
+For $n=3$, the conjecture is true. That is, when ordered by genus, the average 
+number of points on a trigonal curve is $q+2 - \frac{1}{q^2+q+1}$. 
+\end{theo}
+
+See \cite{w12-trig} for a proof of this. 
+
+
+
+
+
+\subsection{Zeta functions}
+
+Let's return to the question: how many degree $n$ number fields are there? As 
+is so common number theory, we define a zeta function: 
+\[
+  Z(s) = \prod_p \left(\sum_{\substack{K\text{ \'etale $\dQ_p$-algebra} \\ [K:\dQ_p]=n}} \frac{1}{\# \automorphism(K) |\discriminant K|^s}\right) = \sum_{n\geqslant 1} a_n n^{-s} .
+\]
+The $a_n$ don't literally count anything. But heuristically, 
+the number of degree $n$ number fields with $|\discriminant K|<X$ should 
+asymptotically be $\sum_{1\leqslant n\leqslant X} a_n$. There are conjectures 
+due to Malle and Bhargava on hour many degree $n$ number fields there are with 
+fixed Galois group. These conjectures are (at last naively) false. However, when 
+interpreted more loosely (up to $O(X^\epsilon)$) they are known, e.g.~for nilpotent 
+groups, \ldots. 
+
+
+
 
