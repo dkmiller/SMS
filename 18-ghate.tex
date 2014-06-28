@@ -1,0 +1,197 @@
+% !TEX root = sms.tex
+
+\section{Counting Artin representations and modular forms of weight one}
+\thanksauthor{Eknath Ghate}
+
+
+
+
+
+We'll start by spending a little bit of time explaining what modular forms are. 
+
+
+
+
+
+\subsection{Brief introduction to modular forms}
+
+Let $f = \sum_{n\geqslant 1} a_n q^n$ be a primitive cusp form of weight $1$, 
+level $N\geqslant 1$, and character 
+$\varepsilon:(\dZ/N)^\times \to \dC^\times$. Then $f$ is a holomorphic function 
+$f:\fH\to \dC$, where $\fH=\{z\in \dC:\Im z>0\}$ is the upper-half plane. The 
+function $f$ transforms by 
+\[
+  f(\gamma z) = \varepsilon(d) (c z+d) f(z) ,
+\]
+for all matrices $\begin{pmatrix} a & b \\ c & d \end{pmatrix}\in \Gamma_0(N)$. 
+Moreover, $f$ is ``holomorphic at cusps.'' 
+
+Deligne and Serre proved that to asuch a modular form is attached a continuous 
+Galois representation $\rho_f:G_\dQ \to \generallinear_2(\dC)$ such that 
+$\trace \rho_f(\frobenius_\ell) = a_\ell$ and 
+$\det\rho_f(\frobenius_\ell) = \varepsilon(\ell)$ for all primes $\ell\nmid N$. 
+Since $G_\dQ$ is compact and totally disconnected, the image of $\rho_f$ is 
+finite. Once we projectivize, the image of 
+$\widetilde\rho_f:G_\dQ\to \projectivegenerallinear_2(\dC)$ is one of 
+\begin{align*}
+  D_m && \text{dihedral group of order }2m \\
+  A_4 && \text{tetrahedral} \\
+  S_4 && \text{octahedral} \\
+  A_5 && \text{icosahedral}
+\end{align*}
+We call the representations with projective image $A_4,S_4,A_5$ exotic. They 
+are quite rare, with the first one occurring when $N=800$. 
+
+\begin{enonce}{Conjecture}
+The number of exotic forms of prime level $N$ is $O(N^\epsilon)$. 
+\end{enonce}
+
+If the level $N$ is prime, then only octahedral or icosahedral images occur. 
+In this talk we will restrict to counting octahedral forms of prime level. Here 
+is recent progress on the conjecture:
+\begin{center}
+\begin{tabular}{c|c}
+person & bound \\ \hline
+Duke & $O(N^{7/8+\epsilon})$ \\
+Wang & $O(N^{5/6+\epsilon})$ \\
+M-V & $O(N^{4/5+\epsilon})$ \\
+Ganguly & $O(N^{3/4+\epsilon})$ \\
+Ellenberg & $O(N^{2/3+\epsilon})$
+\end{tabular}
+\end{center}
+
+\begin{theo}[Bhargava-Ghate]
+Let $N_\mathrm{oct}^\mathrm{prime}(X)$ be the number of octohedral forms of 
+prime level $<X$. Then 
+\[
+  N_\mathrm{oct}^\mathrm{prime}(X) = O(X/\log X) .
+\]
+\end{theo}
+This is proven in \cite{bg09}. So on average, the number of octahedral forms 
+of prime level is bounded by a constant. 
+
+\begin{proof}
+The idea is to ``count forms by counting forms.'' That is, we use the fact 
+that octahedral modular forms of weight one correspond to Galois 
+representations, which in turn correspond go quartic number fields, which 
+come from quartic forms. 
+
+Step 1. It is enough to count (linear) Galois representations. The Artin 
+conjecture says that there is a bijection between octahedral forms and 
+isomorphism classes of $\rho:G_\dQ \to \generallinear_2(\dC)$ with 
+$\rho(G_\dQ)\simeq S_4$ and $\det\rho(c)=-1$. The direction $\Rightarrow$ was 
+proved in \cite{ds74}, while $\Leftarrow$ is the Langlands-Tunnell theorem 
+proved in \cite{t81}.
+
+One uses Serre's conjecture (proved in full generality in 
+\cite{kw09-i,kw09-ii}) to prove the Artin conjecture. Choose 
+$\cO\subset \dC$, the ring of integers in a number field such that 
+$\rho(G_\dQ)\subset \generallinear_2(\dC)$. We get a commutative diagram 
+\[\xymatrix{
+  G_\dQ \ar[r]^-\rho \ar[dr]_-{\bar\rho} 
+    & \generallinear_2(\cO) \ar[d] \\ 
+  & \generallinear_2(\overline{\dF_p}) .
+}\]
+Serre's conjecture predicts that if $\bar\rho$ is odd and irreducible, then 
+$\bar\rho\sim \bar\rho_g$ for a modular form $g$, where 
+$g\in S_1(\Gamma_0(N),4)$. Write $g=\sum b_n q^n$. Then 
+$a_\ell\equiv b_\ell\pmod p$ for all $\ell\nmid N$. Since this works for 
+infinitely many $p$, there exists $g$ such that $a_\ell=b_\ell$. Thus 
+$\rho$ is modular. 
+
+Step 2. It is enough to count projective Galois representations. There is 
+a surjection from isomorphism of odd $\rho:G_\dQ\to \generallinear_2(\dC)$ 
+with $\widetilde\rho(G_\dQ)\simeq S_4$, to isomorphism classes of 
+$\widetilde\rho:G_\dQ\to \projectivegenerallinear_2(\dC)$ with 
+$\widetilde\rho(G_\dQ)\simeq S_4$ and $\widetilde\rho(c)\ne 1$. Surjectivity 
+follows from $\h^2(G_\dQ,\dC^\times)=0$. The map is not injective: if 
+$\chi$ is any character, Tate proved that 
+$\rho\otimes\chi\mapsto\widetilde\rho$. But we can control the map when $N$ is 
+square-free. If $p\| N$, then 
+\[
+  \rho|_{I_p} \sim \begin{pmatrix} \varepsilon_p \\ & 1 \end{pmatrix} .
+\]
+Choose $\chi$ with $\chi^{12}=1$, and apply this with $\rho\otimes\chi$ 
+instead of $\rho$. The new character is $(\varepsilon\chi^2)^{12}$. When 
+$N=p$, there are only two such $\chi$ so that $\rho\otimes\chi$ map to the 
+same $\widetilde\rho$. We get that $\varepsilon=\varepsilon_p$ is odd. Some 
+technical manipulations yield that $\rho\mapsto \widetilde\rho$ is 
+2-to-1 when the level $N$ is prime. 
+
+Step 3. It is enough to count quartic fields with Galois closure having group 
+$S_4$. A projective representation 
+$\widetilde\rho:G_\dQ \to \projectivegenerallinear_2(\dC)$ with 
+$\widetilde\rho(G_\dQ)\simeq S-4$ and $\widetilde\rho(c)\ne 1$ cuts out a field 
+$K$ over $\dQ$ that is not totally real. 
+
+There is a key technical problem here. We want to count modular forms by level, 
+but we usually count number fields by discriminant. Let $N$ be the level of 
+$f$. If $K$ is the field corresponding to $f$ and $D=\discriminant(K)$, then 
+we might have $N\ne D_K$. However, a prime $p\mid N_f$ if and only if 
+$p\mid D_K$. Note that if $p\geqslant 5$, then either $p\| N_f$ or 
+$p^2\| N_f$. However, it is possible for $p^3\| D_K$. Consider the following 
+ramification table in the octahedral case (for minimal forms): 
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c}
+$I_p$ & $G_p$ & ram.~in $K$ & $D_K$ & $N_f$ & $p\equiv$ \\ \hline
+$(12)$     & $I_p$       & $1^2 11$ & $p$ & $p$ \\
+$(12)$     & $(12),(34)$ & $1^2 2$  & $p$ & $p^2$ \\
+$(12)(34)$ & $I_p$       & $1^2 1^{\underline 2}$ & $p^2$ & $p$\\
+$(13)(24)$ & $(1234)$    & $2^2$    & $p^2$ & $p$ \\
+$(12)(34)$ & $V_4$       & $2^2$    & $p^2$ & $p^2$ \\
+$(12)(34)$ & $(12)(34)$  & $1^2 1$  & $p^2$ & $p^2$ \\
+$(123)$    & $I_p$       & $1^3 1$  & $p^2$ & $p$   & $1\pmod 3$ \\
+$(123)$    & $S_3$       & $1^3 1$  & $p^2$ & $p^2$ & $2\pmod 3$ \\
+$(1234)$   & $I_p$       & $1^4 $   & $p^3$ & $p$   & $1\pmod 4$ \\
+$(1234)$   & $D_4$       & $1^4$    & $p^3$ & $p^2$ & $3\pmod 4$ 
+\end{tabular}
+\end{center}
+[\ldots some notation I don't understand\ldots]. 
+Five times, the power of $p$ in $D_K$ is at most the power of $p$ in 
+$N_f$. The other five possibilities, this fails. For $4/5$ of the time we can 
+still control things. The other possibility is $p\equiv 1\pmod 3$. 
+
+We use some facts about quartic fields. Consider field extensions 
+$E-\supset K_6\supset K_3\supset \dQ$ corresponding to the inclusions 
+[\ldots missed this part\ldots]. 
+
+The extension $K_6/K_3$ has Galois group $S_4$ if and only if 
+\begin{enumerate}
+  \item $K_3/\dQ$ has Galois group $S_3$ 
+  \item $\norm_\dQ(\discriminant(K_6/K_3))=n^2$ for $n$ square-free 
+  \item $\discriminant(K_4) = \discriminant(k_3) n^2$ 
+  \item $K_6/K_3$ ramifies if and only if $p=1^4$ or 
+    $1^2 1^2$ or $2^2$. 
+\end{enumerate} 
+We use the following theorem of Serre to simplify the table: 
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+Ram.~in $K_4$ & $|\discriminant(K_4)|$ & level & $|\discriminant(K_3)|$ & $n$ \\ \hline
+$1^2 11$ & $p$ & $p$ & $p$ & $1$ \\
+$1^4$ & $p^3$ & $p$ & $p$ & $p$ 
+\end{tabular}
+\end{center}
+
+Step 4. Use Bhargava's counting results in the quartic case, as well as some 
+sieve methods. Recall, from \cite{b04} that isomorphism classes of maximal
+$S_4$-quartic orders are in bijection with 
+$\generallinear_2(\dZ)\times \generallinear_3(\dZ)$-classes of pairs of 
+irreducible ternary quadratic forms $(A,B)$. From \cite{b05}, we the number 
+$N_4(X)$ of number fields of $S_4$-quartic fields of $|\discriminant|<X$ is 
+$O(X)$. A technical modification shows that the number $N_4^\mathrm{prime}(X)$ 
+of $S_4$-quartic fields of prime level $<X$ is $O(X/\log X)$. As a 
+corollary, 
+\[
+  \sum_{\substack{0<|\discriminant(K_3)|<X \\ \text{prime}}} h_2^\ast(K_3) \leqslant C\frac{X}{\log X} .
+\]
+We can finally count the number of octahedral of prime level $<X$ modular 
+forms.  
+\end{proof}
+
+\begin{theo}[Serre]
+In prime level, the discriminant of $K_4$ is either $p^3$ or $-p$. 
+\end{theo}
+
+
+
+

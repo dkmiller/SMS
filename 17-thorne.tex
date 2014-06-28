@@ -1,0 +1,215 @@
+% !TEX root = sms.tex
+
+\section{Zeta function methods}
+\thanksauthor{Frank Thorne}
+
+
+
+
+
+\subsection{Motivation}
+
+The question is: what are zeta functions good for? Let $N_3^\pm(X)$ be the 
+number of cubic fields $K$ with $0<\pm\discriminant(K)<X$. Define 
+\begin{align*}
+  C^\pm &= \begin{cases} 1 & + \\ 3 & - \end{cases} \\
+  K^\pm &= \begin{cases} 1 & + \\ \sqrt 3 & -\end{cases}
+\end{align*}
+
+\begin{theo}
+The following holds: 
+\[
+  N_3^\pm(X)=C^\pm \frac{1}{12\zeta(3)}X + K^\pm \frac{4\zeta(1/3)}{5\Gamma(2/3)^3\zeta(5/3)} X^{5/6} + O(X^{2/3+\epsilon}) .
+\]
+\end{theo}
+
+We would like to understand how zeta functions can be used to provide such 
+good error terms. 
+
+
+
+
+
+\subsection{Definitions}
+
+As we have done before, put 
+\begin{align*}
+  V(\dZ) &= \{a u^3 + b u^2 v + c u v^2 + d v^3:a,b,c,d\in \dZ\} \\
+  \widehat V(\dZ) &= \{\cdots : 3\mid b,c\} .
+\end{align*}
+The group $\generallinear_2(\dZ)$ acts on both of these via 
+\[
+  (\gamma\cdot f)(u,v) = \frac{1}{\det\gamma}f\left(\begin{pmatrix} u & v\end{pmatrix}\cdot \gamma\right) .
+\]
+\begin{theo}
+There is a natural bijection 
+\[
+  \generallinear_2(\dZ)\backslash V(\dZ) \iso \{\text{cubic rings}\}/\sim .
+\]
+\end{theo}
+
+\begin{defi}[Shintani]
+Put 
+\begin{align*}
+  \xi^\pm(s) 
+    &= \sum_{x\in \generallinear_2(\dZ)\backslash V^\pm(\dZ)} \frac{1}{\#\stabilizer(x)}|\discriminant(x)|^{-s} \\
+    &= \sum_{\substack{R\text{ cubic ring} \\ 
+  \pm \discriminant(R)>0}} \frac{1}{\#\automorphism(R)} |\discriminant(R)|^{-s} . 
+\end{align*}
+\end{defi}
+
+\begin{theo}[Shintani]
+The functions $\xi^\pm(s)$ have analytic continuation to $\dC$ except for 
+poles at $s=1,\frac 5 6$, explicit residue formulas at these poles, and a 
+functional equation 
+\[
+  \begin{pmatrix} \xi^+(1-s) \\ \xi^-(1-s) \end{pmatrix} = \Gamma\left(s-\frac 1 6\right)\Gamma(s)^2 \Gamma\left(s+\frac 1 6\right) \frac{3^{6 s-2}}{2\pi^{4 s}} \begin{pmatrix} \sin(2\pi s) & \sin(\pi s) \\ 3\sin(\pi s) & \sin(2\pi s)\end{pmatrix} \begin{pmatrix} \widehat \xi^+(s) \\ \widehat\xi^-(s) \end{pmatrix} 
+\]
+where $\widehat\xi^\pm$ are defined in terms of $\widehat V(\dZ)$ instead of 
+$V(\dZ)$. 
+\end{theo}
+This was proved in \cite{s72}. 
+
+
+
+
+
+\subsection{How analytic number theorists count}
+
+We'll see explicitly how analytic properties of $\xi^\pm$ translate into 
+asymptotic estimates for the number of cubic rings. 
+
+\begin{enonce}{Principle}[Perron's formula]
+Given any Dirichlet series $B(s)=\sum_{n\geqslant 1} b(n) n^{-s}$ which is 
+absolutely convergent for $\Re s=2$, then 
+\[
+  \sum_{n\leqslant X} b(n) = \frac{1}{2\pi i}\int_{2-i\infty}^{2+i\infty} B(s) X^s \, \frac{\mathrm{d}s}{s} .
+\]
+\end{enonce}
+
+For the $b(n)$ completely arbitrary, this is not very helpful. The idea is: for 
+specific $b(n)$, shift the contour of this integral. For example, if we are 
+trying to count integers less than $X$, apply Davenport's lemma to conclude 
+that there are $X+O(1)$ integers between $0$ and $X$. We define 
+\[
+  \zeta(s) = \sum_{n\geqslant 1} n^{-s} .
+\]
+By Perron's formula, we get 
+\[
+  \sum_{1\leqslant n<X} 1 = \frac{1}{2\pi i} \int_{2-i\infty}^{2+i\infty} \zeta(s) X^s\frac{\mathrm{d}s}{s} .
+\]
+See if you can spot the mistake in the following computation: 
+\begin{align*}\tag{$\ast$}\label{eq:diverge}
+  \sum_{n\leqslant X} 1 
+    &= \residue_{s=1} + \residue_{s=0}\left(\zeta(s)X^s\frac{\mathrm{d}s}{s}\right) + \frac{1}{2\pi i}\int_{-1-i\infty}^{1+i\infty} \zeta(s) X^s\frac{\mathrm{d}s}{s} \\
+    &= X+\zeta(0) + (\text{error}) .
+\end{align*}
+Does the integral in \eqref{eq:diverge} converse? For this, we need some bounds 
+on $\zeta$. 
+
+\begin{prop}
+If $\sigma<0$, we have $\zeta(-\sigma+i t) \ll (1+|t|)^{1/2+\sigma}$. 
+\end{prop}
+
+\begin{enonce}{Exercise}
+Use the functional equation and Stirling's approximation to prove the 
+Proposition. 
+\end{enonce}
+
+Inside the critical strip, controlling the behavior of $\zeta$ is a large 
+problem. But outside $\{0<\Re s<1\}$, things are relatively straightforward. 
+
+We can use the above Proposition to show that the integral appearing in 
+\eqref{eq:diverge} diverges. 
+
+
+
+
+
+\subsection{The Landau method}
+
+A big principle in analytic number theory is that it is important to work with 
+``smooth sums.'' 
+
+\begin{prop}
+Let $b:\dN\to \dC$ and $B(s)=\sum b(n) n^{-s}$. Then 
+\begin{align*}
+  \sum_{n<X} b(n)\left(1-\frac n X\right) &= \frac{1}{2\pi i} \int_{2-i\infty}^{2+i\infty} B(s) \frac{X^s}{s(s+1)}\, \mathrm{d}s \\
+  \frac 1 2\sum_{n<X}\left(1-\frac n X\right)^2 &= \frac{1}{2\pi i}\int_{2-i\infty}^{2+i\infty} B(s) \frac{X^s}{s(s+1)(s+2)}\, \mathrm{d} s.
+\end{align*}
+\end{prop}
+
+\begin{enonce}{Exercise}
+Prove and generalize the Proposition. 
+\end{enonce}
+
+These are all special cases of Mellin inversion. Using the Proposition, we 
+continue our counting of integers: 
+\[
+  \sum_{n<X} (X-n) = \frac{X^2}{2} - X + \frac{1}{2\pi i} \int_{-1-i\infty}^{1+i\infty} \zeta(s) \frac{X^{1+s}}{s(s+1)}\, \mathrm{d} x .
+\]
+The integral is $O(X^{1/2+\epsilon})$. Moreover, 
+\[
+  \sum_{n<X+Y} (X+Y-n) = \frac{X+Y}{2} - (X+Y) + O((X+Y)^{1/2+\epsilon}) .
+\]
+Subtract the first equation from the second, to conclude that 
+\[
+  \sum_{n<X} 1 = X+O(X^{1/4+\epsilon}) .
+\]
+A more careful analysis of the integrals gets better error terms. 
+
+
+
+
+
+\subsection{Why does the zeta function have such good analytic properties?}
+
+\begin{defi}[Shintani]
+The \emph{global zeta function} is, for ``nice test functions'' 
+$f:V_\dR\to \dC$, 
+\[
+  Z(f,s) = \int_{\generallinear_2(\dR)/\generallinear_2(\dR)} |\det g|^{2 s} \left(\sum_{x\in V(\dZ)\smallsetminus S} f(g x)\right)\, \mathrm{d} g ,
+\]
+where $S=\{x\in V(\dZ):\discriminant(x)=0\}$. 
+\end{defi}
+
+\begin{prop}
+We have the following decomposition:
+\[
+  Z(f,s) = \frac{1}{4\pi} \xi^+(s) \int_{V^+(\dR)} |\discriminant(x)|^{s-1} f(x)\, \mathrm{d}x + \frac{\xi_-(s)}{2\pi} \int_{V^-(\dR)} |\discriminant(x)|^{s-1} f(x)\,\mathrm{d} x .
+\]
+\end{prop}
+
+Recall from Bhargava's lectures that the number of irreducible 
+$\generallinear_2(\dZ)$-orbits in $G(\dZ)$ with $|\discriminant|<X$ is 
+\[
+  C \frac{\displaystyle\int_\cF\#\{x\in g B\cap V(\dZ)^\mathrm{irr}:|\discriminant(x)|<X\}\,\mathrm{d}g}{\displaystyle\int_B |\discriminant(b)|^{-1}\, \mathrm{d} v} .
+\]
+The sieve gives the estimate 
+\[
+  N_\mathrm{max}^\pm(X) = \sum_{q\geqslant 1} \mu(q) N^\pm(q,x) 
+\]
+where $N^\pm_\mathrm{max}(X)$ is the number of maximal cubic rings $R$ with 
+$0<\pm \discriminant(R)<X$ and 
+$N^\pm(q,X)$ is the number of cubic rings ``nonmaximal at $q$.'' Define the 
+$q$-nonmaximal zeta functions: 
+\[
+  \xi_q^\pm(s) = \sum_{x\in \generallinear_2(\dZ)\backslash V^\pm(\dZ)} \frac{1}{\#\stabilizer(x)} \Phi_q(x) |\discriminant(x)|^{-s} ,
+\]
+where $\Phi_q(x)$ is the characteristic function of the set of cubic forms 
+nonmaximal at $q$. We get 
+\[
+  \widehat\xi_q^\pm(s) = q^{8 s-8} \sum_{x\in \generallinear_2(\dZ)\backslash \widehat V_\dZ} \frac{1}{\#\stabilizer(x)}\widehat\Phi_q(x) |\discriminant(x)|^{-s} ,
+\]
+where 
+\[
+  \widehat\Phi_q(x) = \sum_{y\in V(\dZ/q^2)} \Phi_q(y) \exp\left(\frac{2\pi i[x,y]}{q^2}\right) ,
+\]
+and 
+\[
+  [x,y] = x_r y_1 - \frac 1 3 x_3 y_2 + \frac 1 3 x_2 y_3 - x_1 y_4 .
+\]
+
+
+
+
