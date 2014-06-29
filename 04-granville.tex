@@ -165,13 +165,38 @@ the smallest solution is of size $C^{\sqrt d}$ for some $C$, but very little
 has been proved. Understanding the distribution of sizes of the smallest 
 solutions to Pell's equation is an outstanding open question in number theory. 
 
+There is one last fact we need on Pell's equation. Let 
+$\epsilon_d=x_1+y_1\sqrt d$ be the smallest solution with $x_1,y_1\in \dN$ to 
+\[
+  x^2 - d y^2 = 1 .
+\]
+If $x^2 - d y^2=n$ and $x,y\geqslant 0$, put 
+$\alpha = x+y\sqrt d>\sqrt n$. If 
+$\sqrt n\epsilon_d^k \leqslant \alpha < \sqrt n \epsilon_d^{k+1}$, let 
+$\beta=\alpha \epsilon_d^{-k} = u+v\sqrt d$. Then 
+$\sqrt n\leqslant \beta < \sqrt n\epsilon_d$, with $u,v\geqslant 1$ and 
+$u^2 - d v^2 = n$. 
+
 
 
 
 
 \subsection{Binary quadratic forms}
 
-d
+Let $f(x,y)=a x^2 + b x y + c y^2$ be a binary quadratic form. The basic 
+question is: what integers are represented by $f$? Namely, for what $N$ are 
+there coprime $m,n$ so that $N=f(m,n)$? We may assume $\gcd(a,b,c)=1$. 
+Completing the square, we obtain 
+\[
+  4 a N = (2 a m+b n)^2  d n^2
+\]
+where the discriminant $d=b^2 -4 a c$, so $d$ is congruent to either $0$ or 
+$1$ modulo $4$. If $d<0$, the right side can only take positive values\ldots 
+things are easier when $d>0$. If $a>0$, the form is positive definite. 
+
+
+
+
 
 \subsection{Structure of ideals}
 
