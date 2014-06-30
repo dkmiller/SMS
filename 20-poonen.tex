@@ -1,11 +1,301 @@
 % !TEX root = sms.tex
 
-\section{Selmer groups and heuristics I}
+\section{Selmer groups and heuristics I}\label{sec:poonen-ii}
 \thanksauthor{Bjorn Poonen}
 
 
 
 
 
-d
+The results of this lecture are joint work with Eric Rains. See the paper 
+\cite{pr12} for details. 
+
+
+
+
+
+\subsection{Introduction}
+
+For simplicity, we'll work over $\dQ$, but most of these results work over any 
+number field, and even over any global field. Let 
+$G=\galois(\overline\dQ/\dQ)$, $v$ be a place of $\dQ$, and 
+\[
+  \dQ_v = \begin{cases}\dR & v=\infty \\ \dQ_p & v=p\end{cases} 
+\]
+Let $\dA=\prod_v' (\dQ_v,\dZ_v)$ be the restricted direct product of the 
+$\dQ_v$. That is, 
+\[
+  \dA = \left\{(a_v)\in \prod_v \dQ_v:a_v\in \dZ_v\text{ all but finitely many }v\right\}
+\]
+The ring of adeles $\dA$ is locally compact. 
+
+\begin{theo}[Mordell]
+Let $E$ be an elliptic curve over $\dQ$. Then $E(\dQ)$ is finitely generated. 
+\end{theo}
+\begin{proof}
+This is essentially the only known. First, show that $E(\dQ)/n$ is finite for 
+some $n\geqslant 2$. Then use height functions to conclude that $E(\dQ)$ is 
+finitely generated. 
+\end{proof}
+
+The only known proof of finiteness of $E(\dQ)/n$ passes through the finiteness 
+of Selmer groups. Start with the exact sequence 
+\[\xymatrix{
+  0 \ar[r] 
+    & E[n] \ar[r] 
+    & E \ar[r]^-n 
+    & E \ar[r] 
+    & 0 ,
+}\]
+which we think of as an exact sequence of \'etale sheaves over 
+$\spectrum(\dQ)$, i.e.~$G_\dQ$-modules. Taking global sections 
+($G$-invariants), we get a long exact sequence 
+\[
+  0 \to E[n](\dQ) \to E(\dQ) \xrightarrow n E(\dQ) \to \h^1(\dQ,E[n]) \to \h^1(\dQ,E) \to \cdots
+\]
+We write $\h^1(\dQ,E[n])$ for either of the two (naturally isomorphic) groups 
+\[
+  \h^1(G_\dQ,E[n](\overline\dQ))\qquad \h^1(k_\textnormal{\'et},E[n]).
+\]
+This gives us an exact sequence 
+\[
+  0 \to E(\dQ)/n \to \h^1(\dQ,E[n]) \to \h^1(\dQ,E) \to 0 .
+\]
+Unfortunately, $\h^1(\dQ,E[n])$ is (provably) infinite. But we can try to pin 
+down the image of $E(\dQ)/n$ inside $\h^1(\dQ,E[n])$. Working at each place 
+$v$, we get a commutative diagram 
+\[\xymatrix{
+  0 \ar[r] 
+    & E(\dQ)/n \ar[r] \ar[d] 
+    & \h^1(\dQ,E[n]) \ar[r] \ar[d]^-\beta 
+    & \h^1(\dQ,E) \ar[r] \ar[d]^-\gamma 
+    & 0 \\
+  0 \ar[r] 
+    & E(\dA)/n \ar[r]^-\alpha 
+    & \h^1(\dA,E[n]) \ar[r] 
+    & \h^1(\dA,E) \ar[r] 
+    & 0 .
+}\]
+Here we write $\h^1(\dA,E[n])$ for either $\h^1(\dA_\textnormal{\'et},E[n])$ 
+or $\prod_v' \h^1(\dQ_v,E[n])$ with respect to the $\h^1(\dZ_v,\cE[n])$, where 
+$\cE$ is the N\'eron model for $E$. The two groups are isomorphic -- see 
+\cite{mathoverflow} for details. 
+Define 
+\begin{align*}
+  \selmer_n E &= \beta^{-1}(\image \alpha) \\
+  \sha(E) &= \ker(\gamma) .
+\end{align*}
+The group $\selmer_n E$ is finite and, in principle, computable. As an 
+exercise, show that there is a natural exact sequence 
+\[
+  0 \to E(\dQ)/n \to \selmer_n E \to \sha(E)[n] \to 0 .
+\]
+
+For an elliptic curve $E:y^2=x^3+A x+B$ with $A,B\in \dZ$ minimal, put 
+$h(E)=\max(|A|^3,|B|^2)$. Let $\cE$ be the set of isomorphism classes of 
+elliptic curves over $\dQ$. For $X\in \dR$, put 
+$\cE_{<X}=\{E\in \cE:h(E)<X\}$. 
+
+\begin{defi}
+For $S\subset \cE$, define 
+\[
+  \probability(S) = \lim_{X\to \infty} \frac{\#(S\cap \cE_{<X})}{\# \cE_{<X}} .
+\]
+\end{defi}
+
+Given a prime $p$, what is $\probability(\dim\selmer_p E=s)$? In \cite{h94}, 
+Heath-Brown proved that as $E$ ranges over quadratic twists of $y^2=x^3-x$, 
+we have 
+\[
+  \probability(\dim \selmer_2(E)-2=s) = \prod_{j\geqslant 0} \frac{1}{1+2^{-j}} \prod_{j=1}^s \frac{2}{2^j-1} .
+\]
+This is not one of the standard (e.g.~Bernoulli or Poisson) distributions. 
+The distribution turns out to model ``random maximal isotropic subspaces of a 
+quadratic space.'' 
+
+
+
+
+
+\subsection{Maximal isotropic subspaces}
+
+Let $V=\dF_p^{2n}$, and let 
+\[
+  Q(\boldsymbol x,\boldsymbol y) = Q(x_1,\dots,x_n,y_1,\dots,y_n) = x_1 y_1 + \cdots + x_n y_n .
+\]
+The pair $(V,Q)$ is a hyperbolic quadratic space over $\dF_p$. To any quadratic 
+space we can associate a symmetric bilinear form 
+$\langle \cdot,\cdot\rangle:V\times V\to \dF_p$ by 
+\[
+  \langle v,w\rangle = Q(v+w)-Q(v)-Q(w) .
+\]
+Given a subspace $Z\subset V$, define the ``orthogonal complement'' $Z^\bot$ as 
+\[
+  Z^\bot = \{v\in V:\langle v,z\rangle = 0\text{ for all }z\in Z\} .
+\]
+It's not actually a complement, because it could be that $Z\cap Z^\bot \ne 0$. 
+We do have $V^\bot = 0$. If $\dim Z=m$, then $\dim Z^\bot = 2 n-m$. 
+
+We call a subspace $Z\subset V$ \emph{isotropic} if $Q|_Z=0$. We say $Z$ is 
+\emph{maximal isotropic} (or \emph{Lagrangian}) if $Q|_Z=0$ and $Z=Z^\bot$. The 
+second condition forces $\dim Z=n$. 
+
+\begin{enonce}[remark]{Example}
+The subspace $\{(x_1,\dots,x_n,0,\dots,0)\}\subset V$ is maximal isotropic. 
+\end{enonce}
+
+Define the \emph{orthogonal Grassmannian} 
+$\orthogonalgrassmannian_n\subset \grassmannian_{n,2 n}$ by 
+\[
+  \orthogonalgrassmannian_n(\dF_p) = \{\text{maximal isotropic }Z\subset V\} .
+\]
+Choose $Z,W\in \orthogonalgrassmannian_n(\dF_p)$ uniformly at random. We get 
+a random variable $\dim_{\dF_p}(Z\cap W)$. 
+
+\begin{enonce}{Conjecture}[Poonen, Rains]
+As $E$ ranges over all elliptic curves over $\dQ$, 
+\[
+  \probability(\dim \selmer_p E=s) = \lim_{n\to \infty} \probability(\dim(Z\cap W)=s) .
+\]
+\end{enonce}
+
+Some basic combinatorics and linear algebra show that the predicted 
+distribution is agrees with the theorem of Heath-Browns when $p=2$. 
+
+
+
+
+
+\subsection{Selmer groups and maximal isotropic subspaces}
+
+Why should we expect this conjecture be true? Is there anything in the 
+arithmetic of elliptic curves that would lead us to expect Selmer groups to 
+behave like intersections of maximal isotropic subspaces? 
+
+Our goal is to show that $\selmer_p E$ actually is the intersection of two 
+maximal isotropic subspaces of an infinite-dimensional quadratic space. 
+
+For the rest of this lecture, for simplicity assume $p$ is an odd prime. Then 
+to choose a quadratic function on an $\dF_p$-vector space $V$ is equivalent 
+to choosing a bilinear form $\langle \cdot,\cdot\rangle$ on $V$. If we have 
+$\langle\cdot,\cdot\rangle$, we set 
+\[
+  Q(x) = \frac 1 2 \langle x,x\rangle.
+\]
+
+
+
+
+
+\subsection{Local fields}
+
+Let $E$ be an elliptic curve over $\dQ_v$. Let $V_v = \h^1(\dQ_v,E[p])$. This 
+is a finite-dimensional $\dF_p$-vector space. To prove this, set 
+$L=\dQ_v(E[p])\supset \dQ_v(\mu_p)$. The extension $L/\dQ_v$ is finite Galois. 
+We get a short exact sequence 
+\[\xymatrix{
+  0 \ar[r] 
+    & \h^1(\galois(L/\dQ_v),E[p]) \ar[r]^-{\mathrm{inf}} 
+    & \h^1(\dQ_v,E[p]) \ar[r]^-{\mathrm{res}} 
+    & \h^1(L,E[p]) .
+}\]
+To prove that $\h^1(\dQ_v,E[p])$ is finite-dimensional, it is sufficient to 
+prove that the groups on the ends of this sequence are finite. 
+The group on the left is obviously finite. The group on the right is 
+$\hom_\mathrm{cts}(G_L,\dZ/p)^{\oplus 2}$. Since $\dZ/p$ is abelian, local 
+class field theory tells us that $\hom_\mathrm{cts}(G_L,\dZ/p)$ is 
+$\hom_\mathrm{cts}(L^\times / p,\dZ/p)$, a finite group. Actually, since 
+$\mu_p\subset L$, we didn't need class field theory -- we could have just used 
+Kummer theory. 
+
+The Weil pairing 
+$e:E[p]\times E[p] \to \boldsymbol\mu_p\subset \dG_\multiplicative$ induces via 
+the cup-product a pairing 
+\[
+  \langle \cdot,\cdot\rangle:V_v\times V_v \to \h^2(\dQ_v,E[p]\otimes E[p]) \to \h^2(\dQ_v,\dG_\multiplicative) = \brauer(\dQ_v)\hookrightarrow \dQ/\dZ .
+\]
+We will write $Q$ for the induced quadratic map $Q_v:V_v\to \dR/\dZ$. Let 
+$W_v = \image(E(\dQ_v)/p \hookrightarrow \h^1(\dQ_v,E[p]))$; it turns out that 
+$W_v=\h^1(\dZ_v,\cE[p])$, where $\cE$ is the N\'eron model for $E$ over 
+$\dZ_v$. The following theorem is proved in \cite{n02} using Tate local 
+duality. 
+
+\begin{theo}[O'Neil]
+The subspace $W_v\subset V_v$ is maximal isotropic with respect to $Q_v$. 
+\end{theo}
+
+
+
+
+
+\subsection{Global fields}
+
+Let $E$ be an elliptic curve over $\dQ$. For each place $v$, let 
+$V_v=\h^1(\dQ_v,E[p]) \supset W_v$. Define 
+\begin{align*}
+  V &= \prod' (V_v,W_v) = \h^1(\dA,E[p]) \\
+  Q &= \sum Q_v :V\to \dR/\dZ .
+\end{align*}
+Then $(V,Q)$ is a ``quadratic locally compact group.'' Recall our diagram: 
+\[\xymatrix{
+  \selmer_p E \ar@{^{(}->}[r] 
+    & \h^1(\dQ,E[p]) \ar[d]^-\beta \\
+  E(\dA)/p \ar[r]^-\alpha 
+    & \h^1(\dA,E[p]) 
+}\]
+in which $\selmer_p E = \beta^{-1}(\image\alpha)$. 
+
+\begin{theo}
+1. $\image(\alpha)$ and $\image(\beta)$ are maximal isotropic. 
+
+2. $\beta$ is injective. 
+
+3. $\image(\alpha)\cap \image(\beta) = \beta(\selmer_p E)\simeq \selmer_p(E)$
+\end{theo}
+\begin{proof}[Ingredients of proof]
+1. use the fact that $\image(\alpha) = \prod W_v$ and each $W_v$ is 
+isotropic. The fact that $\image(\beta)$ is maximal isotropic follows from the 
+9-term Poitou-Tate exact sequence in global duality and the Brauer reciprocity 
+law. 
+
+2. Use the \v Cebotarev density theorem, and the fact that the Sylow 
+$p$-subgroups 
+$\begin{pmatrix} 1 & \ast \\ & 1 \end{pmatrix}\subset \generallinear_2(\dF_p)$ 
+is cyclic. 
+
+3. This follows from 1, 2, and the definition of $\selmer_p E$. The 
+group $\h^1(\dA,E[p])$ is self-dual via our pairing 
+$\langle \cdot,\cdot\rangle$. 
+\end{proof}
+
+So $\selmer_p(E)$ ``is'' the intersection of the two maximal isotropic subspaces 
+$E(\dA)/p$ and $\h^1(\dQ,E[p])$ of $\h^1(\dA,E[p])$. The theorem is false for 
+abelian varieties, and for $p^2$-torsion. 
+
+
+
+
+
+\subsection{Passing to \texorpdfstring{$p^\infty$}{pinfty}-torsion}
+
+Recall that there is a canonical exact sequence 
+\[
+  0 \to E(\dQ)/n \to \selmer_n E \to \sha(E)[n] \to 0 
+\]
+for all integers $n\geqslant 1$. Take $n=p^e$ and pass to the direct limit. We 
+get a short exact sequence 
+\begin{equation*}\tag{$\ast$}\label{eq:sel-p}
+  0 \to E(\dQ)\otimes \dQ_p/\dZ_p \to \selmer_{p^\infty} E \to \sha(E)[p^\infty] \to 0 .
+\end{equation*}
+These are all $\dZ_p$-modules with finitely-generated Pontryagin dual. (That 
+is, this is an exact sequence of co-finitely generated $\dZ_p$-modules.) So 
+each is of the form $(\dQ_p/\dZ_p)^s\oplus T$, where $T$ is a finite abelian 
+$p$-group. We call $s$ the \emph{corank} of the group. Conjecturally, 
+$\sha(E)$ is finite, so $\sha(E)[p^\infty]$ has corank $0$. It would follow 
+that $\rank E$ is the $p$-corank of $\selmer_{p^\infty}(E)$. In 
+\autoref{sec:poonen-iii}, we'll give a probabilistic model for the sequence 
+\eqref{eq:sel-p}. 
+
+
+
 
