@@ -7,5 +7,229 @@
 
 
 
-d
+The goal is to discuss how one can show that a hyperelliptic curve has no 
+rational points. 
+
+
+
+
+
+\subsection{Hyperelliptic curves}
+
+Let $k$ be a field of characteristic not $2$. 
+
+\begin{defi}
+A \emph{hyperelliptic curve} over $k$ is the smooth projective curve associated 
+to an affine curve of the form $y^2=f(x)$ with $f\in k[x]$ squarefree (and 
+$\deg f\geqslant 5$). 
+\end{defi}
+
+We will write $C:y^2=f(x)$; $C$ means the projective curve associated to 
+the subvariety $V(y^2-f)$ of the affine plane. We can define the projective 
+curve $C$ as follows: homogenize $f$ as $f(x)=F(x,1)$ with 
+$F\in k[x,z]$ squarefree and homogeneous of even degree. Then 
+$y^2=F(x,z)$ describes $C\subset \dP_{1,g+1,1}^2$ when $\deg F=2 g+2$. 
+
+There are points at infinity. If 
+$f(x)=f_{2 g+2} x^{2 g+2} + \cdots + f_1 x + f_0$, then 
+$F(x,z) = f_{2 g+2} x^{2 g+2} + \cdots + f_0 z^{2 g+2}$. If $\deg f$ is odd, 
+there is just one point $\infty=(1:0:0)$ at infinity. If $\deg f$ is even, 
+then there are two points at infinity: $\infty_{\pm s} = (1:\pm s:0)$, where 
+$f_{2 g+2}=s^2$. If $f_{2 g+2}$ is not a square in $k$, these points at 
+infinity will not be defined over $k$. 
+
+It is known that $C$ has genus $g$. The set of $k$-rational points of $C$ is 
+\[
+  C(k) = \{(\xi,\eta)\in k^2 : \eta^2 = f(\xi)\} \cup 
+  \begin{cases} 
+    \{\infty\} & \deg f\text{ odd} \\ 
+    \{\infty_s,\infty_{-s}\} & \deg f\text{ even, $f_{2 g+2}$ a square} \\ 
+    \varnothing & \text{otherwise} 
+  \end{cases}
+\]
+
+The condition $\deg f\geqslant 5$ implies $g\geqslant 2$. Faltings' theorem 
+tells us that $C(\dQ)$ is finite. Our motivating problem is: determine 
+$C(\dQ)$ explicitly for given $C$. This is wide open at the present. 
+Heuristically, we expect $100\%$ of hyperelliptic curves of genus $g$ to have 
+no rational points. This needs some explanation. For a hyperelliptic curve 
+$C:y^2=f$ defined over $\dQ$, we can assume $f\in \dZ[x]$. We can then order 
+hyperelliptic curves by the height of $f$. 
+
+
+
+
+
+\subsection{Local solubility}
+
+Suppose we have some set $A$ which we want to prove is empty. One way to 
+do this is to construct a map $A\to B$ and show that $B=\varnothing$. If, for 
+example $A=C(\dQ)$, then for each place $v$ of $\dQ$ we have a natural 
+injection $C(\dQ)\hookrightarrow C(\dQ_v)$. If $C(\dQ_v)=\varnothing$ for 
+some $v$, then $C(\dQ)=\varnothing$. 
+
+\begin{defi}
+A curve $C$ is said to be \emph{everywhere locally soluble} if 
+$C(\dR)\ne\varnothing$ and $C(\dQ_p)\ne\varnothing$ for all primes $p$. 
+\end{defi}
+
+Equivalently, $C$ is everywhere locally soluble if $C(\dA)\ne\varnothing$. 
+
+\begin{theo}
+If $C$ is not everywhere locally soluble, then $C(\dQ)=\varnothing$. 
+\end{theo}
+
+\begin{enonce}[remark]{Example}
+Consider $C:y^2-x^6-x^2-17$. Then $C(\dR)=\varnothing$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+The curve $C:y^2=-x^6-3 x^5+4 x^4+2 x^3 +4 x^2 - 3 x-1$ has 
+$C(\dQ_{11})=\varnothing$, because $C(\dF_{11})=\varnothing$. 
+\end{enonce}
+
+As a general principle, local questions are computable, whereas global 
+questions are very hard. In our case, we have the following result. 
+
+\begin{prop}
+There is an algorithm that decides if a hyperelliptic curve over $\dQ$ is 
+everywhere locally soluble or not. 
+\end{prop}
+\begin{proof}[Sketch of proof]
+We need to take care of two problems: 
+\begin{itemize}
+  \item there are infinitely many places of $\dQ$  
+  \item for each place $v$, the field $\dQ_v$ is uncountable 
+\end{itemize}
+It is easy to check whether $C(\dR)=\varnothing$. This is the case if and only 
+if $f$ has no real roots, which happens exactly when $f$ is strictly positive 
+or strictly negative. This is easy to decide. 
+For fixed $p$, ``$C(\dQ_p)=\varnothing$'' reduces to a question modulo $p^n$ 
+via Hensel's lemma. So for any completion $v$ of $\dQ$, it is a finite problem 
+to check whether $C(\dQ_v)=\varnothing$. For $p$ sufficiently large, 
+$p\nmid\discriminant(f)$, so we have $C(\dQ_p)\ne\varnothing$ via a theorem of 
+Weil, namely $\#C(\dF_p)\geqslant p+1-2 g\sqrt p$. For 
+$p\nmid\discriminant(f)$, the curve $C$ is smooth over $\dF_p$, so points in 
+$C(\dF_p)$ lift to points in $C(\dQ_p)$. 
+\end{proof}
+
+A curve which is everywhere locally soluble does not necessarily have a 
+solution in $\dQ$. For fixed $g\geqslant 2$, the everywhere locally soluble 
+curves of genus $g$ have a density $\delta_g$. For example 
+$\delta_2\approx 0.84$ and $\delta_g\to 1$ as $g\to \infty$. So we expect 
+$100\%$ of hyperelliptic curves to have no rational points, but also for 
+$100\%$ of hyperelliptic curves to be everywhere locally soluble. 
+
+
+
+
+
+\subsection{Descent}
+
+Consider $C:y^2=f(x)$ with $f(x)=f_1(x) f_2(x)$, with 
+$\deg f_1,\deg f_2$ even and $f_1,f_2\in \dZ[x]$. Let $P=(\xi,\eta)\in C(\dQ)$. 
+Then $f_1(\xi)\ne 0$, $f_2(\xi)\ne0$, or both. There exists a unique squarefree 
+$d\in \dZ$, together with $\eta_1,\eta_2\in \dQ$, such that 
+$f_1(\xi) = d\eta_1^2$, $f_2(\xi) = d\eta_2^2$. More geometrically, $P$ lifts 
+to a rational point on $D_d:d y_1^2 = f_1(x),d y2^2=f_2(x)$ with 
+$\pi_d:D_d\to C$ defined by $(x,y_1,y_2)\mapsto (x,d y_1 y_2)$. So we have 
+reduced the problem of finding rational points on $C$ to that of finding 
+rational points on the family $\{D_d:d\in \dZ\}$ of curves. 
+
+If $p\mid d$, then $\overline\xi$ a common root of 
+$\overline{f_1},\overline{f_2}\in \dF_p[x]$ implies 
+$p\mid \resultant(f_1,f_2)\ne 0$. This is possible for only finitely many 
+values of $d$. Let $T$ be the set of possible $d$. For each $d\in T$, we can 
+use an algorithm to check if $D_d$ is everywhere locally soluble. If none of 
+them are, then $C(\dQ)=\varnothing$. 
+
+\begin{enonce}[remark]{Example}
+Let $C:y^2=f_1 f_2$, where 
+\begin{align*}
+  f_1 &= -x^2-x-1 \\
+  f_2 &= x^4 + x^3 + x^2 + x+2 .
+\end{align*}
+As an exercise, check that $C$ is everywhere locally soluble. We have 
+$\resultant(f_1,f_2)=\pm 19$, so we can set $T=\{\pm 1,\pm 19\}$. If 
+$d<0$, then $D_d(\dR)=\varnothing$. If $d\equiv 1\pmod 3$, then 
+$D_d(\dF_3)=\varnothing$. It follows that $C(\dQ)=\varnothing$. 
+\end{enonce}
+
+This approach can be generalized to unramified coverings $\pi:D\to C$ that are 
+Galois over $\overline\dQ$. 
+
+
+
+
+
+\subsection{The (fake) 2-Selmer set}
+
+Recall our strategy for showing that a set is empty. There is a more 
+sophisticated version. Instead of looking at maps $A\to B$, look at 
+commutative diagrams 
+\[\xymatrix{
+  A \ar[r] \ar[d] 
+    & B \ar[d]^-\beta \\
+  C \ar[r]^-\gamma 
+    & D .
+}\]
+If $\image(\beta)\cap \image(\gamma)=\varnothing$, then $A=\varnothing$. We 
+will construct such a diagram with $A=C(\dQ)$. 
+
+Let $L=\dQ[x]/f$ and $L_v=L\otimes \dQ_v$. Write $T$ for the image of $x$ in 
+$L$ and each $L_v$. Define 
+\[
+  H = \left\{\alpha\in L^\times/(L^\times)^2 \dQ^\times:N_{L/\dQ}(\alpha) = \leadingcoefficient(f)\cdot (\text{square})\text{ in }\dQ^\times\right\}
+\]
+where $\leadingcoefficient(f)$ is the leading coefficient of $f$. Similarly 
+define $H_v$ for each place $v$. There are natural maps $\rho_v:H\to H_v$. 
+Define $\delta:C(\dQ) \to H$ by 
+\begin{align*}
+  (\xi,\eta) &\mapsto (\xi-T) (L^\times)^2 \dQ^\times && \text{if }\eta\ne 0 \\
+  (\xi,0) &\mapsto (\xi-T-f_1(T))(L^\times)^2 \dQ^\times && \text{if }f(x)=(x-\xi)f_1(x) \\
+  \infty_{\pm s} &\mapsto (L^\times)^2 \dQ^\times .
+\end{align*} 
+Similarly define $\delta_v:C(\dQ_v)\to H_v$. We have a commutative diagram 
+\[\xymatrix{
+  C(\dQ) \ar[r]^-\delta \ar[d] 
+    & H \ar[d]^-{(\rho_v)_v} \\
+  C(\dA) \ar[r]^-{\prod \delta_v} 
+    & \prod H_v .
+}\]
+
+\begin{defi}
+The \emph{(fake) 2-Selmer set} of $C$ is 
+\[
+  \selmer_2^\mathrm{fake}(C) = \{\alpha\in H:\rho_v(\alpha)\in \image(\delta_v)\text{ for all }v\} .
+\]
+\end{defi}
+
+If $\selmer_2^\mathrm{fake}(C)=\varnothing$, then $C(\dQ)=\varnothing$. 
+There is a ``2-Selmer set'' $\selmer_2(C)$ with a map 
+$\selmer_2(C) \to \selmer_2^\mathrm{fake}(C)$ that is surjective. It is 
+bijective for some curves, but is usually 2-to-1. 
+
+The set $\selmer_2^\mathrm{fake}(C)$ can be computed. Let $S$ be the set of 
+places of $L$ dividing one of 
+$\{2,\infty,\discriminant(f),\leadingcoefficient(f)\}$. Then 
+\[
+  \selmer_2^\mathrm{fake}(C)\subset H_S = \{\alpha (L^\times)^2\dQ^\times:v_\fp(\alpha)\text{ even for all }\fp\notin S\} .
+\]
+The set $H_S$ is finite by standard arguments. 
+
+In \cite{bg13}, it is shown that the (upper) density of genus $g$ 
+with $\selmer_2^\mathrm{fake}(C)\ne\varnothing$ is $o(2^{-g})$. 
+
+\begin{enonce}[remark]{Example}[Bruin, Stoll]
+Of the $\sim 200000$ isomorphism classes of genus $2$ curves of height 
+$\leqslant 3$, all but $\sim 1500$ either 
+\begin{itemize}
+  \item have a rational point, 
+  \item fail to be everywhere locally soluble, or 
+  \item have empty 2-Selmer set .
+\end{itemize}
+\end{enonce}
+
+
+
 
