@@ -7,5 +7,289 @@
 
 
 
-d
+\subsection{Introduction}
+
+Recall that every elliptic curve over $\dQ$ can be written as 
+$y^2=x^3+A x+B$ for $A,B\in \dQ$. 
+
+\begin{theo}[Mordell]
+The abelian group $E(\dQ)$ is finitely generated. 
+\end{theo}
+
+So we can write $E(\dQ)=T\oplus \dZ^r$, where $T$ is a finite abelian group, 
+and $r=\rank E$ is the \emph{rank} of $E$. We are going to study the average 
+rank of elliptic curves. To do this, we need to order elliptic curves in some 
+way. 
+
+The elliptic curve $E_{A<B}:y^2=x^3+A x+B$ is isomorphic to 
+$E_{n^4 A,n^6 B}:y^2=x^3+n^4 A x+n^6 B$ for all $n\in \dQ^\times$. So we can 
+assume $A,B\in \dZ$. If we assume that $p^4\mid A\Rightarrow p^6\nmid B$, then 
+the $A,B$ are unique. Thus there is a bijection between isomorphism classes of 
+elliptic curves over $\dQ$ and 
+\[
+  \cE = \{E_{A,B}:(A,B)\in \dZ^2\text{ and }p^4\mid A\Rightarrow p^6\nmid B\} .
+\]
+We could also look at subfamilies of $\cE$ cut out by (possibly infinitely 
+many) congruence conditions. We could also look at ``thin'' families consisting 
+of all quadratic twists of some elliptic curve. 
+
+
+
+
+
+\subsection{Ordering elliptic curves}
+
+To talk about averages, we need to order elliptic curves in some way. The most 
+obvious invariants to use are the discriminant and conductor. We have 
+\[
+  \discriminant(E_{A,B}) = \Delta(E_{A,B}) = 4 A^3 - 27 B^2 .
+\]
+The problem with ordering elliptic curves by discriminant is that we don't know 
+how to count the number of elliptic curves with discriminant bounded by $X$. 
+Essentially, the region $\{(x,y)\in \dR^2:4 x^2 - 27 y^3<X\}$ is noncompact, 
+which makes the counting problem very hard. What is easier is to order elliptic 
+curves by (naive) height: 
+\[
+  H(E_{A,B}) = \max\{|4 A^3|, 27 B^2\} .
+\]
+
+Let $f$ be a function on elliptic curves. The \emph{average} of $f$ is 
+\[
+  \average(f) = \lim_{X\to \infty} \frac{\sum_{H(E)<X} f(E)}{\sum_{H(E)<X} 1} .
+\]
+It's not hard to show that $\average(\# T)=1$. That is, on average an elliptic 
+curve has no nontrivial torsion. This follows from Hilbert irreducibility. 
+
+Our question is: what can we say about the average rank? 
+
+\begin{enonce}{Conjecture}[Goldfeld, Katz-Sarnak]
+$\average(\rank) = \frac 1 2$. Moreover, $50\%$ of elliptic curves have rank 
+$0$ and $50\%$ have rank $1$. 
+\end{enonce}
+
+The conjecture was originally made with elliptic curves ordered by conductor, 
+but ordering by conductor, height and discriminant are all expected to yield 
+the same average. 
+
+Given an elliptic curve $E$, we can define an $L$-function which we denote 
+$L_E(s)$. The \emph{completed $L$-function} $L_E^\ast(s)$ satisfies a 
+functional equation 
+\[
+  L_E^\ast(s) = \omega(E) L_E^\ast(1-s), 
+\]
+where $\omega(E)$, the \emph{root number} of $E$, is $\pm 1$. The 
+\emph{analytic rank} of $E$ is the order of vanishing of $L_E$ at 
+$s=1/2$. The \emph{Birch and Swinnerton-Dyer conjecture} predicts that the 
+analytic rank and algebraic rank of $E$ are the same. But the analytic 
+rank of $E$ is also the analytic rank of $L_E^\ast$. So the BSD conjecture 
+implies that $\rank(E)$ is even if and only if $\omega(E)=1$. It's expected 
+that $\omega(E)$ is equidistributed, i.e.~half of elliptic curves have 
+$\omega(E)=0$ and half have $\omega(E)=1$. Assuming BSD, it would follow 
+that half of elliptic curves have even rank, and half have odd rank. We also 
+expect the rank of an elliptic curve to be ``as small as it can get away 
+with,'' which would force $100\%$ of elliptic curves with $\omega(E)=0$ to 
+have rank zero, and $100\%$ of elliptic curves with $\omega(E)=1$ to have rank 
+one. 
+
+In \cite{ks99}, Katz and Sarnak studied the family of all $L$-functions of 
+elliptic curves. Assuming GRH and BSD, the we have the following bounds on 
+$\average(\rank)$:
+\begin{center}
+\begin{tabular}{c|c}
+\cite{b92} & $\leqslant 2.14$ \\
+\cite{h04} & $\leqslant 2$ \\
+\cite{y06} & $\leqslant 1.79$
+\end{tabular}
+\end{center}
+
+More recently, we have the following theorem proven in \cite{j02}. 
+
+\begin{theo}[de Jong]
+For the family of all elliptic curves over $\dF_q(t)$, the average rank is 
+bounded above by $\frac 7 6+\epsilon(q)$, where $\epsilon(q)\to 0$ as 
+$q\to \infty$. 
+\end{theo}
+
+The method is to bound $\average(\# \selmer_3)$. 
+
+
+
+
+
+\subsection{Selmer groups}
+
+The fundamental idea is that from the canonical short exact sequence 
+\[
+  0 \to E(\dQ)/p \to \selmer_p(E) \to \sha(E)[p] \to 0 ,
+\]
+we get a bound on $\rank E$ in terms of $\selmer_p(E)$. Note that 
+$\#(E(\dQ)/p) \geqslant p^{\rank E}$. 
+
+First, we want a parameterization of 2-Selmer elements of elliptic curves. 
+More generally, if $\sigma\in \selmer_p(E)$. then we can think of $\sigma$ as a 
+locally soluble $p$-covering of $E$. Such a covering is a twist of 
+$[p]:E\to E$. It will be a genus-one curve $C$ isomorphic to $E$ over 
+$\overline\dQ$, along with $C\to E$ such that the following diagram commutes:
+\[\xymatrix{
+  C \ar[d]^-\wr \ar[dr] \\
+  E \ar[r]^-{[p]} 
+    & E .
+}\]
+See \autoref{sec:7} for more details. The covering $C$ is \emph{soluble} if 
+$C(\dQ)\ne \varnothing$, and it is \emph{locally soluble} if 
+$C(\dQ_v)\ne\varnothing$ for all places $v$ of $\dQ$. Locally soluble 
+$p$-coverings of $E$ are in natural bijection with $\selmer_p(E)$, and 
+soluble $p$-coverings are in bijection with $E(\dQ)/p$. For the rest of this 
+lecture, we will concentrate on $p=2$. 
+
+It turns out that a locally soluble $2$-covering of $E$ yields a binary quartic 
+form over $\dQ$. Conversely, a binary quartic form gives a $2$-cover. 
+
+Let $V$ be the space of binary quartic forms. The group $\generallinear(2)$ 
+acts on $V$ via 
+\[
+  (\gamma\cdot f)(x,y) = \frac{1}{(\det\gamma)^2}f\left(\begin{pmatrix} x & y \end{pmatrix} \cdot \gamma\right) .
+\]
+The center $Z(\generallinear_2)$ acts trivially, so the action descends to 
+one of $\projectivegenerallinear(2)$ on $V$. The ring of invariants is 
+freely generated by two elements $I,J$, which have degree $2$ and $3$ 
+respectively in the coefficients of the form. 
+
+\begin{theo}[Birch-Swinnerton-Dyer, Cremona-Fisher-Stoll]
+There is a bijection between 2-Selmer elements and the quotient 
+$\projectivegenerallinear_2(\dQ)\backslash V(\dQ)^\mathrm{ls}$, where 
+$V(\dQ)^\mathrm{ls}$ is the subset of locally soluble forms, in which 
+$(A,B)$ corresponds to $I=-3\cdot 2^6 A$ and $J=-272\cdot 2^6 B$, and 
+$A(f)=-I(f)/3\cdot 2^4$ and $B(f) = -J(f)/27\cdot 2^6$. 
+\end{theo}
+
+We will write this as 
+$\selmer_2(E_{A,B}) = \projectivegenerallinear_2(\dQ)\backslash V(\dQ)_{A,B}^\mathrm{ls}$. 
+The identity element of $\selmer_2(E_{A,B})$ corresponds to the orbit of 
+binary quadratic forms with a rational linear factor. 
+
+We would like a parameterization of 2-Selmer elements that involves binary 
+quartic forms with integral coefficients instead of just rational coefficients. 
+
+\begin{lemm}[Birch, Swinnerton-Dyer]
+If $f\in V(\dQ_p)$, then $A(f),B(f)\in \dZ_p$. If $f$ is $\dQ_p$-solvable, then 
+$\projectivegenerallinear_2(\dQ_p)\cdot f\cap V(\dZ_p)\ne\varnothing$. 
+\end{lemm}
+
+\begin{theo}
+If $f\in V(\dQ)$, then $A(f),B(f)\in \dZ$. If $f$ is locally soluble, then 
+$\projectivegenerallinear_2(\dQ)\cdot f\cap V(\dZ)\ne\varnothing$. 
+\end{theo}
+\begin{proof}
+For each prime, find $\gamma_p\in\projectivegenerallinear_2(\dQ_p)$ so that 
+$\gamma_p\cdot f\in V(\dZ_p)$. Since $\projectivegenerallinear_2$ has class 
+number $1$, there exists $\gamma\in \projectivegenerallinear_2(\dQ)$ so that 
+$\gamma\cdot f\in V(\dZ_p)$ for all $p$, hence $\gamma\cdot f\in V(\dZ)$. 
+\end{proof}
+
+\begin{theo}[Birch, Swinnerton-Dyer and Cremona, Fisher, Stoll]
+The set $\selmer_2(E_{A,B})$ is naturally in bijection with 
+$\projectivegenerallinear_2(\dQ) \backslash V(\dZ)_{A,B}^\mathrm{ls}$. 
+\end{theo}
+
+Define the \emph{height} of a binary quartic form to be 
+\[
+  H(f) = \max\{4|A(f)|^3, 27 B(f)^2\} .
+\]
+So the goal is to count $\projectivegenerallinear_2(\dQ)$-equivalence classes 
+of integral, locally soluble binary quartic forms with height bounded by $X$. 
+
+
+
+
+
+\subsection{First step}
+
+The goal is to count $\projectivegenerallinear_2(\dZ)$-orbits of 
+$V(\dZ)_{H<X}^\mathrm{irr}$. The method is extremely similar to how Bhargava 
+counted binary cubic forms. First we construct a fundamental domain $\cF_X$ for 
+the action of $\projectivegenerallinear_2(\dZ)$ on $V(\dR)_{H<X}$. Next we 
+estimate $\#\{\cF_X\cap V(\dZ)\}$ using averaging. 
+
+We begin by finding a fundamental set for 
+$\projectivegenerallinear_2(\dR)\backslash V(\dR)$. Over any field $k$ in 
+which $6$ is invertible, 
+$\projectivegenerallinear_2(k)\backslash V(k)_{A,B}^{k-\mathrm{sol}}$ is 
+in bijection with $E_{A,B}(k)/2$. Given $A,B\in \dR$, the set 
+$\projectivegenerallinear_2(\dR)\backslash V(\dR)_{A,B}^\mathrm{ls}$ is in 
+bijection with $E_{A,B}(\dR)/2$. But the group of $\dR$-valued points of an 
+elliptic curves is easy to understand. It is $\dZ/2\times S^1$ or $S^1$, 
+depending on whether the discriminant is positive or negative. It follows that 
+$E_{A,B}(\dR)/2$ has either $1$ or $2$ elements as $\Delta(E_{A,B})<0$ or 
+$\Delta(E_{A,B})>0$. 
+
+If $\Delta(E_{A,B})<0$, then 
+$\projectivegenerallinear_2(\dR)\backslash V(\dR)_{A,B}$ is a singleton, and 
+any $f$ in the set will have exactly $2$ real roots. If 
+$\Delta(E_{A,B})>0$, there are two orbits, one consisting of forms with two 
+real roots, and one consisting of forms with positive-definite binary quartic 
+forms. Define 
+\begin{align*}
+  V(\dR)^{(0)} &= \{f\in V(\dR)\text{ with 4 real roots}\} \\
+  V(\dR)^{(1)} &= \{f\in V(\dR)\text{ with 2 real roots}\} \\
+  V(\dR)^{(2+)} &= \{f\in V(\dR)\text{ positive definite}\} .
+\end{align*}
+A fundamental set for $\projectivegenerallinear_2(\dR)\backslash V(\dR)^{(i)}$ 
+for $i\in \{0,1,2+\}$ is $\{f\text{ having invariants }A,B\}$. We obtain 
+\[
+  \projectivegenerallinear_2(\dR)\backslash V(\dR)^{(i)}_{H<1} = R_1^{(i)} ,
+\]
+with, for example, 
+\[
+  R_1^{(0)} = \{x^3 y + A x y^3 + B y^4,(A,B)\in \dR^2,\Delta(E_{A,B})>0,H(E_{A,B})<1\} .
+\]
+For general height, we scale: 
+\[
+  \projectivegenerallinear_2(\dR)\backslash V(\dR)_{H<X}^{(i)} = X^{1/6} R_1^{(i)} = R_X^{(i)} .
+\]
+
+So $R_X^{(i)}$ is a fundamental domain for the action of 
+$\projectivegenerallinear_2(\dR)$ on $V(\dR)_{H<X}^{(i)}$. We want a 
+fundamental domain for the action of $\projectivegenerallinear_2(\dZ)$. Choose 
+$\cF=\projectivegenerallinear_2(\dZ)\backslash \projectivegenerallinear_2(\dR)$; 
+then $\cF\cdot R_X^{(i)}$ is an $n_i$-fold cover of 
+$\projectivegenerallinear_2(\dZ)\backslash V(\dR)_X^{(i)}$. It turns out that 
+$n_1=2$ and $n_0 = n_{2+} = 4$. 
+
+It follows that 
+\[
+  \#\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{(i),\mathrm{irr}} = \frac{1}{n_i} \#(\cF\cdot R_X^{(i)}\cap V(\dZ)^\mathrm{irr}) .
+\]
+As with binary cubic forms, we average: 
+\begin{align*}
+  \#\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{(i),\mathrm{irr}} 
+    &= \frac{1}{n_i \volume(G_0)} \int_{G_0} \#\left(\cF gR_X^{(i)} \cap V(\dZ)^\mathrm{irr}\right)\, \mathrm{d} g \\
+    &= \frac{1}{n_i\volume(G_0)} \int_\cF \#\left(g G_0 R_X^{(i)}\cap V(\dZ)^\mathrm{irr}\right)\, \mathrm{d} g \\
+    &= \frac{1}{n_i \volume(G_0)} \int_\cF \volume\left(g G_0 R_X^{(i)}\right)\, \mathrm{d} g + O(X^{3/4}) \\
+    &= \frac{1}{n_i\volume(G_0)} \int_{G_0} \volume\left(\cF g R_X^{(1)}\right)\, \mathrm{d} g + O(X^{3/4}) \\
+    &= \frac{1}{n_i} \volume\left(\cF R_X^{(i)}\right) + O(X^{3/4}) .
+\end{align*}
+
+We can summarize all of this in the following theorem. 
+
+\begin{theo}[Bhargava, Shankar]
+\[
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{(i),\mathrm{irr}}\right) = \frac{1}{n_i} \volume\left(\cF R_X^{(i)}\right) + O(X^{3/4}) .
+\]
+\end{theo}
+
+As an easy corollary, the average rank of elliptic curves is bounded. 
+We can compute this as  
+\[
+  \frac{1}{n_i} \volume\left(\cF R_X^{(i)}\right) = \frac{1}{n_i} |J|\volume(\cF) \volume\left(R_X^{(i)}\right) + O(X^{5/6}) 
+\]
+So the number of elliptic curves with height $<X$ is some constant multiple of 
+$X^{5/6}$. Thus $\average(\#\selmer_2)$ is bounded, whence $\average(\rank)$ is 
+bounded. 
+
+In \autoref{sec:shankar-ii}, we'll derive an explicit bound for 
+$\rank(\average)$. 
+
+
+
 
