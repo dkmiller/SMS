@@ -1,0 +1,204 @@
+% !TEX root = sms.tex
+
+\section{Binary quartic forms: bounded average rank of elliptic curves II}\label{sec:shankar-ii}
+\thanksauthor{Arul Shankar}
+
+
+
+
+
+\subsection{Review}
+
+Recall that if $E_{A,B}$ is the elliptic curve $y^2=x^3+A x+B$, then 
+$\selmer_2(E_{A,B})$ is in bijection with the quotient 
+$\projectivegenerallinear_2(\dQ)\backslash V(\dZ)_{(A,B)}^\mathrm{ls}$, where 
+$V(\dZ)_{(A,B)}^\mathrm{ls}$ is the set of locally soluble integral binary 
+quartic forms with invariants $A,B$. Even though the action of 
+$\projectivegenerallinear_2(\dQ)$ does not preserve 
+$V(\dZ)$, it still induces an equivalence relation, where $f\sim g$ whenever 
+there is $\gamma\in \generallinear_2(\dZ)$ such that $\gamma \cdot f = g$. 
+For example, the forms $p^4 x^4 + p^2 x y^3 + y^4$ and 
+$x^4 + p^4 x y^3 p^4 y^4$ are $\projectivegenerallinear_2(\dQ)$-equivalent via 
+the matrix $\begin{pmatrix} p^{-1} \\ & p \end{pmatrix}$. For asymptotics, we 
+could restrict to irreducible quartic forms. We defined subsets 
+$V(\dZ)_{(A,B)}^{(i)}$ of $V(\dZ)$; for definitions, see 
+\autoref{sec:shankar-i}. We ended up with an estimate 
+\[
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{\mathrm{irr},(i)}\right) = \frac{1}{n_i} |J| \volume(\cF) \volume\left(R_X^{(i)}\right) + O(X^{3/4}) .
+\]
+In this lecture, we will prove the following theorem. 
+
+\begin{theo}[Bhargava, Shankar]
+$\average(\#\selmer_2) = 3$. 
+\end{theo}
+
+To do this, we will need to replace $V(\dZ)^\mathrm{irr}$ by 
+$V(\dZ)^{\mathrm{irr},\mathrm{ls}}$, and replace 
+$\projectivegenerallinear_2(\dZ)$-orbits by 
+$\projectivegenerallinear_2(\dQ)$-equivalence classes. 
+
+
+
+
+
+\subsection{Local solubility}
+
+For each prime $p$, let $V(\dZ_p)^\mathrm{s}$ be the subset of $V(\dZ_p)$ 
+consisting of soluble binary quartic forms. Let $V(\dZ)^{\mathrm{s}(p)}$ be the 
+set of forms in $V(\dZ)$ whose image in $V(\dZ_p)$ is soluble. We start by 
+computing 
+\[
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{\mathrm{irr},\mathrm{s}(p)}\right) = \frac{|J|}{n_i} \volume(\cF) \volume\left(R_X^{(i)}\right) \volume\left(V(\dZ_p)^\mathrm{s}\right) + O(X^{3/4}) .
+\]
+To do this for locally soluble forms, we will need to look at ``soluble at $p$ 
+forms'' for all $p$. For that, we need a sieve. 
+
+We want 
+\[
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{\mathrm{irr},p^2\mid \Delta}\right) = O(X^{5/6}/p^{1+\delta}) ,
+\]
+for any $\delta>0$. In fact, this is stronger than we need. All the proof 
+requires is 
+\[
+  \sum_{p>M} \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{\mathrm{irr},p^2\mid\Delta}\right) = O(X^{5/6}/f(M)) ,
+\]
+where $f(M)\to \infty$ as $M\to \infty$. 
+
+Recall the (naive) height is $H(E_{A,B}) = \max\{4 |A|^3,27 B^2\}$. 
+We want 
+\[
+  \#\{E_{A,B}:H(E_{A,B})<X\text{ and }p^2\mid \Delta(E_{A,B})\} = O\left(\frac{X^{5/6}}{p^{1+\delta}}\right),
+\]
+where $\delta>0$. When $p$ is large, map $E_{A,B}$ to the binary cubic form 
+$x^3 + A x y^2 + B y^3$, which goes to 
+$\generallinear_2(\dZ)\cdot (x^3+A x y^2 + B y^3)$. We have defined a map 
+\[
+  \varphi:U_1(\dZ) \to U(\dZ) \to \generallinear_2(\dZ)\backslash U(\dZ) ,
+\] 
+where $U_1(\dZ)$ is the space of elliptic curves and $U$ is the space of all 
+binary cubic forms. This map is discriminant-preserving. 
+
+\begin{theo}[Delone, Nagell, Siegel, Evertse, Akhtari]
+The map $\varphi$ is at most 7-to-1 for elements with large enough 
+discriminant. 
+\end{theo}
+
+This is very deep. 
+As one application, a binary cubic form represents one at most seven times. 
+It follows from the theorem that 
+\[
+  \#\left\{E_{A,B}:H(E_{A,B})<X\text{ and }p^2\mid \Delta(E_{A,B})\right\} = O\left(\frac{X}{p^2}\right) . 
+\]
+This isn't quite what we wanted because the estimate has $X$ instead of 
+$X^{5/6}$. But for $p$ sufficiently large, it works. 
+
+Suppose $p^2\mid \Delta(E_{A,B})$ for ``modulo $p$ reasons,'' i.e.~if $E_{A,B}$ 
+has additive reduction. If $p>3$, then $A\equiv B\equiv 0\pmod p$. The bound in 
+this case is 
+\[
+  O\left(\left(\frac{X^{1/3}}{p^2}+1\right)\left(\frac{X^{1/2}}{p}+1\right)\right) = O\left(\frac{X^{5/6}}{p^2} + \frac{X^{1/2}}{p}+1\right) .
+\]
+If $p\mid \Delta(E_{A,B})$ for ``modulo $p^2$ reasons,'' then fixing $A$ 
+determines $B$ modulo $p^2$. In this case, the bound is 
+\[
+  O\left(X^{1/3} \cdot\left(\frac{X^{1/2}}{p}+1\right)\right) = O\left(X^{5/6}/p^2 + X^{1/3}\right) .
+\]
+Combining these estimates yields the uniform bound 
+\[
+  \#\{E:H(E)<X\text{ and }p^2\mid \Delta(E)\} = O\left(\frac{X^{5/6}}{p^{3/2}}\right) .
+\]
+
+Recall that there is a bijection between 
+$\projectivegenerallinear_2(\dZ)\backslash V(\dZ)$ and the set of $(Q,C,x)$, 
+where $Q$ is a quartic ring, $C$ is a cubic resolvent ring, and $x$ generates 
+$C$ (?) The map $V(\dZ) \to \dZ^2\otimes \symmetric^2(\dZ^3)$ induces 
+the map sending $(Q,C,x)$ to $(Q,C)$. On the side of forms, the map sends 
+$a x^4 + b x^3 y + c x^2 y^2 + d x y^3 + e y^4$ to 
+\[
+  \begin{pmatrix} & & 1/2 \\ & -1 \\ 1/2 \end{pmatrix}, \begin{pmatrix} a & b/2 \\ b/2 & c & d/2 \\ & d/2 & e \end{pmatrix} .
+\]
+Our map yields the bound 
+\[
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{p^2\mid \Delta}\right) = O\left(\frac{X}{p^2}\right) .
+\]
+Combining everything, we get 
+\begin{align*}
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{p^2\mid \Delta,\mod p^2}\right) 
+    &= O\left(\frac{X^{5/6}}{p^2} + X^{2/3}\right) \\
+  \sum_{p<M} \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{p^2\mid\Delta}\right) 
+    &= O\left(\frac{X^{5/6}}{\log M}\right) .
+\end{align*}
+
+
+
+
+
+\subsection{Weights}
+
+The problem is that a single $\projectivegenerallinear_2(\dQ)$-class in 
+$V(\dZ)$ could break up into seven different 
+$\projectivegenerallinear_2(\dZ)$-orbits. Given a form $f$, let 
+\[
+  B_f = \projectivegenerallinear_2(\dZ)\backslash \left(\projectivegenerallinear_2(\dQ)\cdot f\cap V(\dZ)\right) .
+\]
+For $f\in V(\dZ)$, we define 
+\[
+  W(f) = \begin{cases} 0 & \text{if $f$ is not locally soluble} \\ \left(\displaystyle\sum_{g\in B_f} \frac{\#\automorphism_\dQ(g)}{\automorphism_\dZ (g)}\right)^{-1} & \text{otherwise} \end{cases} 
+\]
+The weight of $f$ is a product of local weights. That is, define for each $p$ 
+\[
+  W_p(f) = \begin{cases} 0 & \text{if $f$ is not locally soluble} \\ \left(\displaystyle\sum_{g\in B_p(f)} \frac{\#\automorphism_{\dQ_p}(g)}{\automorphism_{\dZ_p} (g)}\right)^{-1} & \text{otherwise} \end{cases} 
+\]
+Then we have the following proposition (3.3 in my paper). 
+
+\begin{prop}
+For $f\in V(\dZ)$, we have $W(f) = \prod_p W_p(f)$. 
+\end{prop}
+
+We get the following formula: 
+\[
+  \#\left(\projectivegenerallinear_2(\dZ)\backslash V(\dZ)_{H<X}^{\mathrm{irr},W,(i)}\right) = \frac{|J|}{n_i} \volume(\cF) \volume\left(R_X^{(i)}\right) \prod_p \int_{V(\dZ_p)} W_p(f)\, \mathrm{d} f .
+\]
+
+\begin{prop}
+\[
+  \int_{V(\dZ_p)}W_p(f)\, \mathrm{d} f = |J|_p \volume(\projectivegenerallinear_2(\dZ_p)) \int_{\dZ_p^2} \frac{\#\left(E_{A,B}(\dQ_p)/2\right)}{\#E_{A,B}[2](\dQ_p)}\, \mathrm{d} (A,B) .
+\]
+\end{prop}
+
+We also have 
+\[
+  |J|\volume\left(\projectivegenerallinear_2(\dZ)\backslash \projectivegenerallinear_2(\dR)\right) \int_{\{(A,B)\in\dR^2:H(E_{A,B})<X\}} \frac{\#(E_{A,B}(\dR)/2)}{\# E_{A,B}[2](\dR)}\, \mathrm{d}(A,B) .
+\]
+
+\begin{prop}[Brummer and Kramer]
+\[
+  \frac{\#(E(\dQ_v)/2)}{\# E[2](\dQ_v)} = \begin{cases} 1/2 & v=\infty \\ 2 & v=2 \\ 1 & \text{otherwise} \end{cases}
+\]
+\end{prop}
+
+Thus the average of $\#\selmer_2)-1$ is the following limit: 
+\[
+  \lim_{X\to \infty} \frac{\displaystyle\volume(\projectivegenerallinear_2(\dZ)\backslash \projectivegenerallinear_2(\dR)) \prod_p \volume(\projectivegenerallinear_2(\dZ_p) + O(X^{3/2})) \int_{H(A,B)<X}\,\mathrm{d}(A,B)}{\displaystyle\int_{H<X} \mathrm{d}(A,B) + O(X^{1/2})} .
+\]
+The integrals cancel, and the product over all places in the numerator is the 
+Tamagawa number $\tau(\projectivegenerallinear_2)=2$. It follows that 
+\[
+  \average(\#\selmer_2)=2+1=3 .
+\]
+
+When we generalize to $\selmer_n$ for $n\geqslant 3$, things get a bit more 
+complicated, as in the following table: 
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+$n$ & group & space & $\tau(G)$ & $\average(\#\selmer_n)$ \\ \hline
+2 & $\projectivegenerallinear_2(\dZ)$ & $\symmetric^4(\dZ^2)$ & 2 & 3\\ 
+3 & $\projectivegenerallinear_3(\dZ)$ & $\symmetric^3(\dZ^3)$ & 3 & 4\\ 
+4 & qt.~of $\generallinear_2\times \generallinear_4$ & $\dZ^2\otimes\symmetric^2(\dZ^4)$ & 4 & 7\\
+5 & qt.~of $\generallinear_5\times \generallinear_5$ & $\dZ^5\otimes \bigwedge^2 \dZ^5$ & 5 & 6
+\end{tabular}
+\end{center}
+
+
+
+
