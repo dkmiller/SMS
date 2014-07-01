@@ -7,5 +7,67 @@
 
 
 
-d
+\subsection{Introduction and motivation}
+
+Something we have done many times is take a representation $V$ of a group $G$ 
+and study the orbits $V/G$. The stabilizers of points in $V$ are also 
+important. We have tried to describe the orbits in terms of ``arithmetically 
+interesting'' objects, e.g.~elliptic curves with extra data. If we impose 
+local conditions on $V/G$, we get elliptic curves with Selmer elements. One 
+final note: we want stabilizers in $G$ to match up with automorphism groups of 
+the ``arithmetically interesting objects.'' This is a subtle but important 
+point. 
+
+In \autoref{sec:shankar-i} and \autoref{sec:shankar-ii}, the ``extra data'' 
+attached to an elliptic curve $E$ was an $n$-covering of $E$. This consists 
+of a $E$-torsor $C$ with a degree $n$ line bundle on $C$. 
+
+\begin{enonce}[remark]{Example}
+In the binary quartic case, the form $f(x,y) = a x^4 + \cdots$ corresponds to 
+the curve $C:z^2 = a x^4 + b x^3 y + c x^2 y^2 + d x y^3 + e y^4$; this is a 
+double cover of $\dP^1$ ramified at four points. The invariants of $f$ 
+determine an elliptic curve. The map $C\to \dP^1$ determines the line bundle 
+on $C$. 
+\end{enonce}
+
+\begin{enonce}[remark]{Example}
+Recall that we can describe 3-Selmer elements with ternary cubics (homogeneous 
+degree three polynomials in three variables). The representation involved 
+is $\symmetric^3(3) = \symmetric^3\dA^3$. Any ternary cubic $f$ gives a genus 
+one curve in $\dP^2$. It's Jacobian is canonically the elliptic curve with 
+invariants those of $f$. The degree three line bundle on $C$ comes from the 
+embeddigng $C\hookrightarrow \dP^2$. The rings of invariants of the action of 
+$\speciallinear(3)$ on $\symmetric^3(3)$ is polynomial in two generators 
+$S,T$, of degree 4 and 6 respectively. The Jacobian of $C_f$ is 
+$E_{S(f),T(f)}$. 
+\end{enonce}
+
+To generalize these ideas, we need to find other representations that 
+parameterize interesting data. Let $k$ be an algebraically closed field. If 
+$(G,V)$ is a prehomogeneous vector space over $k$ and $U\subset V$ is open and 
+$G$-stable, then $U(k)/G(k)$ might be ``zero-dimensional,'' e.g.~a single 
+Zariski-open orbits. But there are lots of non-isomorphic elliptic curves, 
+even over an algebraically closed field. so we would want 
+$U(k)/G(k)$ to be ``bigger,'' e.g.~the affine line. 
+
+More geometrically, we are trying to find prehomogeneous vector spaces 
+$(G,V)$ such that the coarse moduli space $V/G$ is a moduli space we already 
+are familiar with. In all our examples, the invariant rings are polynomial 
+rings. We call such representations \emph{coregular}. 
+
+The moduli space of elliptic curves is birational to $\dP(2,3)$. So we should 
+look for coregular representations with ring of invariants free in two 
+variables. Elliptic curves with one marked point are of the form 
+$y^2 + d_3 y = x^3 + d_2 x^2 + d_4 x^2$. If we take our scaling, we get 
+$\dP(2,3,4)$, or $\dA^3$ if we also keep track of the differential. 
+
+To summarize: many (but not all!) families of elliptic curves with extra data 
+have coarse moduli space (look over an algebraically closed field) birational 
+to a weighted projective space. This means the invariant ring of any possible 
+$(G,V)$ is a polynomial ring. 
+
+[\ldots couldn't follow\ldots]
+
+
+
 
