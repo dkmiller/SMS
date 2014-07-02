@@ -7,5 +7,231 @@
 
 
 
-d
+The main references for this lecture are \cite{bklpr13} and 
+\emph{Boundedness of rank}, by Derek Garton, Jennifer Park, Jon Voight, 
+Melanie Matchett Wood. 
+
+In \autoref{sec:poonen-ii}, we gave a conjecture predicting the average size of 
+$\selmer_n E$ as $E$ ranges over elliptic curves over $\dQ$. At the end, we 
+passed to the $p^\infty$-component: there is an exact sequence 
+\begin{equation*}\tag{$\sequence_E$}\label{eq:seq-E}
+\xymatrix{
+  0 \ar[r] 
+    & E(\dQ)\otimes (\dQ_p/\dZ_p) \ar[r] 
+    & \selmer_{p^\infty}(E) \ar[r] 
+    & \sha(E)[p^\infty] \ar[r] 
+    & 0 .
+}
+\end{equation*}
+We are going to try to predict the distribution of this sequence. 
+
+
+
+
+
+\subsection{The orthogonal Grassmannian}
+
+Recall that for a ring $A$, $A$-valued points $\grassmannian_{n,2n}(A)$ of 
+the $(n,2n)$-Grassmannian consists of locally free rank-$n$ $A$-submodules 
+$Z\subset A^{2n}$ such that $Z$ is a direct summand. There is a subfunctor 
+$\orthogonalgrassmannian_n\subset \grassmannian_{n,2n}$, for which 
+$\orthogonalgrassmannian_n(A)$ is the set of $Z\in \grassmannian_{n,2n}(A)$ 
+such that $Q|_Z=0$. 
+
+Both the functors $\grassmannian_{n,2n}$ and $\orthogonalgrassmannian_n$ are 
+represented by smooth projective schemes over $\dZ$. The orthogonal 
+Grassmannian $\orthogonalgrassmannian_n$ has two connected components. For 
+any field $k$, $Z,Z'\in \orthogonalgrassmannian_n(k)$ are in the same component 
+if and only if $\dim(Z\cap Z')\equiv n\pmod 2$. 
+
+The fact that $\orthogonalgrassmannian_n$ is smooth tells us that the fibers in 
+each level of the inverse system 
+\[
+  \cdots \to \orthogonalgrassmannian_n(\dZ/p^{e+1}) \to \orthogonalgrassmannian_n(\dZ/p^e) \to \orthogonalgrassmannian_n(\dZ/p^{e-1}) \to \cdots 
+\]
+have constant cardinality. We get a ``uniform'' probability measure on 
+$\orthogonalgrassmannian_n(\dZ_p)=\varprojlim\orthogonalgrassmannian_n(\dZ/p^e)$ 
+by taking the inverse limit of the uniform measure on each 
+$\orthogonalgrassmannian_n(\dZ/p^e)$. 
+
+
+
+
+
+\subsection{The model}
+
+Start with $V=\dZ_p^{2 n}$. Fix $W=\dZ_p^n\times 0\subset V$; this is maximal 
+isotropic. Choose a random $Z\in \orthogonalgrassmannian_n(\dZ_p)$. Form the 
+sequence 
+\begin{equation*}\tag{$\sequence_Z$}\label{eq:seq-Z}
+\xymatrix@=0.4cm{
+  0 \ar[r] 
+    & (Z\cap W)\otimes (\dQ_p/\dZ_p) \ar[r] 
+    & (Z\otimes \dQ_p/\dZ_p)\cap (W\otimes \dQ_p/\dZ_p) \ar[r] 
+    & \textnormal{cokernel} \ar[r] 
+    & 0 .
+}
+\end{equation*}
+So from a random $Z\in \orthogonalgrassmannian_n(\dZ_p)$ we get a random 
+sequence of co-finitely generated $\dZ_p$-modules. The following theorem is 
+proved in \cite{bklpr13}. 
+
+\begin{theo}
+The limit as $n\to \infty$ of the distribution of $\sequence_V$ exists.
+\end{theo}
+
+\begin{enonce}{Conjecture}
+The limit as $n\to \infty$ of the distribution of the $\sequence_V$ is the 
+distribution of $\sequence_E$ for $E\in \cE$. That is, if $\cS$ is a short 
+exact sequence of $\dZ_p$--modules, then 
+\[
+  \lim_{n\to \infty}\probability_{Z\in \orthogonalgrassmannian_n(\dZ_p)}(\sequence_Z\simeq \cS) = \probability_{E\in \cE}(\sequence_E\simeq \cS) .
+\]
+\end{enonce}
+
+
+
+
+
+\subsection{Consequences for rank}
+
+We have $(Z\cap W)\otimes \dQ_p/\dZ_p = (\dQ_p/\dZ_p)^r$, where 
+$r=\dim_{\dQ_p}(Z\otimes \dQ_p \cap W\otimes \dQ_p)$. Outside a (measure zero) 
+lower-dimensional locus, the rank is $0$ for $Z$ in one component of 
+$\orthogonalgrassmannian$, and $1$ for $Z$ in the other component. 
+
+\begin{coro}
+The conjecture implies that $50\%$ of elliptic curves have rank $0$, 
+$50\%$ have rank $1$, and $0\%$ have rank $\geqslant 2$. 
+\end{coro}
+
+
+
+
+
+\subsection{Consequences for \texorpdfstring{$\sha$}{Sha}}
+
+Write $\sequence_Z$ as $0\to R \to S \to T \to 0$. 
+
+\begin{prop}
+In $\sequence_Z$, $R$ is the maximal divisible subgroup of $S$ and $T$ is 
+finite (for each $n$). 
+\end{prop}
+
+\begin{coro}
+The conjecture implies that $\sha(E)[p^\infty]$ is finite for 
+$100\%$ of elliptic curves over $\dQ$. 
+\end{coro}
+
+There are three distributions on the set of isomorphism classes of finite 
+abelian $p$-groups, each conjectured to be the distribution of 
+$\sha(E)[p^\infty]$ for $E\in \cE$ of rank $r$. 
+
+\begin{enonce}[remark]{Prediction}
+This is due to Delaunay \cite{d01}. As $E$ ranges over elliptic curves over 
+$\dQ$ with rank $r$, the distribution of $\sha(E)[p^\infty]$ is 
+\[
+  \probability(G) = \frac{\#G^{1-r}}{\#\automorphism(G,[\cdot])}\prod_{i=r+1}^\infty (1-p^{1-2i}) .
+\]
+\end{enonce}
+
+\begin{enonce}[remark]{Prediction}
+This is due to \cite{bklpr13}. Choose 
+$Z\in \orthogonalgrassmannian_n(\dZ_p)$ such that $\rank(Z\cap W)=r$. Form 
+$0 \to R\to S \to T\to 0$, and take 
+\[
+  \lim_{n\to \infty} (\textnormal{distribution of }T) .
+\]
+Then $\sha(E)[p^\infty]$ is distributed according to this limit. 
+\end{enonce}
+
+\begin{enonce}[remark]{Prediction}
+This is also due to \cite{bklpr13}. Choose random $A\in M_{2n+r}(\dZ_p)$ such 
+that $\rank A=2n$ and $\transpose A=-A$. We have an exact sequence 
+\[\xymatrix{
+  \dZ_p^{2n+r} \ar[r]^-A 
+    & \dZ_p^{2n+r} \ar[r] 
+    & \coker A \ar[r] 
+    & 0 .
+}\]
+Then $\sha(E)[p^\infty]$ is distributed as 
+\[
+  \lim_{n\to\infty} (\textnormal{distribution of }(\coker A)_\mathrm{tors}) .
+\]
+This is similar to the Friedman-Washington heuristic for class groups, 
+which chooses a random $A\in M_n(\dZ_p)$, and takes 
+\[
+  \lim_{n\to \infty} (\textnormal{distribution of }\coker A) .
+\]
+They prove that this distribution is identical to the Cohen-Lenstra 
+distribution for $\class(k)[p^\infty]$, as $k$ ranges over imaginary quadratic 
+fields. 
+\end{enonce}
+
+The following is one of the main theorems of \cite{bklpr13}. 
+
+\begin{theo}
+For each $r\geqslant 0$, the three distributions above coincide. 
+\end{theo}
+
+
+
+
+
+\subsection{Heuristics for boundedness of \texorpdfstring{$\rank E$}{rk E}}
+
+Consider an elliptic curve $E$ with conductor / discriminant / height $N$. 
+Choose a random $A\in M_n(\dZ)$ such that $\transpose A=-A$, with entries 
+of size $X=X(N)$. The function $X$ will be determined later. Then 
+\begin{itemize}
+  \item $(\coker A)_\mathrm{tors}$ models $\sha(E)$ 
+  \item $\rank_\dZ(\coker A)$ models $\rank E$
+\end{itemize}
+
+The following has not been previously written up. For each $r\geqslant 1$, 
+$\probability(\rank E\geqslant r)$ should be modeled by 
+$\probability(\rank A\leqslant n-r)$. It is a ``probable theorem'' that 
+\[
+  \probability(\rank A\leqslant n-r) \sim \frac{X^{n(n-r)/2}}{X^{n(n-1)/2}} \sim \frac{1}{(X^{n/2})^{r-1}} .
+\]
+where $n\equiv r\pmod 2$. (The analogous problem for symmetric integer matrices 
+is an honest theorem proved in \cite{ek95}.) 
+
+There is a heuristic to suggest $X^{n/2}\sim N^{1/24}$. When $r=2$, random 
+matrix theory already suggests an answer. Consider $E$ with the sign in the 
+functional equation being $+1$ (so $E$ should have even rank). Define 
+\[
+  \# \sha_0 = \begin{cases} \# \sha & \rank E=0 \\ 0 & \text{otherwise} \end{cases}
+\]
+Part of the Birch and Swinnerton-Dyer conjecture says that 
+\[
+  L(E,1) = \frac{\# \sha_0 \Omega \prod c_p}{\# E(\dQ)_\mathrm{tors}^2} .
+\]
+(If $\rank E>0$, then both sides should be zero.) Solving for 
+$\sqrt{\#\sha_0}$ (and throwing out $\#E(\dQ)_\mathrm{tors}$, the Tamagawa 
+numbers, and $L(E,1)$) we get 
+\[
+  \sqrt{\#\sha_0} \sim O(\Omega^{-1/2}) ,
+\]
+and $\Omega\sim N^{-1/12}$. Thus 
+\[
+  X^{-n/2} \sim \probability(\rank E\geqslant 2) = \probability(\sqrt{\#\sha_0} = 0) \sim N^{-1/24}
+\]
+so we conclude that 
+\[
+  \probability(\rank E\geqslant r) \sim N^{(1-r)/24} .
+\]
+
+There are $N^{5/6}$ elliptic curves of height $\leqslant N$. If $r-1>20$, we 
+would expect finitely many elliptic curves of rank $\geqslant r$. 
+
+\begin{enonce}{Prediction}
+$\rank E\leqslant 21$, with finitely many exceptions. 
+\end{enonce}
+
+In particular, there is a global bound for the rank of elliptic curves over 
+$\dQ$. 
+
+
+
 
