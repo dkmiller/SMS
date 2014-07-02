@@ -1,11 +1,180 @@
 % !TEX root = sms.tex
 
-\section{Applications to the Birch and Swinnerton-Dyer conjecture}\label{sec:bhargava-iv}
+\section{Most hyperelliptic curves have no rational points}\label{sec:bhargava-iv}
 \thanksauthor{Manjul Bhargava}
 
 
 
 
 
-d
+\subsection{Summary of results}
+
+According to Don Zagier, the title should be ``most hyperelliptic curves are 
+pointless.'' Recall that a \emph{hyperelliptic curve} is a smooth projective 
+geometrically irreducible curve with a degree-two map to $\dP^1$. More 
+concretely, any hyperelliptic curve over $\dQ$ can be expressed in the form 
+\begin{equation*}\tag{$\ast$}\label{eq:hyper}
+  C:z^2 = f_0 x^n + f_1 x^{n-1} y + \cdots + f_{n-1} x y^{n-1} + f_n y^n ,
+\end{equation*}
+where $n=2 g+2$ and $g$ is the genus of $C$, at least if 
+$\discriminant(f)\ne 0$. By scaling, we may assume the $f_i\in \dZ$. Define a 
+height on hyperelliptic curves by $H(C)=\max\{|f_i|\}$. We will order 
+hyperelliptic curves by height. The results of this section are mostly from 
+\cite{bg13}. 
+
+\begin{theo}
+Order all hyperelliptic curves \eqref{eq:hyper} over $\dQ$ of genus $g$ by 
+height. Then as $g\to \infty$, a density approaching $100\%$ of hyperelliptic 
+curves of genus $g$ have no rational points. 
+\end{theo}
+
+More precisely, the upper density of hyperelliptic curves of genus $g$ having a 
+rational point is $o(2^{-g})$. Since most ($>75\%$) hyperelliptic curves of 
+genus $g\geqslant 1$ have points over $\dQ_v$ for all places $v$ (everywhere 
+locally soluble), we obtain the following. 
+
+\begin{coro}
+As $g\to \infty$, a density approaching $100\%$ of everywhere locally soluble 
+hyperelliptic curves \eqref{eq:hyper} of genus $g$ fail the Hasse principle. 
+\end{coro}
+
+For $g=1$, the density is $>20\%$, and for $g=2$, the proportion of 
+$>50\%$. For $g=10$, the density is $>99\%$. In the 1940's, Lind and Reichardt 
+independently gave examples of equations of the form $z^2=f(x,y)$, where $f$ is 
+a quartic, failing the Hasse principle. Later on, Selmer gave an example of an 
+elliptic curve (minus the origin) failing the Hasse principle. A more 
+elementary reformulation of these results is that binary forms rarely take 
+square values. 
+
+
+
+
+
+\subsection{Key construction}
+
+The main idea is: use the representation 
+$V(\dZ)=\dZ^2\otimes\symmetric^2(\dZ^n)$ of $G(\dZ)=\generallinear_n(\dZ)$. 
+We can view elements of $V(\dZ)$ as pairs $(A,B)$ of $n\times n$ symmetric 
+matrices with integer entries. The group $G$ acts by 
+$\gamma\cdot (A,B) = (\gamma A\transpose \gamma, \gamma B \transpose \gamma)$. 
+Given such a $v=(A,B)\in V(\dZ)$, define the \emph{invariant binary $n$-form} 
+$f_v(x,y)=-1^{n/2}\det(A x-B y)$. The coefficients of $f_v(x,y)$ give 
+invariants for the action of $G(\dZ)$ on $V(\dZ)$. In fact, these freely 
+generate the ring of invariants over $\dC$. 
+
+Given a binary $n$-ic form $f$ over $\dZ$, when does it arise as $f_v$ for some 
+$v=(A,B)\in V(\dZ)$? Unfortunately not always. 
+
+\begin{prop}
+Let $f$ be a binary $n$-ic form over $\dZ$. If $z^2=f(x,y)$ has a rational 
+point, then $f=f_v$ for some $v\in V(\dZ)$. 
+\end{prop}
+\begin{proof}
+We use a classification of the orbit space $G(\dZ)\backslash V(\dZ)$. Given 
+a rational point, we'll produce an ``algebraic object,'' which will give our 
+pair $v=(A,B)$ of $n\times n$ symmetric matrices. Given 
+a binary $n$-ic form $f$ over $\dZ$, assume $\discriminant(f)\ne 0$ and 
+$f_0\ne 0$, where $f=f_0 x^n + \cdots + f_n y^n$. Let 
+$K_f = \dQ[x]/f(x,1) = \dQ[\theta]$; this is an $n$-dimensional $\dQ$-algebra. 
+Inside $K_f$, there is a lattice $R_f$ with basis 
+$\{1,\zeta_1,\zeta_2,\dots,\zeta_{n-1}\}$, where 
+\[
+  \zeta_k = f_0 \theta^k + f_1 \theta^{k-1} + \cdots + f_{k-1} \theta .
+\]
+See \autoref{sec:wood-iii} for details of this construction. The $\zeta_k$ 
+are integral over $\dZ$. In \cite{bm72}, Birch and Merriman proved that 
+$\discriminant(R_f)=\discriminant(f)$. Much more recently, Nakagawa proved 
+that $R_f$ is a ring. Define further lattices in $K_f$: 
+\[
+  I_f(k) = \langle 1,\theta,\theta^2,\dots,\theta^k,\zeta_{k+1},\dots,\zeta_{n-1}\rangle ,
+\]
+for any $0\leqslant k<n$. Then $I_f(k)$ is an $R_f$-module and 
+$I_f(k)=I_f^k$. Note that $I_f(0)=R_f$; we define $I_f=I_f(1)$. Checking this 
+is a good exercise. The $I_f(k)$ come equipped with bases. Given 
+$(I,\alpha)$ as in the following theorem, take coefficients of $\zeta_{n-1}$ 
+and $\zeta_{n-2}$ in $\frac 1 \alpha:I\times I \to I_f(n-3)$. These 
+coefficients are the $(A,B)$ we wanted to construct. 
+\end{proof}
+
+\emph{Warning}: the converse to the Proposition is false. Recall that the 
+ring $R_f$ is constructed in \autoref{sec:wood-iii} as the ring of global 
+functions on the subscheme of $\dP_\dZ^1$ cut out by $f$. The module 
+$I_f(k)$ is global sections of the pullback of $\sO(k)$. 
+
+\begin{theo}[Wood]
+The set $(G(\dZ)\backslash V(\dZ))_f$ is naturally in bijection with the set of 
+equivalences classes of pairs $(I,f)$, where $I$ is a fractional ideal of $R_f$ 
+and $\alpha\in K_f^\times$ such that $I^2\subset \alpha I_f(n-3)$ and 
+$\norm(I)^2 = \norm(\alpha)\norm(I_f^{n-3})$. Here the equivalence relation is 
+$(I,\alpha)\sim (\kappa I,\kappa^2\alpha)$ for $\kappa\in K_f^\times$. 
+\end{theo}
+
+\begin{theo}
+Let $n$ be an odd integer. Then there always exists $v=(A,B)\in V(\dZ)$ such 
+that $f_v=f$. 
+\end{theo}
+\begin{proof}
+Take $\alpha=1$, $I=I_f^{(n-3)/2}$. 
+\end{proof}
+
+\begin{theo}
+Let $n$ be an even integer. Assume $z^2=f(x,y)$ has a rational point. Then 
+there exists $v\in V(\dZ)$ such that $f=f_v$. 
+\end{theo}
+\begin{proof}
+We can further assume that $f(0,1)$ is square, i.e.~$f_n=c^2$ for some 
+$c\in \dZ$. Take $\alpha=\theta$ and 
+\[
+  I=\langle c,\theta,\theta^2,\dots,\theta^{(n-2)/2},\zeta_{n/2},\dots,\zeta_{n-1}\rangle .
+\]
+Check that $I^2\subset \theta I_f^{n-3}$ and 
+$\norm(I^2)=\norm(\theta)\norm(I_f^{n-3})$. By the theorem of Wood, this gives 
+rise to a pair $v=(A,B)$. 
+\end{proof}
+
+If for example $n=6$, there is an explicit formula for $v$: 
+\[
+  (A,B) = \left(
+  \begin{pmatrix} 
+    -1 & 0 & 0 & 0 & 0 & 0 \\ 
+    0 & 0 & 0 & 0 & 0 & 1 \\ 
+    0 & 0 & 0 & 0 & 1 & 0 \\ 
+    0 & 0 & 0 & f_0 & f_1 & f_2 \\
+    0 & 0 & 1 & f_1 & f_2 & f_3 \\
+    0 & 1 & 0 & f_2 & f_3 & f_4 
+  \end{pmatrix},
+  \begin{pmatrix}
+    0 & 0 & 0 & 0 & 0 & c \\
+    0 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 \\
+    0 & 0 & 1 & f_1 & f_2 & 0 \\
+    0 & 1 & 0 & f_2 & 0 & 0 \\
+    c & 0 & 0 & 0 & 0 & -f_5
+  \end{pmatrix}
+  \right) .
+\]
+
+Now count the number of orbits of $G(\dZ)$ on $V(\dZ)$ having bounded height. 
+
+\begin{theo}
+The number of orbits of $G(\dZ)$ on $V(\dZ)$ having height $<X$ is 
+\[
+  C\cdot X^{n+1} = C(X^{1/n})^{n(n+1)} + O(X^{x+1-1/n}) .
+\]
+So the number of orbits per $f$ is bounded by a constant $C'$ on average. 
+\end{theo}
+
+This is not good enough for our purposes. We need the number of orbits per 
+$f$ to be strictly less than $1$ on average. But we are only interested in 
+some orbits. The number of orbits per $f$ locally looking like $f_v$ is 
+$C''<C'$, where $C''=o(2^{-g})$. 
+
+\begin{coro}
+As $C$ ranges over hyperelliptic curves of genus $g$, 
+$\average(\#\selmer_2^\mathrm{fake}(C)) = o(2^{-g})$. 
+\end{coro}
+
+
+
+
 
