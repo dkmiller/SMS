@@ -1,11 +1,172 @@
 % !TEX root = sms.tex
 
-\section{Arithmetic invariant theory and hyperelliptic curves II}
+\section{Arithmetic invariant theory and hyperelliptic curves II}\label{sec:gross-ii}
 \thanksauthor{Benedict Gross}
 
 
 
 
 
-d
+\subsection{Redefining hyperelliptic curves}
+
+We'll start with a slightly more general definition of a hyperelliptic curve. 
+If $C$ is a curve of genus $g\geqslant 1$ over a field $k$, then 
+$\h^0(C,\Omega^1)$ is a $g$-dimensional $k$-vector space. It is known that this 
+has no base points. So we get a map 
+$\pi:C\to \dP(\h^0(\Omega^1))\simeq \dP^{g-1}$; this is called the 
+\emph{canonical map}. If $g\geqslant 2$, you can use the Riemann-Roch theorem 
+to prove that this map is either an embedding with image a smooth curve of 
+degree $2 g-2$, or it's 2-to-1 onto a rational normal curve $X$ of degree 
+$g-1$. Say $C$ is \emph{hyperelliptic} if we're in the second case. 
+
+If $X(k)\ne\varnothing$, then we get a map $C\to \dP^1$ and recover the 
+standard definition of a hyperelliptic curve. This always happens if $g$ is 
+even. But if $g$ is odd, we might not have a rational point. The 
+image $X$ of $\pi:C\to \dP^{g-1}$ will be of the form $\{Q(x,y,z)=0\}$. 
+
+[\ldots stuff I didn't catch\ldots]
+
+We define $C\subset \dP(1,1,1,\frac{g+1}{2})$. 
+
+We don't really need this, because we will be studying $C$ with local points 
+everywhere. Via $C\to X$, the curve $X$ has local points everywhere. By the 
+Hasse principle, $X(k)\ne\varnothing$, so $X\simeq \dP^1$. Thus $C\to X$ 
+realizes $C$ as a curve of the form $z^2=F(x,y)$ inside 
+$\dP(1,1,g+1)$. For the rest of this lecture, $C$ will be a hyperelliptic 
+curve defined by an equation of this form. 
+
+
+
+
+
+\subsection{Main result}
+
+The following is a strenthening of the theorem Bhargava proved in 
+\autoref{sec:bhargava-iv}. 
+
+\begin{prop}
+A positive proportion of such $C$ have no rational points over any extension 
+of odd degree over $\dQ$. 
+\end{prop}
+
+For heuristic reasons, we suspect the proportion is $3/4$. 
+
+Let $J$ be the Jacobian of $C$; this is an abelian variety over $k$ of 
+dimension $g$. For each $n$, there is a variety $J^n=\picard^n(C)$ which 
+classifies line bundles of degree $n$ over $C$. Each $J^n$ is a $J$-torsor. For 
+hyperelliptic curves, there is a canonical element $h=\pi^\ast\sO(1)\in J^2(k)$ 
+coming from the degree-two map $C\to \dP^1$. (Just pull back any point in 
+$\dP^1$.) Thus $J^r\simeq J^{r+2n}$ for all $n$. The degree-one part $J^1$ is 
+especially important because the Abel map $C\to J^1$ given by 
+$x\mapsto [x]$ is an embedding defined over $k$. 
+
+\begin{prop}
+The following are equivalent:
+\begin{itemize}
+  \item $C$ has no rational points over any extension of odd degree 
+  \item $J^1(\dQ)=\varnothing$
+\end{itemize}
+\end{prop}
+\begin{proof}
+Indeed, if $x\in C(L)$ and $[L:\dQ]=2n+1$, then $\sum [x^\sigma]$ will be a 
+divisor of degree $2n+1$, hence an element of $J^1(\dQ)$. For the converse, we 
+only have to prove that $J^1$ is \emph{not} isomorphic to $J$ over $\dQ$, 
+because any element of $J^1(\dQ)$ gives an isomorphism $J\iso J^1$. 
+\end{proof}
+
+We're implicitly using the fact that the curve has local points everywhere. 
+There is a ``Brauer obstruction class'' measuring whether a rational divisor 
+class comes from a rational divisor. When our curve is everywhere locally 
+soluble, the Brauer class vanishes locally, so in this case it vanishes. 
+
+
+
+
+
+\subsection{Fundamental groups}
+
+There is a beautiful idea, going back to Serre, Grothendieck, \ldots that 
+studies varieties via their unramified covers. We will distinguish $J$ from 
+$J^1$ by studying their \emph{arithmetic fundamental groups}. In particular, 
+we will study their unramified 2-covers. 
+
+Recall that a \emph{2-covering} of $J$ is a $J$-torsor $F$ with an \'etale 
+covering $\pi:F\to J$ such that $\pi(f+a) = \pi(f)+2 $. So $\pi^{-1}(0)$ is a 
+$J[2]$-torsor. It follows that $\pi:F\to J$ has degree $2^{2 g}$. There is an 
+obvious notion of equivalence of 2-covers: via commutative diagrams 
+\[\xymatrix{
+  F' \ar[r]^-\pi \ar[d]^-\wr 
+    & J \ar@{=}[d] \\
+  F \ar[r]^-\pi 
+    & J .
+}\]
+For a 2-covering $F$, put $F[2]=\pi^{-1}(0)$; the 2-covering $F$ is completely 
+determined by the class of $F[2]$ in $\h^1(\dQ,J[2])$. Solvable 2-coverings 
+correspond to the image of $J(\dQ)/2\hookrightarrow \h^1(\dQ,J[2])$. Put 
+$\picard(C)=\coprod_{n\in \dZ} J^n$; the group 
+$\picard(C)/\dZ h=J\sqcup J^1$. So multiplication by 2 induces a 2-cover 
+$J^1\to J$. For this cover, $\pi^{-1}(0)=\{f\in J^1:2 f=h\}$, which we call 
+$W[2]$. For $100\%$ of hyperelliptic curves, $W[2]$ is nontrivial. But 
+$W[2]$ is locally soluble, so it gives a class in $\selmer_2(J)$. Since 
+$W[2]$ is nontrivial, we see that $100\%$ of the time, 
+$\selmer_2(J)\ne 0$. 
+
+We can even define 2-covers of $J^1$. They are maps $\pi:F\to J^1$ such that 
+$\pi(f+a)=\pi(f)+2 a$. Composing with $J^1\to J$, we get a 4-cover 
+$F\to J$. So $\pi^{-1}(0_J)$ is a $J[4]$-torsor. Let $\selmer_2(J^1)$ be the 
+set of locally soluble 2-covers of $J^1$. We will distinguish between 
+$J$ and $J^1$ by showing that on average, 
+$\#\selmer_2(J^1) < \# \selmer_2(J)$. Thus there will be many curves with 
+$J\not\simeq J^1$. Note that 
+\[
+  \selmer_2(J^1) = \{\alpha\in \selmer_4(J):2\alpha = W[2]\} .
+\]
+So if $W[2]$ is not divisible by $2$, $J^1\not\simeq J$. We have a commutative 
+diagram 
+\[\xymatrix{
+  0 \ar[r] 
+    & J(\dQ)/4 \ar[r] \ar[d] 
+    & \selmer_4 J \ar[r] \ar[d] 
+    & \sha(J)[4] \ar[r] \ar[d] 
+    & 0 \\
+  0 \ar[r] 
+    & J(\dQ)/2 \ar[r] 
+    & \selmer_2(J) \ar[r] 
+    & \sha(J)[2] \ar[r] 
+    & 0 .
+}\]
+We will try to count the Selmer set $\selmer_2(J^1)$. Pencils 
+$x A-y B$ of quadrics in $\dP^{2g+1}(\dQ)$ give 2-coverings 
+$\pi:F\to J^1$. This we saw in \autoref{sec:wang-i}. 
+
+We study the action of $\speciallinear(2 g+2)$ on 
+$\symmetric^2(2 g+2)\oplus \symmetric^2(2g+2)$. Using Bhargava's methods, we 
+show that $\average(\#\selmer_2 J^1) \leqslant 2=\tau(\speciallinear_{2g+2})$. 
+This is (just barely) enough. We know that 
+$\average(\#\selmer_2 J) \geqslant 2$. So we need to show that a positive 
+proportion of the time, $\average(\#\selmer_2 J)>2$. The Dokchitser brothers 
+have shown that the parity of $\selmer_2 J$ is equidistributed. So there have 
+to be curves with $J\not\simeq J^3$. A better result would be 
+$\average(\#\selmer_2 J)=3$, but even this is not good enough. 
+
+\emph{Note}: one usually creates abelian covers of $C$ through the fundamental 
+group of its Jacobian. But when $C$ has no rational points, $C$ embeds into 
+$J^1$, not $J$, so we would have to look at covers of $J^1$. But these don't 
+always exist! 
+
+\begin{prop}
+Let $f(x,y)$ be a binary form of degree $2g+2$ with $\Delta\ne 0$ and 
+$f_0\ne 0$, defined over $\dQ$. The following are equivalent:
+\begin{enumerate}
+  \item There exists an orbit $(A,B)$ with $\discriminant(x A-y B)=f(x,y)$. 
+  \item $f_0\in (\dQ^\times)^2 \norm(L^\times)$. 
+  \item $J^1_\fm$ is divisible by 2 in $\h^1(\dQ,J_\fm)$, where 
+    $\fm=[p_\infty]+[p_\infty']$ and $C_\fm:z^2=y^2 f(x,y)$ has genus $g+1$. 
+  \item The maximal abelian 2-cover of $C$ ramified only at 
+    $\{p_\infty,p_\infty'\}$ descends to a cover $D\to C$ over $\dQ$. 
+\end{enumerate}
+\end{prop}
+
+
+
 
