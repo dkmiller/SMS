@@ -7,5 +7,83 @@
 
 
 
-d
+Pencils of quadrics have shown up many times (though not under that name) in 
+this summer school. I will explain some of the geometry of quadrics. 
+
+
+
+
+
+\subsection{Notation}
+
+Let $k$ be a perfect field of characteristic not $2$. Let $\sL$ be a 
+rational generic pencil of quadrics in $\dP^{2n+1}$. Such an $\sL$ will be 
+of the form 
+\[
+  \{x Q-y Q_2:(x:y)\in \dP^1\}
+\]
+where $Q_1,Q_2\subset \dP^{2n+1}$ are quadrics. ``Rational'' means the $Q_i$ 
+are defined over $k$. ``Generic'' means the binary form 
+$f(x,y) = (-1)^{n+1}\det(x Q_1-y Q_2)$ has no repeated factors, 
+i.e.~$\discriminant(f)\ne 0$. Alternatively, $C:z^2=f(x,y)$ should be a smooth 
+hyperelliptic curve of genus $n$. The \emph{base locus} $B=Q_1\cap Q_2$ will 
+be smooth of dimension $2 n-1$. 
+
+Let $F$ be the variety of maximal linear subspaces of $B$. That is: 
+\[
+  F=\{X\simeq \dP^{n-1}:X\subset B\} .
+\]
+For example, when $n=1$, we have two quadrics $Q_1,Q_2\subset \dP^3$. We have 
+$F=B=Q_1\cap Q_2$, a genus one curve. So over $\bar k$, $F$ is isomorphic to an 
+elliptic curve. This is basically the construction Bhargava used to study 
+Selmer elements of elliptic curves. 
+
+If $n=2$, $B=Q_1\cap Q_2$ is a degree $4$ three-fold. The variety $F$ turns 
+out to be an abelian surface (over $\bar k$). 
+
+This apparent pattern holds. 
+
+\begin{theo}[Reid, Donagi, Desale-Ramanan]
+Over $\bar k$, the variety $F\simeq \jacobian C$; an abelian variety of 
+dimension $n$. 
+\end{theo}
+
+To obtain arithmetic information about $C$, we need a result that works over 
+an arbitrary (possibly non algebraically closed) base field. 
+
+\begin{theo}
+The variety $F$ is a $J=\jacobian(C)$-torsor. Moreover, there is an algebraic 
+group structure on $G=J\sqcup F\sqcup J^1\sqcup F$ compatible with that of 
+$J$, and for which $G/J\simeq \dZ/4$. 
+\end{theo}
+
+
+Here $J^1=\picard^1(C)$, the moduli space of degree-$1$ line bundles on $C$. 
+
+For $n=1$, $Q_1,Q_2\subset \dP^3$, we had $F=Q_1\cap Q_2$. The curve $C$ is 
+defined by $z^2=\det(x Q_1-y Q_2)$. The curve $\det(x Q_1-y Q_2)$ is cut out 
+by a binary quartic form. There is a canonical isomorphism $H^1=C$, so we have 
+a group structure on $G=E\sqcup F\sqcup F\sqcup F$. Multiplication by $2$ on 
+$G$ gives a map $2:C\to E$; this is a $2$-cover of $E$. This is the cover used 
+in the study of 2-Selmer groups of elliptic curves. Multiplication by $4$ gives 
+a map $4:F\to E$; this is the $4$-cover used in the study of 4-Selmer groups of 
+elliptic curves. 
+
+For general $n\geqslant 2$, there are a couple cases. 
+
+Case 1: $C(k)\ne\varnothing$. Choose $\infty\in C(k)$. Put 
+$F[2]_\infty = \{X\in F:X+X=(\infty)\}$; this is a $J[2]$-torsor. So we get an 
+element of $\h^1(k, J[2])$. There are two subcases 
+corresponding to whether or not $\infty$ is a Weierstrass point. If $C$ has a 
+Weierstrass point, we get all torsors of $J[2]$ in this way. When $\infty$ is a 
+non-Weierstrass point, we don't get all of $\h^1(k,J[2])$, but we do get 
+``enough'' points in $\h^1(k,J[2])$, namely the entire kernel of 
+$\gamma:\h^1(k,J[2]) \to \h^1(k,?)$ as in \autoref{sec:gross-i}. 
+
+Case 2: the map $2:F\to J^1$ is a $2$-cover of $J^1$. If $k$ is a global field 
+and $C$ is everywhere locally soluble, we get all locally soluble 2-covers of 
+$J^1$ using this method. 
+
+
+
 
