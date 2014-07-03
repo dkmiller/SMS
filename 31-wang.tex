@@ -7,5 +7,234 @@
 
 
 
-d
+In the previous lectures, we have seen how to parameterize objects of 
+arithmetic interest by looking at orbits of group actions, and we have counted 
+these orbits using analytic methods. In this lecture, we'll generalize the 
+techniques to global fields. 
+
+
+
+
+
+\subsection{Terminology}
+
+A \emph{global field} K is one of the following:
+\begin{itemize}
+  \item number field (finite extension of $\dQ$)
+  \item finite separable extension of $\dF_q(T)$
+\end{itemize}
+For global fields of finite characteristic, we are implicitly choosing a map 
+from the corresponding curve to $\dP^1$. With that map, we can always define a 
+ring of integers $\cO$, and a set $M_\infty$ of infinite places. Our underlying 
+example will be the average size of $\selmer_2(E/K)$. 
+
+Throughout, $K$ is a global field, not of characteristic $2$ or $3$. 
+
+
+
+
+
+\subsection{Heights for global fields}
+
+Let $K$ be a global field. An elliptic curve $E$ over $K$ can be written as 
+$E:y^2=x^3+A x+B$ with $A,B\in K$. We think of $(A,B)\in \dP(4,6)$, where 
+$\dP(4,6)=\dG_\multiplicative\backslash \dA^2\smallsetminus 0$ via the action 
+$\alpha\cdot (A,B)=(\alpha^4A,\alpha^6 B)$. If $(A,B)\in \dA^2(K)$, define 
+a fractional ideal 
+\[
+  I = \{\alpha\in K:\alpha\cdot (A,B)\in \dA^2(\cO)\} .
+\]
+Set 
+\[
+  H(A,B) = \norm(I)\prod_{v\in M_\infty} \max\left\{|A|_v^{1/4},|B|_v^{1/6}\right\} .
+\]
+A simple application of the product formula shows that this height is 
+invariant under the action of $\dG_\multiplicative$. Unfortunately, the set 
+$\dA^2(K)_{<X}=\{x\in \dA^2(K):H(x)<X\}$ might not be ``bounded.'' The solution 
+is to construct a nice fundamental domain for 
+$\dG_\multiplicative(K)\backslash S(K)$ (Here and elsewhere 
+$S=\dA^2\smallsetminus 0$) so that 
+$(\dG_\multiplicative(K)\backslash S(K))\cap S(K)_{<X}$ is bounded. 
+
+
+
+
+
+\subsection{Orbit parameterization over \texorpdfstring{$K$}{K}}
+
+There is a bijection between $\selmer_2(E)$ and the set of locally soluble 
+orbits for the action of $G(K)$ on $V(K)$. Here $G=\projectivegenerallinear(2)$ 
+and $V=\symmetric^4(2)$. If $K$ has characteristic not $2$ or $3$, everything 
+works fine. 
+
+
+
+
+
+\subsection{Locally soluble \texorpdfstring{$K$}{K}-orbits to integral orbits}
+
+The key input over $\dQ$ is that if $v\in V(\dQ_p)^\mathrm{sol}$ with integral 
+invariants, then there exists $g\in G(\dQ_p)$ such that $g v\in V(\dZ_p)$. 
+Unlike our definition of heights, which used $h_\dQ=1$ and needed to be 
+modified for general $K$, things here translate easily. 
+
+\begin{lemm}
+If $v\in V(K_\fp)^\mathrm{sol}$ with invariants in $\cO_\fp$, 
+$\fp\notin M_\infty$, then there exists $g\in G(K_\fp)$ such that 
+$g v\in V(\cO_\fp)$. 
+\end{lemm}
+
+Morally, replace $\dQ$ with $K$, $\dQ_p$ with $K_\fp$, and $\dZ_p$ with 
+$\cO_\fp$. But we need to be careful: there is a fundamental difference in 
+behavior between $\dZ$ and general $\cO_K$. 
+
+Suppose $v\in V(K)^\mathrm{ls}$ with invariants in $\cO$. Then for all 
+$\fp\notin M_\infty$, there exists $g_\fp\in G(K_\fp)$ such that 
+$g_\fp v\in V(\cO_\fp)$. Put $g=(g_\fp)_{\fp\notin M_\infty}\in G(\dA_f)$, 
+where $\dA_f$ is the ring of finite adeles. Inside $G(\dA_f)$ are two 
+subgroups. One is $U=\prod_{\fp\notin M_\fp} G(\cO_\fp)$, the other is 
+$G(K)$. If $K$ has trivial class group, the double quotient 
+$U\backslash G(\dA_f)/G(K)$ will be trivial, but in general it is only finite. 
+For number fields, this due to Borel \cite{b63}, and for function fields this is 
+due to Conrad \cite{c12}. Put 
+\[
+  G(\dA_f) = \coprod_{\beta\in \class(G)} U \beta G(K) .
+\]
+There exists $g_\fp'\in G(\cO_\fp)$, $\beta\in \class(G)$, $h\in G(K)$ such 
+that for all $\fp\notin M_\infty$ we have $G_\fp = g_\fp' \beta h$. Define 
+\begin{align*}
+  V_\beta &= V(K)\cap \beta^{-1}\Bigl(\prod_{\fp\notin M_\infty} V(\cO_\fp)\Bigr) \\
+  G_\beta &= G(K)\cap \beta^{-1} U .
+\end{align*}
+Then the groups $V_\beta$ and $G_\beta$ are commensurable with 
+$V(\cO)$ and $G(\cO)$. Since $\beta h v\in V(\cO_\fp)$ for all 
+$\fp\notin M_\infty$, we have $h v\in V_\beta$. 
+
+For any subgroup $G_0\subset G(K)$ and any $G_0$-invariant subset 
+$V_0\subset V(K)$, $X>)$, let $N(V_0,G_0,X)$ be the number of irreducible 
+$G_0$-orbits in $V_0$ of height $\leqslant X$, where each $G_0 v$ is weighted 
+by 
+\[
+  \frac{1}{\#\stabilizer_{G_0}(v)} .
+\]
+Let $m:V(K)\to [0,1]$ be a $G_0$-invariant map defined by some congruence 
+conditions (i.e.~$m=\prod_\fp m_\fp$). Let $N_m(V_0,G_0,X)$ be defined as 
+$N(V_0,G_0,X)$, but weighted by 
+\[
+  \frac{m(v)}{\#\stabilizer_{G_0}(v)} .
+\]
+
+\begin{theo}
+Define a weight $m'$ by 
+\[
+  m'(v)=\chi_{V(K)^\mathrm{ls}}(v) \frac{1}{\#\stabilizer_{G(K)}(v)}\left(\sum_{\beta\in \class(G)}\sum_{v_\beta\in G_\beta\backslash V_\beta\cap V(K)v} \frac{1}{\#\stabilizer_{G_\beta}(v_\beta)}\right)^{-1} .
+\]
+Then 
+\[
+  N(V(K)^\mathrm{ls},G(K),X) = \sum_{\beta\in \class(G)}N_{m'}(V_\beta,G_\beta,X) . 
+\]
+\end{theo}
+
+It is nontrivial (but true) that $m' = \prod m'_\fp$. 
+
+
+
+
+
+\subsection{Count integral orbits soluble at infinity}
+
+Define $N_{m_\infty'}(V_\beta,G_\beta,X)$. Put 
+$K_\infty = \prod_{v\in M_\infty} K_v$. Construct 
+$G_\beta\backslash V(K_\infty)_{<X}$. Set 
+\begin{align*}
+  R(X) &= G(K_\infty) \backslash V(K_\infty)_{<X} \\
+  \cF_X &= G_\beta\backslash G(K_\infty) 
+\end{align*}
+Then $\cF_\beta R(X)\twoheadrightarrow G_\beta\backslash V(K_\infty)_{<X}$. The 
+fiber over $G_\beta v$ has size 
+\[
+  \frac{\#\stabilizer_{G(K_\infty)}(v)}{\#\stabilizer_{G_\beta}(v)} .
+\]
+We want 
+\[
+  N_{m_\infty}(V_\beta,G_\beta,X) = \int_{\cF_\beta R(X)} \frac{m_\infty(v)}{\#\stabilizer_{G(K_\infty)}(v)}\,\mathrm{d} v_{\infty,\beta} + \text{error} ,
+\]
+were we normalize our Haar measure by 
+$v_{\infty,\beta}(V(K_\infty)/V_\beta)=1$. 
+To continue, we need a version of Davenport's lemma for function fields. It is 
+proved using Poisson summation. A more serious problem is the cusps. Without 
+loss of generality assume $G_\beta - G(\cO)$ and $V_\beta=V(\cO)$. Reduction 
+theory (worked out by Springer) tells us what $G(\cO)\backslash G(K_\infty)$ 
+looks like for all local fields. There is still a ``$NAK$ decomposition.'' 
+
+When $G=\projectivegenerallinear(2)$, we have 
+\begin{align*}
+  N &= \begin{pmatrix} 1 \\ \ast & 1 \end{pmatrix} \\
+  A &= \left\{\begin{pmatrix} t^{-1} \\ & t\end{pmatrix}:t>\frac{\sqrt 3}{2}\right\} 
+\end{align*}
+Just as when $K=\dQ$, we cut off the cusps. Restrict the representation $V$ to 
+the torus $A$: it decomposes as $V=\bigoplus_{\chi\in U_0} \chi$. For 
+example, 
+\[
+  \symmetric^4(2) = \underbrace{\chi_{x^4}}_{t^{-4}} \oplus \underbrace{\chi_{x^3 y}}_{t^{-2}}\oplus \underbrace{\chi_{x^2 y^2}}_1 \oplus \underbrace{\chi_{x y^3}}_{t^2}\oplus \underbrace{\chi_{y^4}}_{t^4} .
+\]
+Describe reducibility using subsets of $U_0$. The cusp set  
+$V(K_\infty)^\mathrm{cusp}\subset V(K_\infty)$ is defined by 
+$|v(\chi)|<c_1$ for some $\chi\in U_0$, where $c_1$ is chosen so that if 
+$v\in V(\cO)$, $|v(\chi)|<c_1$, then $v(\chi)=0$. 
+
+There is a combinatorial condition on the characters of $A$ that implies 
+\begin{enumerate}
+  \item The number of irreducible elements of the cusp is small. 
+  \item The volume of the cusp is small. 
+\end{enumerate}
+This condition only depends on the field $K$ through the torus $T$. For 
+example, if the group is split over $\dQ$, the condition does not depend on the 
+field at all. This has been worked out for all the representations we've seen 
+so far. 
+
+Finally, we need an estimation of reducibility. This is a purely local 
+computation. 
+
+
+
+
+
+\subsection{Solubility at finite primes}
+
+We do this through the weight function $m_\fp'$. Again, this is purely 
+local. 
+
+
+
+
+
+\subsection{Uniformity estimate}
+
+This is more-or-less local. The methods work over any global field. It has 
+been worked out for $\selmer_n(E)$ with $n\in \{2,3,4,5\}$, and to count field 
+extensions. 
+
+
+
+
+
+\subsection{Compute local integrals}
+
+This is (obviously) a local computation. 
+
+The final result is: 
+\[
+  N(V(K)^\mathrm{ls},G(K),X) = \tau(G/K) \mu_\infty(X) \prod_{\fp\notin M_\infty} \mu_\fp .
+\]
+
+\begin{theo}
+When all $E/K$ are ordered by height, then for $n\in \{2,3,4,5\}$, we have 
+\[
+  \average(\#\selmer_n E) = \sum_{d\mid n} d .
+\]
+\end{theo}
+
+
+
 
