@@ -7,5 +7,234 @@
 
 
 
-d
+I will give a ``sales pitch'' for thinking about these problems in the context 
+of global function fields. The idea is that the main problems can be approached 
+more geometrically. Some problems in arithmetic statistics are much easier in 
+the function field context. 
+
+
+
+
+
+\subsection{Motivating examples}
+
+\begin{enonce}{Question}
+How many integers are there between $N$ and $2 N$?
+\end{enonce}
+
+See \autoref{sec:granville-ii} for an interesting (and sophisticated) approach 
+to this question. 
+
+\begin{enonce}{Question}
+How many squarefree integers are there between $N$ and $2 N$?
+\end{enonce}
+
+Call this number $\squarefree(N)$. To be squarefree is to be indivisible by 
+$4,9,25,49,\ldots$, i.e.~not divisible by $p^2$ for any prime $p$. One might 
+expect ``being indivisible by $p^2$'' to be independent for distinct $p$, so 
+\begin{align*}
+  \squarefree(N) 
+    &\sim N\cdot\left(1-\frac 1 4\right)\left(1-\frac 1 9\right) \cdots \\
+    &= N\cdot \prod_p \left(1-p^{-2}\right)^{-1} \\
+    &= \zeta(2)^{-1} N .
+\end{align*}
+So $\lim_{N\to \infty}\frac{\squarefree{N}}{N} = \zeta(2)^{-1}$. This is a 
+common phenomenon in arithmetic statistics -- some kind of behavior 
+asymptotically occurs an $L$-value percent of the time. 
+
+First, let's understand how this problem looks over more general global fields. 
+
+\begin{defi}
+A \emph{global field} is either 
+\begin{itemize}
+  \item A number field, i.e.~a finite extension of $\dQ$. 
+  \item The function field of a curve over a finite field $\dF_q$. 
+    (Equivalently, a field isomorphic to a finite extension of $\dF_q(t)$.)
+\end{itemize}
+\end{defi}
+
+We will be quite loose in identifying a curve over $\dF_q$ and its function 
+field, because there is an (anti-)equivalence of categories between smooth 
+proper geometrically irreducible (aka ``nice'') curves over $\dF_q$ and 
+field extensions of $\dF_q$ of transcendence degree $1$. 
+
+
+
+
+
+\subsection{The analogy between number fields and function fields}
+
+For a number field $K$, there is a unique embedding $\dQ\hookrightarrow K$. But 
+there might be \emph{many} ways to embed $\dF_q(t)$ into a global field $K$. 
+For example, $\dF_q(t^{17})\subset\dF_q(t)$ is a ``non-standard'' embedding of 
+$\dF_q(t)$ into $\dF_q(t)$. So global function fields do not ``come with'' the 
+structure of an extension of $\dF_q(t)$. This phenomenon lies behind the fact 
+that Mordell-Weil ranks are unbounded over function fields. (See examples of 
+Ulmer.) In this lecture we'll mainly talk about $\dF_q(t)$. 
+
+What is the function-field analogue of counting squarefree integers in a box? 
+One problem is that $\dQ$ has only one ``nice'' subring, whereas $\dF_q(t)$ has 
+lot of ``nice'' subrings. We'll use the following analogy:
+\begin{center}
+\begin{tabular}{c|c}
+number fields & function fields \\ \hline
+$\dQ$ & $\dF_q(t)$ \\
+$\dZ$ & $\dF_q[t]$ \\
+$|\cdot|:\dZ\to \dR$ & $|f|_\infty = q^{\deg f}$ \\
+$[N, 2 N]=\{n\in \dN:|n|\sim N\}$ & set of monic polys with $|f|= N=q^n$ \\
+$\#(\dN\cap [N,2 N])\sim N$ & $\#($monic polys with $|f|=N)=N$ \\
+of these, $\sim \zeta_\dZ(2)^{-1} N$ are squarefree & $\sim \zeta_{\dF_q[t]}(2)^{-1}$ are squarefree
+\end{tabular}
+\end{center}
+
+That is, the limiting proportion of squarefree monic polynomials in 
+$\dF_q[t]$ is 
+\[
+  \prod_p \left(1-|p|^{-2}\right) = 1-q^{-1} .
+\]
+as $p$ ranges over monic irreducible polynomials in $\dF_q[t]$. In fact, the 
+number of squarefree monic polynomials of degree $n$ in $\dF_q[t]$ is exactly 
+$q^n-q^{n-1}$ for all $n\geqslant 2$, and $q$ for $n=1$. So we have a 
+power-saving result with \emph{much} better error term over function fields. So 
+we shouldn't think of there being an analogy between any particular number field 
+and any particular function field. Rather, there is an analogy between the 
+\emph{class} of number fields and the \emph{class} of function fields. 
+
+
+
+
+
+\subsection{Geometric picture}
+
+What is geometric about what we've done? We introduce yet another function 
+field, $\dC(t)$. We can once again think about the set of monic squarefree 
+polynomials of degree $n$ in $\dC[t]$. This set is not just a set -- it is a 
+\emph{space} (namely an algebraic variety). The space of monic squarefree 
+polynomials of degree $n$ is called the (unordered) \emph{configuration space} 
+of $\dC$, denoted $\configuration^n \dC$. It parameterizes $n$-tuples of 
+distinct points in $\dC$, up to permutation. This isomorphism is given by 
+$f\mapsto \{\text{roots of $f$}\}$. The inverse sends an $n$-tuple 
+$(z_1,\dots,z_n)$ to the polynomial $f(t)=(t-z_1)\cdots(t-z_n)$. 
+
+We are morally constrained to think of this configuration space not just as 
+a complex manifold, but as a scheme over $\spectrum\dZ$. Namely, there is a 
+scheme $\configuration^n \dA^1$ over $\spectrum\dZ$ such that 
+\[
+  (\configuration^n\dA^1)(K) = \{\text{monic squarefree polynomials of degree $n$ in $K[t]$}\}
+\]
+for any field $K$. In fact, this has a simple description. Namely, the moduli 
+space of \emph{all} monic polynomials of degree $n$ is $\dA^n$. A polynomial $f$ 
+is squarefree if and only if the discriminant $\Delta(f)$ is nonzero, where 
+$\Delta$ is a polynomial in the coefficients of $f$. For example, 
+\[
+  \Delta(t^2+a_1 t+a_2) = a_1^2 - 4 a_2 .
+\]
+So $\configuration^n\dA^1$ is $\dA^n\smallsetminus V(\Delta)$. Note: we would 
+get a different space if we parameterized ordered $n$-tuples numbers, where 
+we care about ordering. We'll call that $\pureconfiguration^n$, the 
+\emph{pure configuration space}. The group $S_n$ acts on $\pureconfiguration^n$ 
+by permuting the $n$-tuples, and the quotient 
+$\pureconfiguration^n/S_n$ is $\configuration_n$. Note that 
+$\pureconfiguration^n\dA^1=\dA^n\smallsetminus \bigcup_{i\ne j} V(z_i-z_j)$, 
+where $z_1,\dots,z_n$ are the the coordinates of $\dA^n$. 
+
+The set of monic squarefree polynomials in $\dF_q[t]$ of degree $n$ is just 
+$\configuration^n\dA^1(\dF_q)$. So our counting problem is: what is 
+$\#\configuration^n\dA^1(\dF_q)$? We saw that the answer is $q^n-q^{n-1}$. 
+
+What if we only cared about what happens as $q\to \infty$? For example, what is 
+the probability that a degree-$n$ polynomial over $\dF_q[t]$ is squarefree? We 
+had been fixing $q$ and letting $n\to \infty$. A simpler question is fixing $n$ 
+and letting $q\to \infty$. As $q\to \infty$, 
+\[
+  \lim_{q\to\infty}\frac{\#\configuration^n\dA^1(\dF_q)}{q^n} 
+    = \lim_{q\to \infty}\frac{\#(\dA^n\smallsetminus V(\Delta))(\dF_q)}{q^n} 
+    = 1 .
+\]
+
+
+
+
+
+\subsection{M\"obius functions}
+
+\begin{enonce}{Question}
+What is the average of the M\"obius function?
+\end{enonce}
+
+Recall the \emph{M\"obius function} $\mu$ is the arithmetic function defined by 
+\[
+  \mu(n) = \begin{cases} 0 & n\text{ is squarefree} \\ 1 & n\text{ the product of an even number of distinct primes} \\ -1 & n\text{ the product of an odd number of distinct primes} \end{cases}
+\]
+Earlier, we computed that the expected value of $\mu^2$ is 
+$\expected(\mu^2)=\zeta(2)^{-1}$. How does this look for function fields? We 
+can define the M\"obius function of a polynomial in exactly the same way. But 
+over function fields, we have the beautiful 
+
+\begin{enonce}{Fact}
+\[
+  \mu(f) = (-1)^{\deg f} \left(\frac{\Delta(f)}{q}\right) 
+\]
+where $\left(\frac{\cdot}{q}\right)$ is the Legendre symbol. 
+\end{enonce}
+
+Note that $(-1)^n\mu(f)+1$ is the number of square roots of $\Delta(f)$ in 
+$\dF_q$, where $n=\deg f$. Let's make a variety geometrizing this problem. 
+Define $Y_n$ to be the space parameterizing pairs $(f,y)$, where $f$ is a monic 
+squarefree degree $n$ polynomial, and $y$ is a square root of $\Delta(f)$. Then 
+\[
+  \#Y_n(\dF_q) = \sum_{f:\deg f=n} \left((-1)^n \mu(f) + 1\right)
+\]
+So $\#Y_n(\dF_q) - q^n = (-1)^n \sum_f \mu(f)$. We expect 
+\[
+  \# Y_n(\dF_q) = q^n + o(q^n) .
+\]
+Why? There is a map $Y_n\to \dA^n$ given by $(f,y)\mapsto f$. This is a 
+double branched at the vanishing locus of $\Delta$. In general, we expect an 
+$n$-dimensional variety to have approximately $q^n$ points over $\dF_q$. But 
+this expectation only is valid when the variety is irreducible. So we think 
+$\# Y_n(\dF_q)\sim q^n$ because we think $Y_n$ is irreducible. Indeed, the 
+Weil conjectures guarantee that if $Y_n$ is geometrically irreducible, then 
+\[
+  \lim_{q\to \infty} \frac{\#Y_n(\dF_q)}{q^n} = 1 ,
+\]
+so the limit as $q\to \infty$ of the average of the M\"obius function is zero. 
+
+But how do we \emph{actually know} that $Y_n$ is irreducible? What if 
+$\Delta(a_1,\dots,a_n)$ were actually $G^2$ for some other polynomial $G$? 
+Then $\mu(f)$ would be $(-1)^n$ for \emph{all} $f$ of degree $n$. I argue that 
+the underlying idea here is a computation of monodromy. 
+
+
+
+
+
+\subsection{Monodromy}
+
+Recall the $S_n$-Galois cover 
+$\pureconfiguration^n \twoheadrightarrow \configuration^n$. The normal subgroup 
+$A_n\subset S_n$ corresponds to an intermediate (degree-2) Galois cover 
+$U_n\to \configuration^n$. In fact, the following diagram is Cartesian with 
+the left arrow being an \'etale cover with group $\dZ/2$:
+\[\xymatrix{
+  U_n \ar[r] \ar[d] 
+    & Y_n \ar[d] \\
+  \configuration^n{} \ar@{^{(}->}[r] 
+    & \dA^n .
+}\]
+It is sufficient to show that $U_n$ is irreducible. A $\dZ/2$-cover of 
+$\configuration^n$ is a map $\pi_1(\configuration^n)\to \dZ/2$, and the cover 
+is irreducible if and only if this map is surjective. Whenever we have a 
+``cover of moduli spaces'' $Y\to X$ of degree $n$, we have a map 
+$\pi_1(X)\to S_n$. The image of this map is called the \emph{monodromy group} 
+of the cover and $Y$ is irreducible if and only if the monodromy group is 
+transitive. 
+
+In \autoref{sec:ellenberg-ii}, we'll look at the idea that big monodromy 
+implies ``averages are what you expect'' in the large $q$ regime. Sometimes, 
+monodromy is not big, and its ``smallness'' can sometimes explain the failure 
+of of heuristics. 
+
+
+
 
