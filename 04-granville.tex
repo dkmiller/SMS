@@ -194,11 +194,193 @@ where the discriminant $d=b^2 -4 a c$, so $d$ is congruent to either $0$ or
 $1$ modulo $4$. If $d<0$, the right side can only take positive values\ldots 
 things are easier when $d>0$. If $a>0$, the form is positive definite. 
 
+The quadratic forms $x^2+y^2$ and $X^2+2 X Y + 2 Y^2$ represent the same 
+integers. If $N=n^2+n^2$, then $N = (m-n)^2 + 2 (m-n) n + 2 n^2$. Conversely if 
+$N = u^2 + 2 u v + 2 v^2$, then $N=(u+v)^2+v^2$. More conceptually, 
+\[
+  \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ & 1 \end{pmatrix} \begin{pmatrix} X \\ Y \end{pmatrix}
+\]
+transforms $x^2+y^2$ into $X^2+2 X Y + 2 Y^2$, and the transformation is 
+invertible since $\det\begin{pmatrix} 1 & 1 \\ & 1 \end{pmatrix} = 1$. 
+
+Much more generally, define 
+\[
+  \speciallinear(2,\dZ) = \left\{\begin{pmatrix} \alpha & \beta \\ \gamma & \delta \end{pmatrix} : \alpha,\beta,\gamma\delta\in \dZ\text{ and }\alpha\delta-\beta\gamma=1\right\} .
+\]
+Then $a x^2+b x y+c y^2$ represents the same integers as 
+$A X^2 + B X Y + C Y^2$ whenever 
+$\begin{pmatrix} x \\ y\end{pmatrix} = \theta \begin{pmatrix} X \\ Y\end{pmatrix}$ 
+with $\theta\in \speciallinear(2,\dZ)$. When such a $\theta$ exists, we say the 
+quadratic forms $a x^2+b x y+c y^2$ and $A X^2+B X Y+C Y^2$ are 
+\emph{equivalent}. Since this is an equivalence relation, it splits the set of 
+binary quadratic forms into equivalence classes. 
+
+For a quadratic form $f(x,y) = a x^2+b x y+c y^2$, we can write 
+\[
+  a x^2 + b x y+c y^2 = \begin{pmatrix} x & y \end{pmatrix} \begin{pmatrix} a & b/2 \\ b/2 & c \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} .
+\]
+We define the \emph{discriminant} of $f$ to be 
+\[
+  \discriminant(f) = -\det\begin{pmatrix} a & b/2 \\ b/2 & c \end{pmatrix} = \frac 1 4 b^2 - a c .
+\]
+If $g(X,Y) = A X^2+B X Y+C Y^2$ is equivalent to $f(x,y) = a x^2+b x y+c y^2$ 
+via $\theta\in \speciallinear(2,\dZ)$, we deduce that 
+\[
+  \begin{pmatrix} A & B/2 \\ B/2 & C \end{pmatrix} = \transpose\theta \begin{pmatrix} a & b/2 \\ b/2 & c \end{pmatrix} \theta,
+\]
+so equivalent binary quadratic forms have the same discriminant. 
+
+Apparently complicated binary quadratic forms like $29 X^2+82 X Y+58 Y^2$ can 
+be equivalent to simple ones like $x^2+y^2$. 
+
+\begin{theo}[Gauss]
+Every equivalence class of negative-definite binary quadratic forms contains 
+a unique \emph{reduced} representative, where a form $f$ is reduced if 
+\[
+  -a<b\leqslant a\leqslant c \text{, and }b\geqslant 0\text{ whenever } a=c .
+\]
+\end{theo}
+
+For a form $f$, put $d=\discriminant(f)$. If $d<0$ and $f$ is reduced, we 
+have $|d|=4 a c-|b|^2 \geqslant 3 a^2$, hence 
+\[
+  a\leqslant \sqrt{|d|/3} .
+\]
+So for given $d<0$, only finitely many $a$ and $b$ (since $|b|\leqslant a)$, 
+and hence $c=(b^2-d)/4$ can exist with discriminant $a$. Let $h(d)$ be the 
+(finite) number of equivalence classes of binary quadratic forms of 
+discriminant $d$. The \emph{class number} $h(d)\geqslant 1$ since we always 
+have the \emph{principal form} 
+\begin{align*}
+  x^2-(d/4) y && d\equiv 0\pmod 4 \\
+  x^2+d y+\frac{1-d}{4} y^2 && d\equiv 1\pmod 4 .
+\end{align*}
+
+\begin{theo}[Gauss]
+Every positive definite binary quadratic form is equivalent to a reduced form. 
+\end{theo}
+\begin{proof}
+We proceed via ``infinite descent'' with the following algorithm. 
+
+1. If $c<a$ the transformation 
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} & -1 \\ 1 \end{pmatrix} \begin{pmatrix} X \\ Y \end{pmatrix}$
+yields $(c,-b,a)$, which is equivalent to $(a,b,c)$. 
+
+2. If $b>a$ or $b\leqslant -a$, let $b'$ be the least residue, in absolute value, 
+of $b\pmod{2a}$, so $-a<b'\leqslant a$; say $b'=b-2 k a$. Let 
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 1 & -k \\ & 1 \end{pmatrix} \begin{pmatrix} x' \\ y' \end{pmatrix}$. 
+The resulting form $(a,b',c')$ is equivalent to $(a,b,c)$. 
+
+3. If $c=a$ and $-a<b<0$, use the transformation 
+$\begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} & -1 \\ & 1 \end{pmatrix} \begin{pmatrix} x' \\ y' \end{pmatrix}$ 
+to get the form $(a,-b,a)$. If the resulting form is not reduced, repeat. 
+
+The algorithm terminates after 3, since 2 is followed by 1 or 3, and since 1 
+reduces the size of $a$. 
+\end{proof}
+
+If for example $f(x,y) = 76 x^2 + 217 x y + 155 y^2$ of discriminant $-31$, the 
+sequence of forms is 
+\[
+  (76,65,14) , (14,-65,76) , (14,-9,2) , (2,9,14) , (2,1,4) .
+\]
+For the form $f(x,y) = 11 x^2 + 49 x y + 55 y^2$ of discriminant $-19$, the 
+sequence is 
+\[
+  (11,49,55), (1,-5,11), (1,1,5) .
+\]
+
+\begin{prop}
+Suppose $d=b^2-4 a c$ with $(,b,c)=1$, and $p$ a prime. 
+\begin{enumerate}
+  \item If $p=a m^2+b m n+c n^2$ for some integers $m,n$, then $d$ is a sqare 
+    modulo $4 p$. 
+  \item If $d$ is a square modulo $4 p$, then there exists a binary quadratic 
+    form of discriminant $d$ that represents $p$. 
+\end{enumerate}
+\end{prop}
+\begin{proof}
+1. If $p\nmid 2 a d$ and $p=a m^2+b m n+c n^2$, then 
+$4 a p = (2 a m+b n)^2-d n^2$, so $d n^2$ is a square mod $4 p$. Now 
+$p\nmid n$ else $p\mid 4 a p+d n^2=(2 a m+b n)^2$, so that $p\mid 2 am$ is 
+impossible as $p\nmid 2 a$ and $(m,n)=1$. We deduce that $d$ is a square mod 
+$p$. 
+
+2. If $d\equiv b^2\pmod{4p}$, then $d=b^2-4 p c$ for some integer $c$, and so 
+$p x^2+b x y+c^2$ is a quadratic form of discriminant $d$ which represents $p$ 
+via $p=p\cdot 1^1 + b\cdot 1\cdot 0 + c\cdot 0^2$. 
+\end{proof}
+
+\begin{theo}
+Suppose $h(d)=1$. Then $p$ is represented by a form of discriminant $d$ if and 
+only if $d$ is a square modulo $4 p$. 
+\end{theo}
+
+We call the \emph{fundamental discriminants} those such that if $q^2\mid d$ 
+then $q=2$ and $d\equiv 8$ or $12\pmod{16}$. The only fundamental $d<0$ with 
+$h(d)=1$ are 
+\[
+  -3,-4,-7,-8,-11,-19,-43,-67,-163 .
+\]
+This was proved originally by Heeger, then later by Baker and Stark. 
+
+Euler noticed that the polynomial $x^2+x+41$ is prime for $x=0,\dots,39$, and 
+found some similar polynomials. In fact, we have the following. 
+
+\begin{theo}[Rabinowiscz]
+The class number $h(1-4 A)=1$ for $A\geqslant 2$ if and only if 
+$x^2+x+A$ is prime for $x=0,1,\dots,A-2$. 
+\end{theo}
+
+For some forms, whether or not a prime can be represented by that form can 
+be detected by congruence conditions. For example: 
+\begin{center}
+\begin{tabular}{c|c}
+form & condition for $p$ to be rep.~by $f$ \\ \hline
+$x^2+y^2$         & $(-1/p)=1$ \\
+$x^2+2 y^2$       & $(-2/p)=1$ \\
+$x^2+x y+y^2$     & $(-3/p)=1$ \\
+$x^2+x y+2 y^2$   & $(-7/p)=1$ \\
+$x^2 + x y+3 y^2$ & $(-11/p)=1$ \\
+$x^2+x y+5y^2$    & $(-19/p)=1$ \\
+$x^2+x y+11y^2$   & $(-43/p)=1$ \\
+$x^2+x y+17 y^2$  & $(-67/p)=1$ \\
+$x^2+x y+41 y^2$  & $(-163/p)=1$
+\end{tabular}
+\end{center}
+
+When the class number is not one, sometimes you can still characterize 
+representability of primes by congruence conditions. For example, 
+$h(-20)=2$, the two reduced forms are 
+\[
+  x^2+5 y^2 , 2 x^2 + 2 x y+3 y^2.
+\]
+A prime $p$ is represented by $x^2+ 5 y^2$ if and only if 
+$p=5$, or $p\equiv 1,9\pmod{20}$, and $p$ is represented by $2 x^2+2 x y+3 y^2$ 
+if and only if $p=2$, or $p\equiv 3,7\pmod{20}$. 
+
+We cannot always distinguish which primes are represented by which binary 
+quadratic form of discriminant $d$ by congruence conditions. Euler found 
+$65$ such \emph{idoneal numbers}. No more are known -- at most one further 
+idoneal number can exist, and only if GRH is false. 
+
 
 
 
 
 \subsection{Structure of ideals}
+
+Any ideal $I$ in a quadratic ring of integers 
+\[
+  R=\{a+ b\sqrt d:a,b\in \dZ\} 
+\]
+can be generated by at most 2 elements. Indeed, if $I\subset \dZ$, then $I$ is 
+principal. Otherwise there exists $r+s \sqrt d\in I$ with $s\ne 0$. Without 
+loss of generality $s>0$, and select such an element with $s$ minimal. 
+
+
+
+
 
 \subsection{Composition}
 
