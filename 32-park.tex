@@ -7,5 +7,177 @@
 
 
 
-d
+\subsection{Introduction}
+
+Following Poonen, we say a curve is \emph{nice} if it is smooth, projective, 
+and geometrically irreducible. 
+
+\begin{enonce}{Question}
+Let $X$ be a nice curve over $\dQ$ of genus $g\geqslant 2$. Find all degree-$d$ 
+points on $X$. 
+\end{enonce}
+
+If $x\in X(\overline\dQ)$, we say $x$ has \emph{degree $d$} if 
+$[\kappa(x):\dQ]\leqslant d$, where $\kappa(x)=\sO_{X,x}/\fm_x$ is the residue 
+field at $x$. We could rephrase the problem as: find 
+\[
+  \bigcup_{[K:\dQ]\leqslant d} X(K) .
+\]
+The problem is: the compositum of all degree-$\leqslant d$ extensions of $\dQ$ 
+is not a number field, so we can't apply Faltings' theorem to conclude this set 
+is finite. 
+
+Throughout, we assume $X$ has an effective divisor of degree $d$. This is not 
+harmful, because if $X$ had no such divisor, it would have no points of degree 
+$d$. We also assume $X$ has a rational point $0\in X(\dQ)$. 
+
+\begin{enonce}{Question}
+Let $X$ be a nice curve over $\dQ$ of genus $g\geqslant 2$. Find all 
+$\dQ$-points on $\symmetric^d X = \overbrace{X\times \cdots X}^d / S^d$. 
+\end{enonce}
+
+A point on $\symmetric^d X$ will be a multiset $\{x_1,\dots,x_d\}$; this lies 
+in $(\symmetric^d X)(\dQ)$ if and only if the $x_i$ are $\sigma$-conjugates, 
+where $\sigma\in \galois(\overline\dQ/\dQ)$ has order $\leqslant d$. We can 
+apply a generalized theorem of Faltings, proved in \cite{f94}, to study 
+$(\symmetric^d X)(\dQ)$. 
+
+\begin{theo}[Faltings]
+Let $A$ be an abelian variety over $\dQ$, $Y\subset A$ a closed subvariety. Then 
+there exists finitely many subvarieties $Y_i\subset Y$ such that each $Y_i$ is 
+the translate of an abelian subvariety of $A$, and 
+\[
+  Y(\dQ) = \bigcup Y_i(\dQ) .
+\]
+\end{theo}
+
+There is a map $j:\symmetric^d X\to J=\jacobian X$ defined by 
+$\{x_1,\dots,x_d\}\mapsto [x_1+\cdots + x_d - d(0)]$. The fibers are $\dP^n$ 
+for varying $n$. Applying Faltings' theorem to the image of the map $j$, we 
+get $(j(\symmetric^d X))(\dQ) = \bigcup Y_i(\dQ)$, 
+whence 
+\begin{align*}
+  (\symmetric^d X)(\dQ) 
+    &= \bigcup_{n_i} \dP^{n_i}(\dQ) \cup \bigcup j^{-1}(Y_i(\dQ)) \\
+    &= \bigcup_{n_i} \dP^{n_i}(\dQ) \cup \bigcup_{\dim Y_i\geqslant 1} j^{-1}(Y_i(\dQ)) \cup \bigcup_{\dim Y_i=0} j^{-1}(Y_i(\dQ)) .
+\end{align*}
+Since $\bigcup \dP^{n_1}(\dQ)$ is definitely infinite and 
+$\bigcup_{\dim Y_i\geqslant 1} j^{-1}(Y_i(\dQ))$ could be infinite, we will 
+count the quantity $\bigcup_{\dim Y_0=0} j^{-1}(Y_i(\dQ))$. The following 
+theorem proved in \cite{hs91} is useful. 
+
+\begin{theo}[Harris-Silverman]
+Let $X$ be a nice curve over $\dC$. If $\symmetric^2 X$ contains an elliptic 
+curve, then $X$ is either hyperelliptic or bielliptic. 
+\end{theo}
+
+Here, a \emph{bielliptic curve} is a double cover of an elliptic curve. If 
+$X$ is the hyperelliptic $y^2=f$, we get $\dP^1\subset \symmetric^2 X$, and 
+$\{(x,\sqrt{f(x)}),(x,-\sqrt{f(x)}):x\in \dQ\}\subset (\symmetric^2 X)(\dQ)$. 
+
+\begin{defi}
+The \emph{special set} $\cS(V)$ of a $\dQ$-variety $V$ is the Zariski closure 
+of the union of the images of all nonconstant maps $f:G\to V$, where $G$ ranges 
+over group varieties defined over $\overline\dQ$. 
+\end{defi}
+
+We will try to count $(\symmetric^d X)(\dQ)\smallsetminus \cS(\symmetric^d X)$. 
+When $d=1$, we have the following theorem proved in \cite{c85}. 
+
+\begin{theo}[Coleman]
+Fix $g\geqslant 2$ and a prime $p$. There is an effectively computable bound 
+$N(g,p)$ such that if $X$ is a nice curve over $\dQ$ of genus $g$ with good 
+redution at $p$ and with $g>\rank J(\dQ)$, then $\# X(\dQ)\leqslant N(g,p)$. 
+\end{theo}
+
+If $p>2 g$, then $\# X(\dQ)\leqslant \# X(\dF_p)+(2 g-2)$. In that case, Stoll 
+improved the bound to $\# X(\dF_p)+2r$. If $p>2$, Stoll improved it further 
+to $\# X(\dF_p) + \lfloor\frac{2r}{p-2}\rfloor$. 
+
+When $d\geqslant 2$, some things are known. In 1993, Klassen counted points on 
+$\symmetric^d X$ away from a divisor of dimension $d-1$, where $X$ has gonality 
+$>d$. Here, the \emph{gonality} of a curve $X$ is the minimal degree of a map 
+$X\to \dP^1$. 
+
+Baker-Bhargava-Wetherell explicitely found all points on 
+$(\symmetric^2 X)(\dQ)$ for $X$ hyperelliptic. 
+
+In 2009, Siksek removed the gonality hypothesis from Klassen's result. 
+
+\begin{theo}[Park]
+Let $d\geqslant 1$, $p$ be a prime, and $g\geqslant 2$. Then there exists an 
+effectively computable bound $N(g,d,p)$ such that for every nice curve $X$ over 
+$\dQ$ of genus $g$ with good reduction at $p$ with $\rank J\leqslant g-d$, 
+satisfying (*), then 
+\[
+  \#\left(\symmetric^d(\dQ)\smallsetminus \cS(\symmetric^d X)\right) \leqslant N(g,d,p) .
+\]
+\end{theo}
+
+If $\rank J\leqslant 1$, the hypothesis (*) is unnecessary. It is a rather 
+technical hypothesis that we won't go into here. 
+
+
+
+
+
+\subsection{Some applications}
+
+\begin{prop}[Park]
+We can take $N(3,3,2)=1539$ for any degree-$7$ odd hyperelliptic curve $X$ 
+such that $\rank J\leqslant 1$, with good reduction at $2$. 
+\end{prop}
+
+This bound, while not fantastic, is far better than the one from Faltings' 
+theorem. 
+
+\begin{prop}[Park]
+A positive proportion of hyperelliptic curves with $X$ genus $g\geqslant 3$ 
+have no points of $\deg\leqslant 2$-points in $\symmetric^2 X$ outside of the 
+special set of $\symmetric^2 X$. 
+\end{prop}
+
+For these curves, $(\symmetric^2 X)(\dQ)$ is parameterized by $\dP^1$. 
+
+
+
+
+
+\subsection{Chabauty's method}
+
+For a more in-depth introduction, see \autoref{sec:poonen-iv}. Let $X/\dQ$ be 
+a nice curve with rank $r<g$ and good reduction at $p$. For 
+$\omega\in \Gamma(J_{\dQ_p},\Omega^1)$, there is a unique group homomorphism 
+$\eta_\omega:J(\dQ_p) \to \dQ_p$ sending $x$ to $\int_0^x\omega$ when this 
+integral is defined. It is known that there exists $\omega$ such that 
+$\eta_\omega(J(\dQ))=0$. 
+
+On each residue disk $U$, there is a coordinate system in which 
+\[
+  \omega|_U = \sum w_i(t_1,\dots,t_g)\, \mathrm{d} t_i .
+\]
+Restricting to the curve $X|_U$, we get 
+$\omega|_{X\cap U} = w(t)\, \mathrm{d}t$. Then 
+\[
+  \#\{x\in U:\eta_\omega(x)=0\} \geqslant \#(X(\dQ)\cap U) .
+\]
+Consider the restriction $\eta_\omega:(\symmetric^d X)(\dQ_p) \to \dQ_p$, 
+given by 
+\begin{align*}
+  \{x_1,\dots,x_d\} 
+    &\mapsto \int_0^{[x_1+\cdots + x_d-d(0)]} \omega \\
+    &= \int_0^{[x_1-0]} \omega + \int_0^{[x_2 + \cdots + x_d-(d-1)(0)]}\omega \\
+    &= \int_0^{[x_1-0]}\omega + \cdots + \int_0^{[x_d-0]}\omega \\
+    &= I(t_1) + \cdots + I(t_d) .
+\end{align*}
+We can estimate the zeros of this map in terms of the power series $I$. We have 
+to assume $r+d\leqslant g$. From this we get $d$ independent power series in 
+$K_{x_i}\llbracket t_i\rrbracket$, where $[K_{x_i}:\dQ_p]\leqslant d$, 
+vanishing on $(\symmetric^d X)(\dQ)$. 
+
+There is a theory of generalized Newton polygons, partially done by Rabinoff 
+and Bernstein. 
+
+
+
 
