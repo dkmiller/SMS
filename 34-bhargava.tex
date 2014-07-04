@@ -7,5 +7,163 @@
 
 
 
-d
+\subsection{Future directions / things to think about after the workshop}
+
+We now have a general technique to count (nondegenerate, a.k.a.~irreducible) 
+orbits having bounded invariants in a representation $G(\dZ)$ acting on 
+$V(\dZ)$, for a representation $(G,V)$ defined over $\dZ$. Our first goal 
+is thus to find interesting representations! Of particular interest would be 
+representations where the orbits correspond to objects or arithmetic / 
+geometric / topological interest. 
+
+In the future, it would be nice to parameterize rings of rank $n>5$ 
+(i.e.~parameterize $n$ points in $\dP^{n-2}$). For example, three points in 
+$\dP^1$ are parameterized by binary cubic forms. Four points in 
+$\dP^2$ are parameterized by pencils of conics, i.e.~pairs of ternary 
+quadratic forms, which we know correspond to quartic rings. 
+Five points in $\dP^3$ arise as quadruple of $5\times 5$ symmetric matrices via 
+the Pfaffians of their linear combinations. This representation of 
+$\speciallinear(4)\times \speciallinear(5)$ parameterizes quintic rings. 
+In general, we would like to understand $n$ points in $\dP^{n-2}$ in terms of 
+forms. Even for $n=6$, we do not know how to do this (in terms of 
+prehomogeneous vector spaces or something similar). 
+
+It would also be nice to parameterize $n$-Selmer elements of elliptic curves 
+for $n>5$. Geometrically, we want to parameterize maps of genus one curves $C$ 
+to $\dP^{n-1}$ of degree $n$. For example, maps $C\to \dP^1$ of degree $2$ 
+ramify at four points, so they correspond to binary quartic forms. Maps 
+$C\to \dP^2$ are plane cubics, parameterized by ternary cubic forms. Maps 
+$C\to \dP^3$ are the intersection of two quadrics, hence parameterized by 
+pairs $2\otimes \symmetric^2(4)$. Finally, maps $C\to \dP^4$ are the 
+intersection of five quadrics, which come from $5\otimes \bigwedge^2 5$ 
+(quintuples of $5\times 5$ skew-symmetric matrices). 
+
+All these constructions were (in some form) known in the 19th century, though 
+not over $\dZ$. If we added yet another variable, we would go from points, to 
+genus one curves, to K3 surfaces. See \cite{bhk13} for work along these lines. 
+
+We could look for analogous maps for objects involving surfaces or 
+higher-dimensional varieties. Also, we could try to count objects parameterized 
+by non-coregular surfaces, as in \cite{by13}. Aside from a few ``baby steps,'' 
+essentially nothing is known. 
+
+Parameterizing rings of rank $\leqslant 5$ allowed us to parameterize number 
+fields. We could add more structure and try to parameterize fields with special 
+Galois groups. For example, we don't know how to count $A_4$-quartic, 
+$A_5$-quintic, or $D_5$-quintic fields with bounded discriminant. Some work 
+along these lines is in \cite{bs13}, in which the action of 
+$\specialorthogonal(x^2+x y+y^2)$ on a 2-dimensional space is used to 
+parameterize $C_3$-cubic rings. The subspace of pairs of ternary quadratic 
+forms 
+\[
+  \left(\begin{pmatrix} 0 & 0 & 0 \\ 0 & \ast & \ast \\ 0 & \ast & \ast \end{pmatrix}, \ast \right) 
+\]
+is preserved by a parabolic in $\speciallinear(2)\times \speciallinear(3)$. 
+This group parameterizes $D_4$-quartic orders. 
+
+We could try to parameterize $n$-Selmer elements in families of 
+elliptic curves with extra structures (e.g.~marked rational points). We know 
+how to parameterize 2 rational points, but have no idea how to do $k>2$ 
+rational points. 
+
+Similarly, we could try to parameterize $n$-Selmer group / set elements of 
+higher genus curves, or $k$-tuples of elements of the this type with given 
+invariants. (This is needed to get the $k$-th moments.) For example, 
+$2\times 2\times 2$ cubes up to $\speciallinear_2(\dZ)$-action parameterize 
+pairs of ideal classes in a cubic ring. Kevin Wilson has done some work along 
+these lines. 
+
+There are lists of coregular representations. One way of proving new theorems 
+is to look through these lists and try to find interesting geometric 
+interpretations of these representations. 
+
+Families of modular forms could also be attacked via orbit-spaces of 
+representations. 
+
+Is there a systematic way of constructing ``good'' representations for a given 
+arithmetic object? Coregular representations always seem to work. There is 
+great work of Jack Thorne \cite{t13} in this direction, using Vinberg theory. 
+Also there is upcoming work of Ho / Sam. 
+
+Currently, we have no way of showing that a given group action on a 
+unirational variety can't parameterize something interesting. Prehomogeneous 
+vector spaces and coregular spaces have \emph{not} all been classified. The 
+classification in \cite{sk77} is only of irreducible reductive reduced 
+prehomogeneous vector spaces. Even their list is not finite -- it contains 
+some infinite families. There are already known interesting 
+(a.k.a.~parameterize something interesting) prehomogeneous 
+vector spaces that are non-reductive or non-reduced, for examples. It would be 
+very nice if there were a complete classification of prehomogeneous vector 
+spaces. 
+
+It's important to further develop counting techniques. Right now, we have 
+two methods: geometry of number and zeta functions. So far, zeta-function 
+methods have not worked on higher-dimensional representations. Hopefully, there 
+is a way of unifying these (or just using both) to strengthen results. The 
+adelic counting method described in \cite{p13} can at least explain some of the 
+cancellations that we saw in \autoref{sec:shankar-ii}. 
+
+We could try to connect with other problems in other areas. For example, 
+Miller has maps from families of knots with given invariants into certain 
+orbit spaces. Also, we could to connect counting techniques as in 
+\autoref{sec:wang-ii} with topological techniques as in 
+\autoref{sec:ellenberg-ii}. Chabauty methods as in \autoref{sec:poonen-iv} 
+and \autoref{sec:park} could also be strengthened. Finally, we should try to 
+develop better heuristics for all of the above, along with arithmetic 
+justifications for the heuristics. Ellenberg and Venjakob have results in this 
+direction for imaginary quadratic fields. Finally, Skinner and Urban's work 
+\cite{su14} on $p$-adic $L$-functions vis-\`a-vis the Iwasawa main conjecture 
+for $\generallinear(2)$ is also relevant. 
+
+
+
+
+
+\subsection{Applications to the Birch and Swinnerton-Dyer conjecture}
+
+This is partially an advertisement for the November workshop ``Counting 
+arithmetic objects (ranks of elliptic curves)'' 
+(\url{http://www.crm.umontreal.ca/act/theme/theme_2014_2_en/counting_e.php}) at 
+the Centre de Recherches Math\'ematiques. 
+Here are some examples of the sort of results that will be covered. 
+
+\begin{theo}[Bhargava, Shankar]
+A positive proportion of elliptic curves over $\dQ$ have rank $0$. 
+\end{theo}
+\begin{proof}
+Use Dokchitser-Dokchitser to show existence of curves with odd (resp.~even) 
+$p$-Selmer rank. From $\average(\#\selmer_5)=6$, we conclude that the average 
+rank of an elliptic curve is $\leqslant 1.05$. This could be achieved if 
+$95\%$ have rank $1$ and $5\%$ have rank $2$. This situation cannot happen if 
+$p$-Selmer rank parities are well-distributed, as they are (often enough to 
+rule out this scenario). This reduces the average rank bound to 
+$\leqslant 0.885$. 
+\end{proof}
+
+\begin{theo}[Bhargava, Skinner]
+A positive proportion of elliptic curves have rank $1$. 
+\end{theo}
+\begin{proof}
+Dokchitser-Dokchitser implies a lot of elliptic curves have $5$-Selmer rank 
+$5$. We want to show that these actually have rank $1$. Use work of Skinner 
+\cite{s14} on Heegner points. 
+\end{proof}
+
+\begin{theo}[Bhargava, Skinner, Zhang]
+At least $>66.48\%$ elliptic curves over $\dQ$ satisfy the rank part of the BSD 
+conjecture. They also satisfy the $p$-part of BSD for all $p\ne 2$. 
+\end{theo}
+
+\begin{coro}
+Most elliptic curves over $\dQ$ have finite Tate-Shafarevich group. 
+\end{coro}
+\begin{proof}
+This follows from work of Kolyvagin. 
+\end{proof}
+
+Clearly, the standard assumption ``$p\ne 2$'' at the start of most papers 
+needs to be removed. 
+
+
+
 
