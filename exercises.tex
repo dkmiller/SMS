@@ -1,0 +1,60 @@
+% !TEX root = sms.tex
+
+\section{Exercises}
+
+
+
+
+
+[list of TAs]
+
+
+
+
+
+\subsection{Some cohomological computations for the representation \texorpdfstring{$V=\symmetric_2(n)\oplus \symmetric_2(n)$}{V=Sym2(n)+Sym2(n)} of \texorpdfstring{$G=\speciallinear_n$}{G=SLn} and \texorpdfstring{$H=\speciallinear_n/\boldsymbol\mu_2$}{H=SL2/mu2}}
+
+Suppose $G$ is a reductive group with a representation $V$ over a field $k$. 
+et $V\gq G=\spectrum k[V]^G$ denote the canonicl quotient. Let 
+$f\in (V\gq G)(k)$ be a rational invariant and suppose $G(k^s)$ acts 
+transitively on $V_f(k^s)$ with abelian stabilizers. In Gross' talk, we 
+learned two obstructions for the existence of a rational element $v\in V(k)$ 
+with invariant $f$. In this worksheet, we will make some computations regarding 
+these obstructions when the representation $V$ is the space 
+$\symmetric_2(n)\oplus\symmetric_2(n)$ of pairs of symmetric bilinear forms and 
+when the reductive group is either $\speciallinear_n$ or 
+$\speciallinear_n/\boldsymbol\mu_2$ with the action given by 
+$g\cdot (A,B)=(\transpose g A g, \transpose g B g)$. 
+
+
+\subsubsection{Warm up}
+
+Consider the conjugation action of $G=\generallinear(W)$ on $V=\End(W)$. One 
+can obtain invariants by taking the coefficients $c_1,\dots,c_n$ of the 
+characteristic polynomial. 
+
+\begin{enonce*}[remark]{Exercises}
+Show that the ring of polynomial invariants $k[V]^G=k[c_1,\cdots,c_n]$ via the 
+following steps (or however you want to). 
+\begin{enumerate}
+  \item Show that for any $c_1,\dots,c_n$ in $k^s$, there exists some 
+    $T\in V(k^s)$ with characteristic polynomial 
+    \[
+      \det(x\cdot 1-T) = x^{2n+1} + c_1 x^{2n} + \cdots + c_{2n+1} .
+    \]
+    This shows that there is no relation among the invariants. 
+  \item Show that for any $c_1,\dots,c_n$ in $k^s$ such that 
+    $f(x)=x^{2n+1} + c_1 x^{2n} + \cdots + c_{2n+1}$ has no repeated roots and 
+    for any $T,T'\in V_f(k^s)$, there exists some $g\in G(k^s)$ such that 
+    $g T g^{-1} = T'$. This shows that there are no other invariants. 
+\end{enumerate}
+\end{enonce*}
+
+Next we consider the conjugation action of the subgroup $H=\speciallinear(W)$ 
+on $V=\End(W)$. Let $T\in V(k)$ be a regular semisimple operator, that is its 
+characteristic polynomial $f(x)$ has no repeated factors. Let $L=k[x]/f(x)$ be 
+the associated $k$-vector space of dimension $n$. 
+
+
+
+
