@@ -7,5 +7,194 @@
 
 
 
-d
+In \autoref{sec:ellenberg-i}, we finished by looking at the equidistribution of 
+the M\"obius function. In this lecture, we'll show how the underlying geometry 
+gives some hints as to why this is the case. 
+
+
+
+
+
+\subsection{M\"obius function and big monodromy}
+
+Recall: we found that ``average of $\mu(f)=0$'' comes down to 
+$\# Y_n(\dF_q) = q^n+o(q^n)$, where $Y_n$ parameterizes pairs $(f,y)$ with $y$ 
+a square root of $\Delta(f)$. The scheme $Y_n$ is a branched double cover of 
+$\dA^n=\symmetric^n\dA^1$, the space of monic integral polynomials of degree 
+$n$.  For this to work, we need $Y_n$ to be irreducible. 
+
+On the level of function fields (that is, generic points) the extension 
+corresponding to $Y_n \to \dA^n$ is the quadratic extension 
+\[
+  K = k(a_1,\dots,a_n) \hookrightarrow K(\sqrt\Delta) .
+\]
+This quadratic extension is given by a map $G_K=\galois(\bar K/K)\to \dZ/2$. 
+The extension is a field precisely when $G_K\to \dZ/2$ is nontrivial. That is, 
+$G_K\to \dZ/2$ surjectivs if and only if $K(\sqrt\Delta)$ is a fied, if and 
+only if $\Delta$ is \emph{not} a square in $K=k(a_1,\dots,a_n)$. The image of 
+$G_K\to \dZ/2$ is the monodromy group, so this is a ``large monodromy'' result. 
+
+\begin{enonce}{Conjecture}[Cohen-Lenstra]
+Let $\ell$ be an odd prime and $E_{r,\ell,N}$ be the expected value of 
+\[
+  \surjection\left(\class\left(\dQ(\sqrt{-d})\right), (\dZ/\ell)^{\oplus r}\right) 
+\]
+for $d$ random in $[N,2 N]$. Then $\lim_{N\to\infty} E_{r,\ell,N} = 1$. 
+\end{enonce}
+
+For example, when $r=1$, we have $\surjection(A,\dZ/\ell) = \#A[\ell]-1$. We 
+will try to give a function-field analogue of the Cohen-Lenstra heuristic. 
+
+
+
+
+
+\subsection{Cohen-Lenstra over function fields}
+
+The analogue of $\dQ(\sqrt{-d})$ for $d\in [N,2 N]$ is 
+$\dF_q(t,\sqrt f)$ for $\deg f=n$. The analogue of $-d<0$ is to require the 
+extension $\dF_q(t)(\sqrt f)$ to be ramified at infinity. This happens exactly 
+when $n$ is odd. So we're looking at ``hyperelliptic curves of odd degree.'' 
+The analogue of an ideal on a curve is a divisor, and the analogue of the class 
+group is the Jacobian, namely 
+\[
+  \class\left(\dF_q(t)(\sqrt f)\right) \simeq \jacobian(C_f)(\dF_q) .
+\]
+where $C_f$ is the curve $y^2=f(t)$. For simplicity, write $J_f$ instead of 
+$\jacobian(C_f)$. Note that $J_f$ is a $g$-dimensional abelian variety, and 
+$J_f[\ell](\overline{\dF_q}) \simeq (\dZ/\ell)^{2 g}$. Here $g=(n-1)/2$. 
+
+Define a new space $\configuration_1^n(\ell)$, which parameterizes pairs 
+$(f,P)$, where $f$ is squarefree of degree $n$ and 
+$P\in J_f[\ell]\smallsetminus 0$. So 
+$\pi:\configuration_1^n(\ell) \to \configuration^n$ is an \'etale cover of degree 
+$\ell^{2g}-1$. Define $E_{q,\ell,r,n}$ to be the expected value of 
+$\#\surjection\left(J_f(\dF_q),(\dZ/\ell)^{\oplus r}\right)$. Cohen-Lenstra 
+would suggest that $\lim_{n\to \infty} E_{q,\ell,r,n} = 1$. 
+
+When $r=1$, this is 
+\begin{align*}
+  \expected_f\left(\# J_f(\dF_q)[\ell]-1\right) 
+    &= \expected_f\left(\pi^{-1}(f)(\dF_q)\right) \\
+    &= \frac{\#\configuration_1^n(\ell)(\dF_q))}{\#\configuration^n(\dF_q)} \\
+    &= \frac{\#\configuration_1^n(\ell)(\dF_q)}{q^n-q^{n-1}} .
+\end{align*}
+So Cohen-Lenstra suggests that $\#\configuration_1^n(\ell)(\dF_q)\sim q^n$ as 
+$n\to \infty$. Note that to get 
+\[
+  \lim_{q\to \infty} \frac{\#\configuration_1^n(\ell)(\dF_q)}{\#\configuration^n(\dF_q)} = 1,
+\]
+we would need $\configuration_1^n(\ell)$ to be irreducible. This is known to 
+be true, and is proven via a monodromy computation. 
+
+Once again, let $K=\dF_q(a_1,\dots,a_n)$, the function field of 
+$\configuration^n$ over $\dF_q$. Let $L$ be the function field of 
+$\configuration_1^n(\ell)$ over $\dF_q$. Then $L$ is $K$ adjoined an 
+$\ell$-torsion point of $J_f$, where $f=t^n+a_1 t^{n-1} + \cdots + a_n$. 
+
+A curve $C_f$ over $K$ gives rise to a Galois representation 
+\[
+  \rho:G_K=\galois(\bar K/K) \to \generalsymplectic_{2 g}(\dZ/\ell) = \generalsymplectic(J_f[\ell](K^s),e),
+\]
+where $e$ denotes the Weil pairing. Our question is: is $L$ a field? 
+Equivalently, does the monodromy group $\rho(G_K)$ act transitively on 
+$(\dZ/\ell)^{2 g}\smallsetminus 0$? It's a good exercise to show that 
+$\generalsymplectic_n(\dF_q)$ acts transitively on $\dF_q^n\smallsetminus 0$ 
+for any finite field $\dF_q$. 
+
+\begin{theo}[J-K Yu, 1995]
+For $K$ as above, $\rho(G_K) = \generalsymplectic_{2 g}(\dF_\ell)$. 
+\end{theo}
+
+This is a nice ``big monodromy theorem.'' That is, the monodromy group is as 
+large as it can be. 
+
+
+
+
+
+\subsection{What happens when \texorpdfstring{$r=2$}{r=2}}
+
+We could define $\configuration_2^n(\ell)$, which parameterizes triples 
+$(f,P,Q)$, where $f$ is above and $P,Q$ are linearly independent points on 
+$J_f[\ell]$. Then 
+\[
+  \frac{\#\configuration_2^n(\ell)(\dF_q)}{\#\configuration^n(\dF_q)} = E_{q,2,\ell,n} ,
+\]
+because $\#\surjection(J_f(\dF_q),(\dZ/\ell)^2)$ is (by duality for finite 
+abelian groups) the number of injections $(\dZ/\ell)^2 \to J_f(\dF_q)$. 
+Unfortunately, the space $\configuration_2^n(\ell)$ is not irrereducible. The 
+components of $\configuration_2^n(\ell)$ are naturally identified with the 
+orbits of $\galois(\bar K/K\overline{\dF_q})$ on the set of injections 
+$(\dZ/\ell)^2 \hookrightarrow (\dZ/\ell)^{2g}$. Even when $g=1$, this action is 
+not transitive. Let $V_0=\dF_\ell^2$ and 
+$\iota:V_0\hookrightarrow\dF_\ell^{2g}$. The Weil pairing $\omega$ pulls back 
+to a pairing on $V_0$. This pairing is preserved by the monodromy group. The 
+quantity $\omega(P,Q)$ is an invariant. 
+
+So in fact, $\configuration_2^n(\ell)$ has $\ell$ components, parameterized by 
+$\langle P,Q\rangle$ via the map 
+$(f,P,Q)\mapsto \langle P,Q\rangle\in \mu_\ell$. How does 
+$G_{\dF_q} = \galois(\overline{\dF_q}/\dF_q)$ act on the components? It (the 
+Frobenius at $q$) just multiplies $\langle P,Q\rangle$ by $q$. So the 
+number of $\dF_q$-rational components of $\configuration_2^n(\ell)$ is the 
+number of elements $x\in \dZ/\ell$ such that $q x=x$. This depends strongly on 
+$q$. It is 1 if $q\not\equiv 1\pmod\ell$, but $\ell$ when $q\equiv 1\pmod\ell$.
+That is, when $\mu_\ell\cap \dF_q=1$ there is one component, and 
+$\ell$ components if $\mu_\ell\subset \dF_q$. 
+
+The following is work of Derek Garton. You can compute the ``modified 
+Cohen-Lenstra distribution,'' whose moments match those given by 
+\[
+  E_{q,r,\ell,n} = \#\{\text{$\dF_q$-rational components of $\configuration_r^n(\ell)$}\} ,
+\]
+a geometrically motivated repair of Cohen-Lenstra in the presence of extra 
+roots of unity. 
+
+
+
+
+
+\subsection{Selmer groups}
+
+The inspiration here is the beautiful paper \cite{j02}. What does the 3-Selmer 
+group of a random $E/\dF_q(t)$ look like? If $E:y^2=f_t(x)$, let $\cE$ be the 
+elliptic surface $y^2=f(t,x)$. It turns out that 
+$\selmer_3(E/\dF_q(t))$ ``is'' $\h^2(\cE_{\overline{\dF_q}},\dZ/3)(\dF_q)$. You 
+can play the same game, expressing the average number of nontrivial elements of 
+$\selmer_p(E)$ as $\frac{\#Y_n(\dF_q)}{\#X_n(\dF_q)}$, where $Y_n\to X_n$ is a 
+cover corresponding to the action of $G_K$ on 
+$\h^2(\cE_{\overline{\dF_q}},\dZ/\ell)$. This cohomology group has a canonical 
+symmetric pairing, so ``big monodromy'' would mean $\rho(G_K)$ is the entire 
+orthogonal group. Given a big monodromy theorem, the number of components would 
+be the number of orbits of $\orthogonal_d(\dZ/\ell)$ acting on 
+$(\dZ/\ell)^d$. It is $\ell+1$. 
+
+It seems like a proof that ``in the large $q$ limit,'' 
+$\average(\#\selmer_\ell)=\ell+1$. 
+
+
+
+
+
+\subsection{From \texorpdfstring{$q\to \infty$}{q to infty} to the fixed \texorpdfstring{$q$}{q} regime}
+
+The reason we know that $\# X_n(\dF_q)=q^n+o(q^n)$ when $X_n$ irreducible is 
+the Weil bounds. What's really going on is the Grothendieck-Lefschetz trace 
+formula 
+\[
+  \# X(\dF_q) = \sum_{i=0}^{2\dim X} (-1)^i \trace\left(\frobenius_q,\h_c^i(X_{\overline\dF_q},\dQ_\ell)\right) .
+\]
+The Weil bounds tell you that as $q\to \infty$, the $i=0$ term contributes 
+$100\%$ of this sum. But $\h^0$ is just the vector space generated by connected 
+components. 
+
+If we want to let $q$ stay fixed, we have to show that the $\h^i$ contribute 
+nothing to start with. The easiest way for this to be true is for the higher 
+$\h^i$ to vanish. This fits into the general idea that ``families of moduli 
+spaces have vanishing higher cohomology,'' i.e.~cohomological stability 
+results. 
+
+
+
 
