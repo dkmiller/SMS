@@ -6,7 +6,80 @@
 
 
 
-[list of TAs]
+Those directing the problem sessions were (in alphabetical order): 
+Jordan Ellenberg, Wei Ho, Jennifer Park, Arul Shankar, Frank Thorne, and 
+Jerry Wang. 
+
+
+
+
+
+\subsection{The parameterization of cubic, quartic, and quintic rings}
+
+
+\subsubsection{Directly from Wood's cubic rings lecture}
+\begin{enumerate}[\indent a)]
+  \item Prove that the inverse maps $R\mapsto \discriminant(R)$ and 
+    $D\mapsto \dZ[\tau]/\left(\tau^2-D\tau+\frac{D^2-D}{4}\right)$ induce a 
+    bijection between the set of quadratic rings (up to isomorphism) and 
+    \[
+      \{D\in \dZ:D\equiv 0,1\pmod 4\} . 
+    \]
+  \item In the Delone-Faddeev equations 
+    \begin{align*}
+      \omega\theta &= n \\
+      \omega^2 &= m-b\omega + a\theta \\
+      \theta^2 &= \ell-d\omega + c\theta 
+    \end{align*}
+    prove that associativity is equivalent to the equations 
+    \begin{align*}
+      n &= -a d \\
+      \ell &= -b d \\
+      m &= - a c
+    \end{align*}
+  \item Wood mentioned that if you write $+b$ and $+d$ in place of $-b$ and 
+    $-d$ above, the correspondence comes out slightly wrong. Try it and see 
+    what happens. 
+  \item Orders in cubic number fields correspond to irreducible cubic forms 
+    $f(x,y)$ and the number field can be recovered as 
+    $\dQ[\theta]/f(\theta,1)$. What happens if you substitute $f(1,\theta)$ for 
+    $f(\theta,1)$. (What \emph{must} happen?)
+  \item For a cubic form $f$, prove that the functions on its vanishing set 
+    $V_f$ determine a cubic ring, which is the same ring obtained by the 
+    Delone-Faddeev correspondence. (Describe any special conditions, 
+    e.g.~$f\ne 0$, which are necessary in your proof.) 
+\end{enumerate}
+
+
+\subsubsection{Other exercises concerning cubic rings}
+
+We give more exercises for cubic than for quartic or quintic rings. Note that 
+most or all of these exercises are interesting for all three parameterizations 
+being discussed. You are \emph{strongly encouraged} to extrapolate problems 
+from one section to another! What is the same, and what is different? 
+\begin{enumerate}[\indent a)]
+  \item A good way to get started is to compute lots of examples of the 
+    Delone-Faddeev correspondence. (If you don't do any of the other 
+    exercises, you should probably do at least this, and the quartic and 
+    quintic analogues!) What binary cubic form $f$ corresponds to the cubic 
+    ring $\dZ^3$? To $\dZ[\sqrt[3] n]$? Conversely, what cubic rings 
+    corresponds to the cubic form $u^3-u v^2+v^3$? To $u(u-v)(u+v)$? To $u^3$? 
+    To $0$? Work out these, as well as other examples of your own invention, 
+    and compute all of their discriminants. 
+  \item Another good way to get started is to work out the details of the 
+    Delone-Faddeev and Davenport-Heilbronn correspondences. The exposition 
+    given in \cite[\S 2]{bst13} leaves many small details to be checked by the 
+    reader. Pick your favorite lemma or proposition and work out the proof in 
+    more detail than given in the paper. 
+  \item The Delone-Faddeev correspondence is very interesting over $\dF_p$. 
+    Assuming for simplicity that $p\ne 2,3$, determine all of the cubic rings 
+    over $\dF_p$ as well as the $\generallinear_2(\dF_p)$-equivalence classes 
+    of cubic forms over $\dF_p$. How many equivalence classes are there? On the 
+    cubic forms side, how large is each $\generallinear_2(\dF_p)$-equivalence 
+    class, and how big is each of the corresponding stabilizer groups? If you 
+    reduce an integral binary cubic form modulo $p$, what is the relationship 
+    between the cubic ring over $\dZ$ and the cubic ring over $\dF_p$?
+\end{enumerate}
 
 
 
@@ -33,7 +106,7 @@ Consider the conjugation action of $G=\generallinear(W)$ on $V=\End(W)$. One
 can obtain invariants by taking the coefficients $c_1,\dots,c_n$ of the 
 characteristic polynomial. 
 
-\begin{enonce*}[remark]{Exercises}
+\begin{enonce*}[remark]{Exercise}
 Show that the ring of polynomial invariants $k[V]^G=k[c_1,\cdots,c_n]$ via the 
 following steps (or however you want to). 
 \begin{enumerate}
@@ -55,7 +128,7 @@ on $V=\End(W)$. Let $T\in V(k)$ be a regular semisimple operator, that is its
 characteristic polynomial $f(x)$ has no repeated factors. Let $L=k[x]/f(x)$ be 
 the associated $k$-vector space of dimension $n$. 
 
-\begin{enonce*}[remark]{Exercises}
+\begin{enonce*}[remark]{Exercise}
 \begin{enumerate}
   \item Show that the stabilizer $H_T$ of $T$ is isomorphic to 
     $(\weilres_{L/k}\dG_\multiplicative)^{\norm=1}$, the kernel of the norm 
@@ -69,6 +142,179 @@ the associated $k$-vector space of dimension $n$.
     for any $\galois(L^s/L)$-module $M$. 
   \item Using the same idea, show that 
     $\h^1\left(k,(\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1}\right) \simeq (L^\times/2)^{\norm=\square}$. 
+\end{enumerate}
+\end{enonce*}
+
+
+\subsubsection{Cohomological obstructions}
+
+The reference for his section is \cite[\S 2]{bgw13}. As shown in 
+\autoref{sec:gross-ii}, the abelian groups $G_v$ for $v\in V_f(k^s)$ descend to 
+a commutative group scheme $G_f$ over $k$ unique up to unique isomorphism. In 
+other words, there are canonical isomorphisms $\iota_v:G_f(k^s)\iso G_v(k^s)$ 
+for any $v\in V_f(k^s)$ such that for any $h\in G(k^s)$, $b\in G_f(k^s)$, 
+$\sigma\in \galois(k^s/k)$, 
+\begin{align*}
+  \iota_{h v}(b) &= h \iota_v(b) h^{-1} \\
+  \prescript{\sigma}{}{\iota_v(b)} &= \iota_{\prescript{\sigma}{}{v}}(\prescript{\sigma}{}{b}) .
+\end{align*}
+For any $v\in V_f(k^s)$ and any $\sigma\in \galois(k^s/k)$, choose $g_\sigma$ 
+such that $g_\sigma \prescript{\sigma}{}{v}=v$. Define 
+\[
+  d_{\sigma,\tau} = \iota_v^{-1}(g_\sigma g_\tau g_{\sigma\tau}^{-1}) \in G_f(k^s) .
+\]
+
+\begin{enonce*}[remark]{Exercise}
+\begin{enumerate}
+  \item Show that $(d_{\sigma,\tau})$ is a 2-cocycle whose image $d_f$ in 
+    $\h^2(k,G_f)$ does not depend on the choice of $g_\sigma$. That is, show 
+    that for any $\sigma,\tau,\mu\in \galois(k^s/k)$, 
+    \[
+      \prescript{\sigma}{}{d_{\tau,\mu}} d_{\sigma,\tau\mu} = d_{\sigma\tau,\mu} d_{\sigma,\tau} .
+    \]
+    and that if each $g_\sigma$ is changed to $h_\sigma g_\sigma$ for some 
+    $h_\sigma$ in $G_v$, then 
+    \[
+      d_{\sigma,\tau}' = d_{\sigma,\tau} \iota_v^{-1} (h_\sigma) (\prescript{\sigma}{}{\iota_v}^{-1}(h_\tau)) (\iota_v^{-1}(h_{\sigma\tau})^{-1} .
+    \]
+  \item Show that the 2-cochain $(d_{\sigma,\tau})$ does not depend on the 
+    choice of $v\in V_f(k^s)$. 
+\end{enumerate}
+\end{enonce*}
+
+Given a class $c\in \h^1(k,G)$, one can obtain a pure inner form $G^c$ of $G$ 
+and a representation $V^c$ of $G^c$ as follows. Suppose $c$ is given by the 
+1-cocycle $(c_\sigma)$ with values in $G(k^s)$. Then $G^c(k^s) = G(k^s)$ with 
+action 
+\begin{equation}\label{eq:gross-2}
+  \sigma(h) = c_\sigma \prescript{\sigma}{}{h} c_\sigma^{-1} .
+\end{equation}
+If we compose the cocycle $c$ with values in $G(k^s)$ with the homomorphism 
+$\rho:G\to \generallinear(V)$, we obtain a cocycle $\rho(c)$ with values in 
+$\generallinear(V)(k^s)$. By the generalization of Hilbert's Theorem 90, we 
+have $\h^1(k,\generallinear(V))=1$. Hence there is an element $g$ in 
+$\generallinear(V)(k^s)$, well-defined up to left multiplication by 
+$\generallinear(V)(k)$, such that 
+$\rho(c_\sigma)=g^{-1}\prescript{\sigma}{}{g}$ for all $\sigma$ in 
+$\galois(k^s/k)$. We use the element $g$ to define a twisted representation of 
+the group $G^c$ on the vector space $V$ over $k$. The homomorphism 
+\[
+  \rho_g:G^c(k^s) \to \generallinear(V)(k^s) 
+\]
+defined by $\rho_g(h)=g \rho(h) g^{-1}$ commutes with the respective Galois 
+actions, so defines a representation over $k$. We emphasize that the Galois 
+action on $G^c(k^s)$ is defined as in \eqref{eq:gross-2}, whereas the Galois 
+action on $\generallinear(V)(k^s)$ is the usual action. We write $V^c$ for the 
+representation $\rho_g$ of $G^c$. For any $f\in (V\gq G)(k^s)$, we write 
+\[
+  V_f^c(k) = (k)\cap g V_f(k^s) .
+\]
+
+\begin{enonce*}[remark]{Exercise}
+\begin{enumerate}
+  \item Show that the isomorphism class of $G^c$ does not depend on the choice 
+    of the representative $(c_\tau)$. 
+  \item Show that the isomorphism class of the representation $V^c$ of $G^c$ 
+    does not depend on the choice of the element $g$. 
+  \item Observe that the group scheme $G_f$ over $k$ does not depend on the 
+    twist $c\in \h^1(k,G)$. Show that the class $d_f\in \h^2(k,G_f)$ does not 
+    depend on the twist $c\in \h^1(k,G)$. 
+\end{enumerate}
+\end{enonce*}
+
+\begin{enonce*}{Theorem}
+Let $G$ be a reductive group with representation $V$. Suppose there exists 
+$v\in V(k)$ with invariant $f\in (V\gq G)(k)$ and stabilizer $G_v$ such that 
+$G(k^s)$ acts transitively on $V_f(k^s)$. Then there is a bijection between the 
+set of $G^c(k)$-orbits on $V_f^c(k)$ and the fiber $\gamma^{-1}(c)$ of the map 
+\[
+  \gamma:\h^1(k,G_v) \to \h^1(k,G) 
+\]
+above the class $c\in \h^1(k,G)$. In particular, the image of $\h^1(k,G_v)$ in 
+$\h^1(k,G)$ determines the set of pure inner forms of $G$ for which the 
+$k$-rational invariant $f$ lifts to a $k$-rational orbit of $G^c$ on $V^c$. 
+\end{enonce*}
+
+\begin{enonce*}[remark]{Exercise}
+Prove the theorem via the following steps (or however you want to). 
+\begin{enumerate}
+  \item Fix some $c\in \h^1(k,G)$. Show that $V_f^c(k)$ is nonempty if and only 
+    if $c$ is in the image of $\gamma$. 
+  \item Suppose $V_f^c(k)$ is nonempty and take $w\in V_f^c(k)$. Then there is a 
+    bijection between $G^c(k)\backslash V_f^c(k)$ and $\ker(\gamma_c)$, where 
+    $\gamma_c$ is the natural map of sets $\h^1(G_w^c)\to \h^1(k,G^c)$. Show 
+    that there is a bijection between $\gamma^{-1}(c)$ and $\ker(\gamma_c)$. 
+\end{enumerate}
+\end{enonce*}
+
+\begin{enonce*}{Theorem}
+Suppose that $f$ is a rational invariant, and that $G(k^s)$ acts transitively 
+on $V_f(k^s)$ with abelian stabilizers. Then $d_f=0$ in $\h^2(k,G_f)$ if and 
+only if there exists a pure inner form $G^c$ of $G$ such that $V_f^c(k)$ is 
+nonempty. That is, the condition $d_f=0$ is necessary and sufficient for the 
+existence of rational orbits for some pure inner twist of $G$. In particular, 
+when $\h^1(k,G)=1$, the condition $d_f=0$ in $\h^2(k,G_f)$ is necessary and 
+sufficient for the existence of rational orbits of $G(k)$ on $V_f(k)$. 
+\end{enonce*}
+
+\begin{enonce*}[remark]{Exercise}
+$\Leftarrow$ is trivial. Prove $\Rightarrow$ via the following steps (or 
+however you want to). 
+\begin{enumerate}
+  \item Show that there exists a 1-cochain $(e_\sigma)$ with values in 
+    $G_v(k^s)$ such that $c=(e_\sigma g_\sigma)$ is a 1-cocycle. 
+  \item Show that $V_f^c(k)$ is nonempty. 
+\end{enumerate}
+\end{enonce*}
+
+
+\subsubsection{The representation $V=\symmetric_2(n)\oplus \symmetric_2(n)$ of $G=\speciallinear_n$ and $H=\speciallinear_n/\boldsymbol\mu_2$}
+
+The ring $k[V]^G$ of polynomial invariants is freely generated by the 
+coefficients of the invariant binary form $f(x,y)=(-1)^{n(n-1)/2}\det(A x-B y)$ 
+for $(A,B)\in V$. Fix some binary $n$-ic form 
+$f(x,y) = f_0 x^n + \cdots + f_n y^n$ with coefficients in $k$ and suppose that 
+$f_0$ and $\Delta(f)$ are nonzero. Let $L$ denote the \'etale extension 
+$k[x]/f(x,1)$. Then $G(k^s)$ acts transitively on $V_f(k^s)$ with abelian 
+stabilizers. Moreover, we have 
+\begin{align*}
+  G_f &\simeq (\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1} , \\
+  H_f &\simeq (\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1}/\boldsymbol\mu_2 .
+\end{align*}
+The groups $G_f$ and $H_f$ fit inside short exact sequences 
+\begin{align*}
+  1 \to (\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1} &\to \weilres_{L/k}\boldsymbol\mu_2 \xrightarrow{\norm} \boldsymbol\mu_2 \to 1 \\
+  1 \to \boldsymbol\mu_2 \to (\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1} &\to (\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1}/\boldsymbol\mu_2 \to 1 .
+\end{align*}
+Taking Galois cohomology gives long exact sequences 
+\begin{align*}
+  L^\times / 2 &\xrightarrow{\norm} k^\times / 2 \xrightarrow{\delta_0} \h^2(k,G_f) , \\
+  \h^1(k,H_f) &\xrightarrow{\delta} \h^2(k,\boldsymbol\mu_2) \xrightarrow\alpha h^2(k,G_f) .
+\end{align*}
+Let $d_f^G$ (resp.~$d_f^H$) denote the corresponding classes in $\h^2(k,G_f)$ 
+(resp.~$\h^2(k,H_F)$) that obstruct the existence of a rational lift for some 
+pure inner form of $G$ (resp.~$H$). For the following exercise, see 
+\cite[\S 4.5]{bgw13}. 
+
+\begin{enonce*}[remark]{Exercise}
+\begin{enumerate}
+  \item Show that $d_f^G=\delta_0(f_0)$. Since $\h^1(k,G)=1$, we see that 
+    $V_f(k)$ is nonempty if and only if $f_0\in (k^\times)^2 \norm(L^2)$. 
+  \item Show that $d_f^H$ is the image of $d_f^G$ under the natural map 
+    $\h^2(k,G_f) \to \h^2(k,H_f)$. 
+  \item Suppose now that $d_f^H=0$. We would like to know for which pure inner 
+    forms of $H$ do there exist rational orbits with invariant $f$. 
+     \begin{enumerate}
+       \item Show that $d_f^G\in \h^2(k,G_f)$ is the image of some 
+         $d\in \h^2(k,\boldsymbol\mu_2)$ under $\alpha$ where $d$ lies in the 
+         image of the map $\delta_2:\h^1(k,H) \hookrightarrow \h^2(k,\boldsymbol\mu_2)$ 
+         obtained from the short exact sequence $1\to \boldsymbol\mu_2 \to G\to H\to 1$. 
+       \item Let $c$ be an element of $\h^1(k,H)$ such that $\delta_2(c)=d$. 
+         Show that $v_f^c(k)$ is nonempty. 
+       \item Show that the pure inner forms of $H$ for which rational orbits 
+         exist with invariant $f$ correspond to classes $c\in \h^1(k,H)$ such 
+         that $\alpha(\delta_2(c))=d_f^G$. 
+     \end{enumerate}
 \end{enumerate}
 \end{enonce*}
 
