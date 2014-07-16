@@ -13,7 +13,7 @@ The main question we are interested in is: given a class $\cC$ of objects ``of
 arithmetic interest,'' how many objects are there in $\cC$, up to isomorphism, 
 having bounded invariants? 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 The following are the main examples we're interested in: 
 \begin{center}
 \begin{tabular}{c|c}
@@ -26,7 +26,7 @@ $n$-Selmer elements of Jacobians of curves & ''
 \end{tabular}
 \end{center}
 All of these will be defined precisely later on. 
-\end{enonce}
+\end{example}
 
 Given such a class of objects of arithmetic interest, how they are distributed 
 (asymptotically) with respect to their basic invariants? Beyond the cases of 
@@ -51,7 +51,7 @@ invariants of objects in $\cC$ to the ring of fundamental polynomial
 invariants of the action of $G$ on $V$. Good choices of such maps often come 
 from algebraic geometry, but we have to work out the theory over $\dZ$. 
 
-\begin{enonce}[remark]{Example}[Gauss]
+\begin{example}[Gauss]
 In his \emph{Disquisitiones}, Gauss constructs a map 
 \[
   \left\{\begin{array}{c}\text{ideal classes of (orders } \\ \text{in) quadratic fields with} \\ \text{non-square discriminant}\end{array}\right\}\bigr/\simeq 
@@ -62,9 +62,9 @@ The map sends the discriminant of such an ideal class to $b^2-4 a c$ (the
 discriminant of the quadratic form, which is the unique polynomial invariant 
 of quadratic forms). If $I=\langle \alpha,\beta\rangle$, then 
 the corresponding quadratic form is $\norm(\alpha x+\beta x)/\norm(I)$. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example}[Levi, Delone-Faddeev] % 20s, 40s [Granville talk]
+\begin{example}[Levi, Delone-Faddeev] % 20s, 40s [Granville talk]
 Recall that a \emph{cubic ring} is a (commutative, unital) ring structure 
 on $\dZ^3$. They constructed a map 
 \[
@@ -78,9 +78,9 @@ $\sqrt{\discriminant(\alpha x+\beta y)/\discriminant(R)} = [R:\dZ[\alpha x+\beta
 See \cite{df64} for Delone-Faddeev's original approach. Bhargava's thesis 
 \cite{b01} and Wood's thesis \cite{w09} develop things further. See 
 \autoref{sec:granville-i} for more details. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example} % [Wood II]
+\begin{example} % [Wood II]
 There are similar maps 
 \[
   \{\text{quartic (resp.~quintic) fields}\}/\sim \to \{\text{representations\ldots}\} .
@@ -88,9 +88,9 @@ There are similar maps
 These are also discriminant-preserving (in all these cases, the discriminant on 
 the right is the unique polynomial invariant). See \autoref{sec:wood-ii} for 
 more details. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example}[Birch, Swinnerton-Dyer] % Shankar
+\begin{example}[Birch, Swinnerton-Dyer] % Shankar
 There is a map 
 \[
   \left\{\begin{array}{c}\sigma\in E(\dQ)/2:E\text{ of the } \\ \text{form }y^2=x^3+A x+B\end{array}\right\} \hookrightarrow\generallinear_2(\dQ)\backslash \left\{\begin{array}{c}\text{integer binary} \\ \text{quartic forms}\end{array}\right\} .
@@ -100,34 +100,34 @@ factors through the $2$-Selmer group $\selmer_2(E)$. Write $E_{A,B}$ for the
 elliptic curve $y^2=x^3+A x+B$. This map sends $E_{A,B}$ to the fundamental 
 invariants $I,J$ (of degree $2$, $3$ respectively) of binary quartics. See 
 \autoref{sec:shankar-i} and \autoref{sec:shankar-ii} for more. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example}[Cremona-Fisher-Stoll]
+\begin{example}[Cremona-Fisher-Stoll]
 For $n\in \{3,4,5\}$, there is a map 
 \[
   \{\sigma \in E(\dQ)/n:E\text{ of the form }E_{A,B}\} \hookrightarrow G(\dZ)\backslash V(\dZ) ,
 \]
 where $A,B$ are send to the fundamental invariants $I,J$ on the right-hand 
 side. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example} % [Gross I, Poonen IV]
+\begin{example} % [Gross I, Poonen IV]
 There is a non-injective, but still useful map 
 \[
   \left\{\begin{array}{c}\text{rational points on odd hyperelliptic} \\ \text{curves }y^2=x^{2 g+1} + a_1 x^{2 g} + \cdots + a_{2g+1} \end{array} \right\} \to \specialorthogonal_{2 g+1}(\dZ) \backslash \symmetric^2(\dZ^{2 g+1}) .
 \]
 This sends the $a_i$ to the invariants on the right-hand side. See 
 \autoref{sec:gross-i} and \autoref{sec:poonen-iv} for more. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example} % [Gross II, Ho] -- also see Jack Thorne, [Wood III]
+\begin{example} % [Gross II, Ho] -- also see Jack Thorne, [Wood III]
 There is a (non-injective) map 
 \[
   \left\{\begin{array}{c}\text{rational points on even hyperelliptic} \\ \text{curves } z^2=a_0 x^{2 g+2} + \cdots + a_{2 g+2} y^{2 g+2} \end{array} \right\} \to \text{product of SL's} \backslash\cdots ,
 \]
 sending the $a_i$ to invariants. See \autoref{sec:gross-ii}, 
 \autoref{sec:ho}, \autoref{sec:thorne}, and \autoref{sec:wood-iii} for more. 
-\end{enonce}
+\end{example}
 
 Once we've found our map from arithmetic objects to orbits, the question 
 becomes: how many orbits of $G(\dZ)$ on $V(\dZ)$ are there having bounded 

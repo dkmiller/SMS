@@ -117,7 +117,7 @@ Consider the conjugation action of $G=\generallinear(W)$ on $V=\End(W)$. One
 can obtain invariants by taking the coefficients $c_1,\dots,c_n$ of the 
 characteristic polynomial. 
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 Show that the ring of polynomial invariants $k[V]^G=k[c_1,\cdots,c_n]$ via the 
 following steps (or however you want to). 
 \begin{enumerate}
@@ -132,14 +132,14 @@ following steps (or however you want to).
     for any $T,T'\in V_f(k^s)$, there exists some $g\in G(k^s)$ such that 
     $g T g^{-1} = T'$. This shows that there are no other invariants. 
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
 Next we consider the conjugation action of the subgroup $H=\speciallinear(W)$ 
 on $V=\End(W)$. Let $T\in V(k)$ be a regular semisimple operator, that is its 
 characteristic polynomial $f(x)$ has no repeated factors. Let $L=k[x]/f(x)$ be 
 the associated $k$-vector space of dimension $n$. 
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 \begin{enumerate}
   \item Show that the stabilizer $H_T$ of $T$ is isomorphic to 
     $(\weilres_{L/k}\dG_\multiplicative)^{\norm=1}$, the kernel of the norm 
@@ -154,7 +154,7 @@ the associated $k$-vector space of dimension $n$.
   \item Using the same idea, show that 
     $\h^1\left(k,(\weilres_{L/k}\boldsymbol\mu_2)^{\norm=1}\right) \simeq (L^\times/2)^{\norm=\square}$. 
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
 
 \subsubsection{Cohomological obstructions}
@@ -175,7 +175,7 @@ such that $g_\sigma \prescript{\sigma}{}{v}=v$. Define
   d_{\sigma,\tau} = \iota_v^{-1}(g_\sigma g_\tau g_{\sigma\tau}^{-1}) \in G_f(k^s) .
 \]
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 \begin{enumerate}
   \item Show that $(d_{\sigma,\tau})$ is a 2-cocycle whose image $d_f$ in 
     $\h^2(k,G_f)$ does not depend on the choice of $g_\sigma$. That is, show 
@@ -191,7 +191,7 @@ such that $g_\sigma \prescript{\sigma}{}{v}=v$. Define
   \item Show that the 2-cochain $(d_{\sigma,\tau})$ does not depend on the 
     choice of $v\in V_f(k^s)$. 
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
 Given a class $c\in \h^1(k,G)$, one can obtain a pure inner form $G^c$ of $G$ 
 and a representation $V^c$ of $G^c$ as follows. Suppose $c$ is given by the 
@@ -221,7 +221,7 @@ representation $\rho_g$ of $G^c$. For any $f\in (V\gq G)(k^s)$, we write
   V_f^c(k) = (k)\cap g V_f(k^s) .
 \]
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 \begin{enumerate}
   \item Show that the isomorphism class of $G^c$ does not depend on the choice 
     of the representative $(c_\tau)$. 
@@ -231,9 +231,9 @@ representation $\rho_g$ of $G^c$. For any $f\in (V\gq G)(k^s)$, we write
     twist $c\in \h^1(k,G)$. Show that the class $d_f\in \h^2(k,G_f)$ does not 
     depend on the twist $c\in \h^1(k,G)$. 
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
-\begin{enonce*}{Theorem}
+\begin{theo*}
 Let $G$ be a reductive group with representation $V$. Suppose there exists 
 $v\in V(k)$ with invariant $f\in (V\gq G)(k)$ and stabilizer $G_v$ such that 
 $G(k^s)$ acts transitively on $V_f(k^s)$. Then there is a bijection between the 
@@ -244,9 +244,9 @@ set of $G^c(k)$-orbits on $V_f^c(k)$ and the fiber $\gamma^{-1}(c)$ of the map
 above the class $c\in \h^1(k,G)$. In particular, the image of $\h^1(k,G_v)$ in 
 $\h^1(k,G)$ determines the set of pure inner forms of $G$ for which the 
 $k$-rational invariant $f$ lifts to a $k$-rational orbit of $G^c$ on $V^c$. 
-\end{enonce*}
+\end{theo*}
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 Prove the theorem via the following steps (or however you want to). 
 \begin{enumerate}
   \item Fix some $c\in \h^1(k,G)$. Show that $V_f^c(k)$ is nonempty if and only 
@@ -256,9 +256,9 @@ Prove the theorem via the following steps (or however you want to).
     $\gamma_c$ is the natural map of sets $\h^1(G_w^c)\to \h^1(k,G^c)$. Show 
     that there is a bijection between $\gamma^{-1}(c)$ and $\ker(\gamma_c)$. 
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
-\begin{enonce*}{Theorem}
+\begin{theo*}
 Suppose that $f$ is a rational invariant, and that $G(k^s)$ acts transitively 
 on $V_f(k^s)$ with abelian stabilizers. Then $d_f=0$ in $\h^2(k,G_f)$ if and 
 only if there exists a pure inner form $G^c$ of $G$ such that $V_f^c(k)$ is 
@@ -266,9 +266,9 @@ nonempty. That is, the condition $d_f=0$ is necessary and sufficient for the
 existence of rational orbits for some pure inner twist of $G$. In particular, 
 when $\h^1(k,G)=1$, the condition $d_f=0$ in $\h^2(k,G_f)$ is necessary and 
 sufficient for the existence of rational orbits of $G(k)$ on $V_f(k)$. 
-\end{enonce*}
+\end{theo*}
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 $\Leftarrow$ is trivial. Prove $\Rightarrow$ via the following steps (or 
 however you want to). 
 \begin{enumerate}
@@ -276,7 +276,7 @@ however you want to).
     $G_v(k^s)$ such that $c=(e_\sigma g_\sigma)$ is a 1-cocycle. 
   \item Show that $V_f^c(k)$ is nonempty. 
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
 
 \subsubsection{The representation $V=\symmetric_2(n)\oplus \symmetric_2(n)$ of $G=\speciallinear_n$ and $H=\speciallinear_n/\boldsymbol\mu_2$}
@@ -307,7 +307,7 @@ Let $d_f^G$ (resp.~$d_f^H$) denote the corresponding classes in $\h^2(k,G_f)$
 pure inner form of $G$ (resp.~$H$). For the following exercise, see 
 \cite[\S 4.5]{bgw13}. 
 
-\begin{enonce*}[remark]{Exercise}
+\begin{exercise}
 \begin{enumerate}
   \item Show that $d_f^G=\delta_0(f_0)$. Since $\h^1(k,G)=1$, we see that 
     $V_f(k)$ is nonempty if and only if $f_0\in (k^\times)^2 \norm(L^2)$. 
@@ -327,7 +327,7 @@ pure inner form of $G$ (resp.~$H$). For the following exercise, see
          that $\alpha(\delta_2(c))=d_f^G$. 
      \end{enumerate}
 \end{enumerate}
-\end{enonce*}
+\end{exercise}
 
 
 

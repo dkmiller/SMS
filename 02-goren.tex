@@ -24,7 +24,7 @@ fixed field of characteristic zero, and $\bar k$ is the algebraic closure of
 $k$. Good general references for linear algebraic groups are the books 
 \cite{b91,gw09,h75,s09}. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 The main example of a linear algebraic group is $G=\generallinear_N$. It 
 contains several standard subgroups:
 \begin{align*}
@@ -32,9 +32,9 @@ contains several standard subgroups:
   U &= \begin{pmatrix} 1 & \cdots & \ast \\ & \ddots & \vdots \\ & & 1\end{pmatrix} && \text{``unipotent radical of $B$''} \\
   T &= \begin{pmatrix} \ast \\ & \ddots \\ & & \ast \end{pmatrix} && \text{``maximal torus''}
 \end{align*}
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Let $q$ be a symmetric bilinear form corresponding to the matrix 
 $(q_{i j})_{1\leqslant i,j\leqslant N}$. Let 
 \[
@@ -44,7 +44,7 @@ If $q$ is the form
 $q(x_1,\dots,x_{2n+1}) = \frac 1 2 (x_1 x_{2n+1} + x_2 x_{2n} + \cdots + x_{n+1}^2$, 
 then a maximal torus consists ``anti-triangular'' matrices with 
 $(t_1,\dots,t_n,1,t_n^{-1},\dots,t_1^{-1})$. 
-\end{enonce}
+\end{example}
 
 An affine group $G$ is determined by its coordinate ring $\bar k[G]$. The 
 group operations $m:G\times G\to G$, $i:G\to G$, $e:1\to G$ correspond via 
@@ -119,13 +119,13 @@ There is a natural isomorphism of pointed sets
 If $H$ corresponds to $\zeta:G\to M$, then $H(k)=G(\bar k)^\Gamma$, where 
 $\Gamma$ now acts by $\tau \cdot g = \zeta(\tau)(\tau(g))$. 
 
-\begin{enonce}[remark]{Example}[compact forms]
+\begin{example}[compact forms]
 Let $\Gamma=\galois(\dC/\dR)=\langle c\rangle$. Let 
 $\theta(g) = \transpose{\bar g}^{-1}$ be the \emph{Cartan involution}. The 
 cocycle $\zeta$ given by $\zeta(c)=\theta$ corresponds to the real form 
 $\unitary_N$ of $\generallinear_N(\dC)$. It is defined by 
 $\unitary_N(\dR) = \{g\in \generallinear_N(\dC):\theta g=g\}$. 
-\end{enonce}
+\end{example}
 
 \begin{theo}
 Any (connected) reductive algebraic group $G$ over $\dR$ has a unique compact 
@@ -135,20 +135,20 @@ form.
 All of the groups $\generallinear_n$, $\speciallinear_n$, $\specialorthogonal_n$, 
 $\symplectic_{2 n}$,\ldots are reductive. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 If $G=\dG_\multiplicative$, the compact form is 
 $T(\dR)=\{z\in \dC^\times:z \bar z=1\}$. We have 
 \[
   T\simeq \specialorthogonal(2) = \left\{\begin{pmatrix} a & b \\ -b & a \end{pmatrix} : a^2+b^2=1\right\} ,
 \]
 via $\begin{pmatrix} a & b\\ -b & a \end{pmatrix} \mapsto a+b i$. 
-\end{enonce}
+\end{example}
 
 If $M$ is a $\Gamma$-module, we often put $\h^i(k,M) = \h^i(\Gamma,M)$. 
 Also, if $G$ is an algebraic group defined over $k$, we put 
 $\h^i(k,G) = \h^i(\Gamma,G(\bar k))$. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Start with the exact sequence 
 $1 \to \dG_\multiplicative \to \generallinear_N \to \projectivegenerallinear_N \to 1$. 
 The long exact sequence in cohomology is 
@@ -166,7 +166,7 @@ Since
 $\projectivegenerallinear_N(\bar k) = \automorphism_{\bar k\text{-}\mathsf{Alg}}(M_N(\bar k))$, 
 we see that $\h^1(k,\projectivegenerallinear_N)$ classifies $k$-forms of 
 $M_N(\bar k)$, i.e.~central simple algebras over $K$ of rank $N^2$. 
-\end{enonce}
+\end{example}
 
 
 
@@ -220,10 +220,10 @@ All maximal tori in a linear algebraic group $G$ are conjugate. The common
 dimension of these tori is called the \emph{rank} of $G$, and written 
 $\rank_{\bar k}(G)$. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 The standard torus of diagonal matrices $T\subset\generallinear_N$ is 
 maximal, so $\rank(\generallinear_N) = N$. 
-\end{enonce}
+\end{example}
 
 
 
@@ -277,10 +277,10 @@ A group $G$ over $\dC$ is reductive if and only if every representation
 $\rho:G\to \generallinear_N$ is semi-simple (a direct sum of irreducible 
 representations). Alternatively, the ring $\dC[\rho(G)]$ should be semi-simple. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 The group $\simeq U_1 = \begin{pmatrix} 1 & \ast \\ & 1 \end{pmatrix}$ 
 is not reductive. 
-\end{enonce}
+\end{example}
 
 
 
@@ -294,7 +294,7 @@ and only if $P$ contains a Borel subgroup $B$. So in $\generallinear_N$, a
 subgroup is parabolic if it contains a conjugate of the subgroup of 
 upper-triangular matrices. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Let $k$ be an algebraically closed field. Recall that a \emph{flag} in 
 $k^n$ is a collection of subspaces 
 $F=(0\subsetneq F_1\subsetneq \cdots \subsetneq F_a=k^n)$. The \emph{type} of 
@@ -306,7 +306,7 @@ $F_i$ is the span of $\{e_1,\dots,e_{d_i}\}$, then
 \[
   P = \begin{pmatrix} 1_{h_1} \end{pmatrix} [finish]
 \]
-\end{enonce}
+\end{example}
 
 [finish]
 

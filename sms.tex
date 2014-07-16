@@ -1,90 +1,81 @@
-\documentclass[english,letterpaper]{smfart}
+\documentclass{article}
 
-\usepackage[francais,english]{babel}
-\usepackage{amsmath,amssymb,enumerate,extarrows,mathrsfs,mathtools,smfthm,sms,stmaryrd}
-\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage{amsmath,amssymb,amsthm,enumerate,extarrows,mathrsfs,mathtools,sms,stmaryrd}
+\usepackage[colorlinks=true]{hyperref}
 \usepackage[all]{xy}
+\newtheorem{conjecture}[subsubsection]{Conjecture}
+\newtheorem{coro}[subsubsection]{Corollary}
+\newtheorem{fact}[subsubsection]{Fact}
+\newtheorem{heuristic}[subsubsection]{Heuristic}
+\newtheorem{lemm}[subsubsection]{Lemma}
+\newtheorem{prediction}[subsubsection]{Prediction}
+\newtheorem{principle}[subsubsection]{Principle}
+\newtheorem{prop}[subsubsection]{Proposition}
+\newtheorem{question}[subsubsection]{Question}
+\newtheorem*{theo*}{Theorem}
+\newtheorem{theo}[subsubsection]{Theorem}
+\theoremstyle{definition}
+\newtheorem{defi}[subsubsection]{Definition}
+\newtheorem{example}[subsubsection]{Example}
+\newtheorem*{exercise}{Exercise}
+
 
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n}
-\NumberTheoremsIn{subsection}
 
-\author{Henri Darmon}
-  \address{McGill University}
-  \email{darmon@math.mcgill.ca}
-  \urladdr{http://www.math.mcgill.ca/darmon/}
-\author{Andrew Granville}
-  \address{University of Montreal}
-  \email{andrew@dms.umontreal.ca}
-  \urladdr{http://www.dms.umontreal.ca/~andrew/}
-  
 \title{Counting arithmetic objects}
 \date{June 23 -- July 4, 2014}
+\author{Notes taken by Daniel Miller}
 
 \begin{document}
-\frontmatter
-
-\begin{abstract}
-This is a collection of talks from the summer school ``Counting arithmetic 
-objects'' at the Centre de Recherches Math\'ematiques, organized by Henri 
-Darmon and Andrew Granville. Talks were given by a number of speakers. The 
-theme was Bhargava and Bhargava-Shankar's recent work counting various types 
-of arithmetic objects.  
-\end{abstract}
-
-\subjclass{11G05,11N35, 11N37, 11N45}
-\keywords{class groups, elliptic curves, sieves}
-\thanks{Notes taken by Daniel Miller}
-
+\setcounter{tocdepth}{1}
 \maketitle
 \tableofcontents
-\mainmatter
 
 
 
 
 
-\include{01-bhargava}
-\include{04-granville}
-\include{02-goren}
-\include{03-ghate}
-\include{05-darmon}
-\include{06-granville}
-\include{07-darmon}
-\include{08-goren}
-\include{09-wood}
-\include{10-wood}
-\include{11-bhargava}
-\include{12-wood}
-\include{13-taniguchi}
-\include{14-bhargava}
-\include{15-wood}
-\include{16-poonen}
-\include{17-thorne}
-\include{18-ghate}
-\include{19-shankar}
-\include{20-poonen}
-\include{21-stoll}
-\include{22-shankar}
-\include{23-ho}
-\include{24-gross}
-\include{25-bhargava}
-\include{26-poonen}
-\include{27-wang}
-\include{28-gross}
-\include{29-poonen}
-\include{30-ellenberg}
-\include{31-wang}
-\include{32-park}
-\include{33-ellenberg}
-\include{34-bhargava}
-\include{exercises}
+\input{01-bhargava}
+\input{04-granville}
+\input{02-goren}
+\input{03-ghate}
+\input{05-darmon}
+\input{06-granville}
+\input{07-darmon}
+\input{08-goren}
+\input{09-wood}
+\input{10-wood}
+\input{11-bhargava}
+\input{12-wood}
+\input{13-taniguchi}
+\input{14-bhargava}
+\input{15-wood}
+\input{16-poonen}
+\input{17-thorne}
+\input{18-ghate}
+\input{19-shankar}
+\input{20-poonen}
+\input{21-stoll}
+\input{22-shankar}
+\input{23-ho}
+\input{24-gross}
+\input{25-bhargava}
+\input{26-poonen}
+\input{27-wang}
+\input{28-gross}
+\input{29-poonen}
+\input{30-ellenberg}
+\input{31-wang}
+\input{32-park}
+\input{33-ellenberg}
+\input{34-bhargava}
+\input{exercises}
 
 
 
 
 
-\backmatter
-\bibliographystyle{smfalpha}
+\bibliographystyle{alpha}
 \bibliography{sms}
 
 \end{document}

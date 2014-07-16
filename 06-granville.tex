@@ -17,13 +17,13 @@ geometric, the other uses $L$-functions.
 
 \subsection{Geometric techniques}
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Consider the constant sequence $a_n=1$. We have 
 $\lfloor x\rfloor = \sum_{1\leqslant n \leqslant x} 1$. More precisely, 
 $\sum_{n\leqslant x} 1 = x+O(1)$. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 We count lattice points inside a disk, i.e.~look at the asymptotics of 
 $\#\{(x,y)\in \dZ^2:x^2+y^2\leqslant T\}$. This is approximately the area of 
 $\{x^2+y^2\leqslant T\}$. The error comes from the boundary of the region 
@@ -34,7 +34,7 @@ $\sqrt T$. So
 \]
 We might hope for an error term of the form $O(T^{1/2-\epsilon})$ for some 
 $\epsilon>0$. 
-\end{enonce}
+\end{example}
 
 Questions like this become quite subtle if we are looking at intersections 
 $\Lambda\cap r\Omega$, where $\Lambda\subset \dR^n$ is a lattice and 
@@ -42,7 +42,7 @@ $\Omega\subset \dR^n$ is a bounded region. If $\partial\Omega$ is smooth,
 things work as expected. If, however $\Omega$ has a ``fractal-like'' boundary, 
 one has to be very careful. 
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Let's count the number of lattice points inside an expanding triangle: 
 \[
   \#\{(x,y)\in \dZ^2:x,y>0\text{ and }y+\alpha x\leqslant T\} .
@@ -64,9 +64,9 @@ then $\alpha$ is ``almost rational,'' which leads to a ``full error term''
 $O(T)$ for $\# (T\Delta\cap \dZ^2)$. From this we see that diophantine 
 approximation of transcendental numbers is relevant to these sorts of 
 problems. 
-\end{enonce}
+\end{example}
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Let $d$ be the \emph{divisor function} defined by 
 \[
   d(n) = \#\{(a,b)\in \dN:a b=n\} .
@@ -90,7 +90,7 @@ This is bounded, so we're in good shape. It's area is
     &= T \log(4 T) \\
     &= T\log T+O(T) .
 \end{align*}
-\end{enonce}
+\end{example}
 
 Dirichlet has a beautiful trick for the asymptotics of the divisor function. We 
 have 
@@ -120,7 +120,7 @@ yielding a sum
 
 \subsection{\texorpdfstring{$L$}{L}-functions}
 
-\begin{enonce}[remark]{Example}
+\begin{example}
 Consider the identity 
 \[
   \int_0^1 e^{2\pi i n t}\, dt = \begin{cases} 0 & n=0 \\ 0 & n\ne 0\end{cases} 
@@ -134,7 +134,7 @@ $p+q$ for primes $p+q$. We could look at
     &= \int_0^1 e^{4 i \pi N t}\left(\sum_p e^{2i \pi t}\right)^2\, dt .
 \end{align*}
 This is essentially the Hardy-Littlewood circle method. 
-\end{enonce}
+\end{example}
 
 It would be nice if instead of just characteristic functions of points, we 
 could get characteristic functions of more general regions via integrals. One 
@@ -242,13 +242,13 @@ A similar problem is
 The summand inside the big-$O$ is bounded above by 
 $2\left(\frac{x}{p^2} + 1\right)$. 
 
-\begin{enonce}{Conjecture}
+\begin{conjecture}
 For all $\varepsilon>0$, there is a constant $\kappa_\varepsilon$ such that 
 whenever $a+b=c$ with $(a,b)=1$, then 
 \[
   \prod_{p\mid a b c} p > \kappa_\varepsilon \max\{|a|,|b|\}^{1-\varepsilon} = \kappa H(a,b)^{1-\varepsilon} .
 \]
-\end{enonce}
+\end{conjecture}
 A remarkable article of Noam Elkies relates the $abc$-conjecture to 
 Belyi maps. The $abc$ conjecture implies that if $F(x,y)\in \dZ[x,y]$ is a 
 homogeneous polynomial, then 
